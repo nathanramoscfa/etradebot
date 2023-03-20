@@ -1,0 +1,7 @@
+test_etrade.ipynb
+test_model_tia.ipynb
+test_model_yahooquery.ipynb
+test_authentication.ipynb
+test_model_demo.ipynb
+models/investor_views.py
+strategies/cape_strategy.py

@@ -1,0 +1,12 @@
+cvxpy==1.3.0
+keyring==23.13.1
+matplotlib==3.7.1
+numpy==1.24.2
+pandas==1.5.3
+git+https://github.com/nathanramoscfa/pyetrade.git#egg=pyetrade
+selenium==4.8.2
+statsmodels==0.13.5
+git+https://github.com/PaulMest/tia.git#egg=tia
+tqdm==4.65.0
+xmltodict==0.13.0
+yahooquery==2.3.0
