@@ -27,15 +27,15 @@ def main():
         web_password=web_password,
         account_id=account_id,
         etrade_cookie=etrade_cookie,
-        account_id_key=account_id_key,
         strategy_name=strategy_name,
         sandbox_key=sandbox_key,
         sandbox_secret=sandbox_secret,
+        account_id_key=account_id_key,
         dev=False,  # Set to False for production, True for sandbox
         headless=True,  # Set to False to show browser window, True to hide
         browser='chrome',  # Set to 'chrome' or 'edge'
         preview=True,  # Set to False to execute trades, True to preview
-        prints=True  # Set to True to print information to console
+        prints=True,  # Set to True to print information to console
     )
 
     # Run the strategy
