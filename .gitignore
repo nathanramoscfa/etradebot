@@ -5,3 +5,6 @@ test_authentication.ipynb
 test_model_demo.ipynb
 models/investor_views.py
 strategies/cape_strategy.py
+.ipynb_checkpoints
+.idea
+_pycache_
