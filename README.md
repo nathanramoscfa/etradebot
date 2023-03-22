@@ -11,7 +11,7 @@ ETradeBot is an automated trading software for E-Trade accounts that allows user
 -   Manages portfolio: tracks positions, balance, and performance
 -   Trades common stocks, ETFs, and mutual funds
 
-Options and futures will be added in future releases. 
+Options, futures, and Forex will be added in future releases. 
 
 ## Getting Started
 
