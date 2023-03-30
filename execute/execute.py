@@ -1,3 +1,4 @@
+import time
 import random
 import pandas as pd
 import xml.etree.ElementTree as ET
@@ -212,6 +213,7 @@ class Execute:
                     if prints:
                         print('BUY_TO_COVER {} shares of {}'.format(current_portfolio.loc[ticker, 'quantity'], ticker))
                         print('BUY {} shares of {}'.format(new_allocation.loc[ticker], ticker))
+        time.sleep(5)
 
         # Logic for new portfolio
         for ticker in new_allocation.index:
@@ -286,6 +288,7 @@ class Execute:
                         )
                     if prints:
                         print('BUY_TO_COVER {} shares of {}'.format(net_quantity, ticker))
+        time.sleep(5)
 
         trade_responses_dict = {}
         for key, value in trade_responses.items():

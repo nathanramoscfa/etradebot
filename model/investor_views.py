@@ -70,7 +70,7 @@ def investor_views_confidences(selected_etfs_stocks, vif_symbols, prints=False):
     investor_views_df = pd.DataFrame.from_dict(investor_views, orient='index', columns=['Investor Views']).squeeze()
     investor_views_df.index.name = 'TICKER'
     if prints:
-        print('Investor Views:')
+        print('\nInvestor Views:')
         print(
             (100 * investor_views_df).sort_values(ascending=False).apply(lambda x: '{:,.2f}%'.format(round(x, 2)))
         )

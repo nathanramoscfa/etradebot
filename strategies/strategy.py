@@ -1,4 +1,5 @@
 import warnings
+import importlib
 
 
 class Strategy:
@@ -19,7 +20,7 @@ class Strategy:
             warnings.simplefilter('ignore')
 
             # Import the strategy function from the specified module
-            strategy_module = __import__("strategies." + self.strategy_name, fromlist=["strategy"])
+            strategy_module = importlib.import_module("strategies." + self.strategy_name)
             strategy_function = strategy_module.strategy
 
             return strategy_function(self.prints)

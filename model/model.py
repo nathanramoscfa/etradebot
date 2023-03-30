@@ -223,7 +223,7 @@ class Model(object):
         market_caps.index = [s.replace(' US Equity', '') if isinstance(s, str) else s for s in market_caps.index]
 
         if prints:
-            print('Market Cap ($Millions):')
+            print('\nMarket Cap ($Millions):')
             print(market_caps.sort_values(ascending=False).apply(lambda x: f'${x:,.2f}'))
 
         return market_caps.squeeze()
@@ -262,7 +262,7 @@ class Model(object):
         vif = df.squeeze()
         vif_symbols = list(vif.index)
         if prints:
-            print('VIF Tickers:')
+            print('\nVIF Tickers:')
             print(round(vif, 2).sort_values())
 
         return vif_symbols
@@ -284,7 +284,7 @@ class Model(object):
         covariance_matrix = risk_models.risk_matrix(prices[symbols], method='oracle_approximating')
         covariance_matrix = risk_models.fix_nonpositive_semidefinite(covariance_matrix)
         if prints:
-            print('Covariance Matrix:')
+            print('\nCovariance Matrix:')
             print(round(covariance_matrix, 4))
 
         return covariance_matrix
@@ -351,7 +351,7 @@ class Model(object):
         variance = returns.var() * self.frequency
         delta = round((average_return - risk_free_rate) / variance, 2)
         if prints:
-            print('Market Implied Risk Aversion:')
+            print('\nMarket Implied Risk Aversion:')
             print('Delta: {}'.format(delta))
 
         return delta
