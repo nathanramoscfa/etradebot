@@ -6,7 +6,6 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name='etradebot',
     version='0.0.0',
-    package_dir={'': 'tests'},
     url='https://github.com/nathanramoscfa/etradebot',
     license='MIT',
     author='Nathan Ramos, CFA®',
@@ -36,12 +35,8 @@ setup(
         'tqdm==4.65.0',
         'xmltodict==0.13.0',
         'yahooquery==2.3.0',
-        'yfinance==0.2.12'
-    ],
-    extras_require={
-        'custom': [
-            'pyetrade @ git+https://github.com/nathanramoscfa/pyetrade.git#egg=pyetrade',
-            'tia @ git+https://github.com/PaulMest/tia.git#egg=tia',
-        ],
-    },
+        'yfinance==0.2.12',
+        'pyetrade @ git+https://github.com/nathanramoscfa/pyetrade.git#egg=pyetrade',
+        'tia @ git+https://github.com/PaulMest/tia.git#egg=tia'
+    ]
 )

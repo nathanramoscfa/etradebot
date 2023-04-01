@@ -63,7 +63,7 @@ class Bot:
 
         # Run strategy
         self.strategy_name = strategy_name
-        self.new_portfolio = self.strategy.run_strategy()[0]
+        self.new_portfolio = self.strategy.run_strategy()
 
         # Preview or execute trades, print information
         self.preview = preview
