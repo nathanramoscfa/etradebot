@@ -12,3 +12,6 @@ strategies/cape_strategy.py
 __pycache__/
 _pycache_/
 *.pyc
+/dist
+/build
+*.egg-info/
