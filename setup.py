@@ -35,8 +35,6 @@ setup(
         'tqdm==4.65.0',
         'xmltodict==0.13.0',
         'yahooquery==2.3.0',
-        'yfinance==0.2.12',
-        'pyetrade @ git+https://github.com/nathanramoscfa/pyetrade.git#egg=pyetrade',
-        'tia @ git+https://github.com/PaulMest/tia.git#egg=tia'
+        'yfinance==0.2.12'
     ]
 )
