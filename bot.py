@@ -70,6 +70,12 @@ class Bot:
         self.prints = prints
 
     def run(self):
+        """
+        This method runs the strategy and previews or executes the trades.
+
+        :return: The trade responses from E*Trade
+        :rtype: pd.DataFrame
+        """
         print('Running strategy...')
 
         # Get current portfolio

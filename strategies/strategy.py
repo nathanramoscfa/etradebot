@@ -16,6 +16,12 @@ class Strategy:
         self.strategy_name = strategy_name
 
     def run_strategy(self):
+        """
+        This function runs the strategy.
+
+        :return: The strategy function
+        :rtype: function
+        """
         with warnings.catch_warnings():
             warnings.simplefilter('ignore')
 

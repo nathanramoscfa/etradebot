@@ -52,6 +52,12 @@ class Authentication(object):
         self.sleep = sleep
 
     def get_oauth(self):
+        """
+        :description: Get OAuth object
+
+        :return: OAuth object
+        :rtype: pyetrade.ETradeOAuth
+        """
         return pyetrade.ETradeOAuth(
             self.sandbox_key if self.dev else self.consumer_key,
             self.sandbox_secret if self.dev else self.consumer_secret,
@@ -62,9 +68,27 @@ class Authentication(object):
 
     @staticmethod
     def get_access_tokens(oauth, verifier_code):
+        """
+        :description: Get access tokens
+
+        :param oauth: OAuth object
+        :type oauth: pyetrade.ETradeOAuth
+        :param verifier_code: Verifier code
+        :type verifier_code: str
+        :return: Access tokens
+        :rtype: dict
+        """
         return oauth.get_access_token(verifier_code)
 
     def get_accounts_api(self, tokens):
+        """
+        :description: Get accounts API object
+
+        :param tokens: Access tokens
+        :type tokens: dict
+        :return: Accounts API object
+        :rtype: pyetrade.ETradeAccounts
+        """
         return pyetrade.ETradeAccounts(
             self.sandbox_key if self.dev else self.consumer_key,
             self.sandbox_secret if self.dev else self.consumer_secret,
@@ -74,6 +98,14 @@ class Authentication(object):
         )
 
     def get_orders_api(self, tokens):
+        """
+        :description: Get orders API object
+
+        :param tokens: Access tokens
+        :type tokens: dict
+        :return: Orders API object
+        :rtype: pyetrade.ETradeOrder
+        """
         return pyetrade.ETradeOrder(
             self.sandbox_key if self.dev else self.consumer_key,
             self.sandbox_secret if self.dev else self.consumer_secret,
@@ -83,6 +115,14 @@ class Authentication(object):
         )
 
     def get_market_api(self, tokens):
+        """
+        :description: Get market API object
+
+        :param tokens: Access tokens
+        :type tokens: dict
+        :return: Market API object
+        :rtype: pyetrade.ETradeMarket
+        """
         return pyetrade.ETradeMarket(
             self.sandbox_key if self.dev else self.consumer_key,
             self.sandbox_secret if self.dev else self.consumer_secret,
@@ -92,6 +132,12 @@ class Authentication(object):
         )
 
     def access_api(self):
+        """
+        :description: Access Etrade API
+
+        :return: Etrade API objects
+        :rtype: tuple
+        """
         oauth = self.get_oauth()
         verifier_code = oauth.get_verification_code(self.dev, self.headless, self.browser)
         tokens = self.get_access_tokens(oauth, verifier_code)
