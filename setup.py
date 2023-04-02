@@ -1,7 +1,11 @@
+import subprocess
+import sys
 from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
+
+subprocess.run([sys.executable, "-m", "pip", "install", "--index-url=https://bcms.bloomberg.com/pip/simple", "blpapi"])
 
 setup(
     name='etradebot',
@@ -22,7 +26,6 @@ setup(
     ],
     python_requires=">=3.11",
     install_requires=[
-        'blpapi==3.19.1',
         'cvxpy==1.3.0',
         'jupyterlab==3.6.1',
         'keyring==23.13.1',
