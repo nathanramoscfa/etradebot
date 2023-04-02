@@ -1,5 +1,3 @@
-
-
 # ETradeBot
 
 ETradeBot is an automated trading software for E-Trade accounts that allows users to execute trades based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. This project is not affiliated with E-Trade or any other financial institution.

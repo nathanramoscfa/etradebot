@@ -8,16 +8,28 @@ Welcome to etradebot's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Introduction
+
+   readme
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Core Modules
 
    authentication
    bot
    etrade
    execute
-   fake_data
-   model
-   portfolio
    strategy
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Utilities
+
+    fake_data
+    model
+    portfolio
+
 
 Indices and tables
 ==================

@@ -23,12 +23,17 @@ release = '0.0.0'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
+    'recommonmark',
 ]
 
 templates_path = ['_templates']
 exclude_patterns = []
 
-source_suffix = '.rst'
+# Configure the source suffix to include both '.rst' and '.md' file types
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 source_encoding = 'utf-8'
 master_doc = 'index'
 

@@ -147,6 +147,16 @@ class ETrade:
         return df
 
     def get_market_quote(self, symbols, prints=False):
+        """
+        Get market quote for a list of symbols
+
+        :param symbols: List of symbols
+        :type symbols: list
+        :param prints: Print the quote
+        :type prints: bool
+        :return: DataFrame of quote
+        :rtype: pandas.DataFrame
+        """
         json_dict = self.market.get_quote(symbols, resp_format='json')
         quote_data = json_dict['QuoteResponse']['QuoteData']
         data = []
