@@ -10,7 +10,7 @@ Welcome to etradebot's documentation!
    :maxdepth: 2
    :caption: Introduction
 
-   readme
+   README
 
 .. toctree::
    :maxdepth: 2
@@ -26,9 +26,9 @@ Welcome to etradebot's documentation!
    :maxdepth: 2
    :caption: Utilities
 
-    fake_data
-    model
-    portfolio
+   fake_data
+   model
+   portfolio
 
 
 Indices and tables
