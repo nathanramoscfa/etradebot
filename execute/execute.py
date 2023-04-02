@@ -6,6 +6,12 @@ from pypfopt import DiscreteAllocation
 
 
 class Execute:
+    """
+    :description: Execute trades
+
+    :param etrade: Etrade API object
+    :type etrade: pyetrade.ETradeAccounts, required
+    """
     def __init__(
             self, etrade
     ):
@@ -65,8 +71,7 @@ class Execute:
             market_session='REGULAR', preview=True, prints=False
     ):
         """
-        :description: Generate trades. If preview is True, trades will be previewed. If preview is False, trades will be
-        executed.
+        :description: Generate trades. If preview is True, trades will be previewed. If False, trades will be executed.
 
         :param account_id_key: Account ID key
         :type account_id_key: str, required

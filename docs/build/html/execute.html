@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>execute &mdash; etradebot 0.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="fake_data" href="fake_data.html" />
+    <link rel="prev" title="etrade" href="etrade.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            etradebot
+          </a>
+              <div class="version">
+                0.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bot.html">bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="etrade.html">etrade</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">execute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#execute.execute.Execute"><code class="docutils literal notranslate"><span class="pre">Execute</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#execute.execute.Execute.calculate_shares"><code class="docutils literal notranslate"><span class="pre">Execute.calculate_shares()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#execute.execute.Execute.execute_trades"><code class="docutils literal notranslate"><span class="pre">Execute.execute_trades()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#execute.execute.Execute.generate_trades"><code class="docutils literal notranslate"><span class="pre">Execute.generate_trades()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fake_data.html">fake_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio.html">portfolio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategy.html">strategy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">etradebot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">execute</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/execute.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-execute.execute">
+<span id="execute"></span><h1>execute<a class="headerlink" href="#module-execute.execute" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="execute.execute.Execute">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">execute.execute.</span></span><span class="sig-name descname"><span class="pre">Execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etrade</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#execute.execute.Execute" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Execute trades</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>etrade</strong> (<em>pyetrade.ETradeAccounts</em><em>, </em><em>required</em>) – Etrade API object</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="execute.execute.Execute.calculate_shares">
+<span class="sig-name descname"><span class="pre">calculate_shares</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buying_power</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reinvest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#execute.execute.Execute.calculate_shares" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Calculate shares to buy or sell</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>weights</strong> (<em>pandas.core.series.Series</em><em>, </em><em>required</em>) – Weights of new portfolio</p></li>
+<li><p><strong>buying_power</strong> (<em>float</em><em>, </em><em>required</em>) – Buying power</p></li>
+<li><p><strong>reinvest</strong> (<em>bool</em><em>, </em><em>optional</em>) – Reinvest cash from short position, default is True</p></li>
+<li><p><strong>prints</strong> (<em>bool</em><em>, </em><em>optional</em>) – Prints, default is False</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Shares to buy or sell</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="execute.execute.Execute.execute_trades">
+<span class="sig-name descname"><span class="pre">execute_trades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_portfolio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_allocation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account_id_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#execute.execute.Execute.execute_trades" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Execute trades</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>current_portfolio</strong> (<em>pandas.core.frame.DataFrame</em><em>, </em><em>required</em>) – Current portfolio</p></li>
+<li><p><strong>new_allocation</strong> (<em>pandas.core.series.Series</em><em>, </em><em>required</em>) – New allocation</p></li>
+<li><p><strong>account_id_key</strong> (<em>str</em><em>, </em><em>required</em>) – Account ID key</p></li>
+<li><p><strong>preview</strong> (<em>bool</em><em>, </em><em>optional</em>) – Preview trades, default is True. If False, trades will be executed.</p></li>
+<li><p><strong>prints</strong> (<em>bool</em><em>, </em><em>optional</em>) – Prints, default is False</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Trade responses</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="execute.execute.Execute.generate_trades">
+<span class="sig-name descname"><span class="pre">generate_trades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account_id_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_action</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MARKET'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_term</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GOOD_FOR_DAY'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">market_session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'REGULAR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#execute.execute.Execute.generate_trades" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Generate trades. If preview is True, trades will be previewed. If False, trades will be executed.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>account_id_key</strong> (<em>str</em><em>, </em><em>required</em>) – Account ID key</p></li>
+<li><p><strong>symbol</strong> (<em>str</em><em>, </em><em>required</em>) – Ticker</p></li>
+<li><p><strong>order_action</strong> (<em>str</em><em>, </em><em>required</em>) – Order action</p></li>
+<li><p><strong>quantity</strong> (<em>int</em><em>, </em><em>required</em>) – Quantity</p></li>
+<li><p><strong>price_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Price type, default is ‘MARKET’</p></li>
+<li><p><strong>order_term</strong> (<em>str</em><em>, </em><em>optional</em>) – Order term, default is ‘GOOD_FOR_DAY’</p></li>
+<li><p><strong>market_session</strong> (<em>str</em><em>, </em><em>optional</em>) – Market session, default is ‘REGULAR’</p></li>
+<li><p><strong>preview</strong> (<em>bool</em><em>, </em><em>optional</em>) – Preview trades, default is True. If False, trades will be executed.</p></li>
+<li><p><strong>prints</strong> (<em>bool</em><em>, </em><em>optional</em>) – Prints, default is False</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Trade response</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="etrade.html" class="btn btn-neutral float-left" title="etrade" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fake_data.html" class="btn btn-neutral float-right" title="fake_data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Nathan Ramos, CFA®.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
