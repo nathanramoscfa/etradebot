@@ -15,6 +15,12 @@ class Execute:
     def __init__(
             self, etrade
     ):
+        """
+        :description: Initialize class
+
+        :return: None
+        :rtype: None
+        """
         self.etrade = etrade
 
     def calculate_shares(

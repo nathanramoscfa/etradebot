@@ -48,7 +48,7 @@ class ETrade:
 
     def get_account_list(self, prints=False):
         """
-        Get a list of all accounts
+        :description: Get a list of all accounts
 
         :param prints: Print the accounts
         :type prints: bool
@@ -96,7 +96,7 @@ class ETrade:
 
     def get_orders_list(self, account_id_key, prints=False):
         """
-        Get a list of all orders for a given account
+        :description: Get a list of all orders for a given account
 
         :param account_id_key: Account ID
         :type account_id_key: str
@@ -148,7 +148,7 @@ class ETrade:
 
     def get_market_quote(self, symbols, prints=False):
         """
-        Get market quote for a list of symbols
+        :description: Get market quote for a list of symbols
 
         :param symbols: List of symbols
         :type symbols: list
@@ -211,7 +211,7 @@ class ETrade:
 
     def get_portfolio_data(self, account_id_key, sort_by='totalGainPct', ascending=False):
         """
-        Get portfolio data
+        :description: Get portfolio data
 
         :param account_id_key: Account ID key
         :type account_id_key: str

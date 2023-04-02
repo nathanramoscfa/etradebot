@@ -5,7 +5,7 @@ from execute.execute import Execute
 
 class Bot:
     """
-    This class is the main strategy class that will be used to run the strategy.
+    :description: This class is the main strategy class that will be used to run the strategy.
 
     :param consumer_key: Your E*Trade API consumer key
     :type consumer_key: str, required
@@ -43,6 +43,12 @@ class Bot:
             account_id_key, strategy_name, sandbox_key=None, sandbox_secret=None, dev=True, headless=True,
             browser='chrome', preview=True, prints=False
     ):
+        """
+        :description: This method initializes the bot.
+
+        :return: None
+        :rtype: None
+        """
         print('Initializing bot...')
         # Initialize objects
         self.etrade = ETrade(
@@ -71,7 +77,7 @@ class Bot:
 
     def run(self):
         """
-        This method runs the strategy and previews or executes the trades.
+        :description: This method runs the strategy and previews or executes the trades.
 
         :return: The trade responses from E*Trade
         :rtype: pd.DataFrame

@@ -3,21 +3,27 @@ import importlib
 
 
 class Strategy:
+    """
+    :description: This class is the main strategy class that will be used to run the strategy.
+
+    :param prints: Print the strategy
+    :type prints: bool
+    :param strategy_name: The name of the strategy module to use
+    :type strategy_name: str
+    """
     def __init__(self, prints=False, strategy_name='example_strategy'):
         """
-        This class is the main strategy class that will be used to run the strategy.
+        :description: This class is the main strategy class that will be used to run the strategy.
 
-        :param prints: Print the strategy
-        :type prints: bool
-        :param strategy_name: The name of the strategy module to use
-        :type strategy_name: str
+        :return: None
+        :rtype: None
         """
         self.prints = prints
         self.strategy_name = strategy_name
 
     def run_strategy(self):
         """
-        This function runs the strategy.
+        :description: This function runs the strategy.
 
         :return: The strategy function
         :rtype: function
