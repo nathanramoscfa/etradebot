@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="bot" href="bot.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="readme.html" /> 
+    <link rel="prev" title="ETradeBot" href="README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,7 +45,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">ETradeBot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#authentication.authentication.Authentication"><code class="docutils literal notranslate"><span class="pre">Authentication</span></code></a><ul>
@@ -64,6 +68,12 @@
 <li class="toctree-l1"><a class="reference internal" href="etrade.html">etrade</a></li>
 <li class="toctree-l1"><a class="reference internal" href="execute.html">execute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strategy.html">strategy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utilities</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fake_data.html">fake_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio.html">portfolio</a></li>
 </ul>
 
         </div>
@@ -123,7 +133,18 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="authentication.authentication.Authentication.access_api">
 <span class="sig-name descname"><span class="pre">access_api</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#authentication.authentication.Authentication.access_api" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Access Etrade API</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Etrade API objects</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="authentication.authentication.Authentication.etrade_login">
@@ -144,27 +165,97 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="authentication.authentication.Authentication.get_access_tokens">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_access_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oauth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verifier_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#authentication.authentication.Authentication.get_access_tokens" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Get access tokens</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>oauth</strong> (<em>pyetrade.ETradeOAuth</em>) – OAuth object</p></li>
+<li><p><strong>verifier_code</strong> (<em>str</em>) – Verifier code</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Access tokens</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="authentication.authentication.Authentication.get_accounts_api">
 <span class="sig-name descname"><span class="pre">get_accounts_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#authentication.authentication.Authentication.get_accounts_api" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Get accounts API object</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>tokens</strong> (<em>dict</em>) – Access tokens</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Accounts API object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pyetrade.ETradeAccounts</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="authentication.authentication.Authentication.get_market_api">
 <span class="sig-name descname"><span class="pre">get_market_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#authentication.authentication.Authentication.get_market_api" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Get market API object</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>tokens</strong> (<em>dict</em>) – Access tokens</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Market API object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pyetrade.ETradeMarket</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="authentication.authentication.Authentication.get_oauth">
 <span class="sig-name descname"><span class="pre">get_oauth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#authentication.authentication.Authentication.get_oauth" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Get OAuth object</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>OAuth object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pyetrade.ETradeOAuth</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="authentication.authentication.Authentication.get_orders_api">
 <span class="sig-name descname"><span class="pre">get_orders_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#authentication.authentication.Authentication.get_orders_api" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Get orders API object</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>tokens</strong> (<em>dict</em>) – Access tokens</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Orders API object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pyetrade.ETradeOrder</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -174,7 +265,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="readme.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="README.html" class="btn btn-neutral float-left" title="ETradeBot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="bot.html" class="btn btn-neutral float-right" title="bot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
