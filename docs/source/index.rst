@@ -16,6 +16,7 @@ Welcome to etradebot's documentation!
    :maxdepth: 2
    :caption: Configuration
 
+   environment
    credentials
 
 .. toctree::
