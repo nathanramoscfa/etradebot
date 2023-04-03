@@ -112,6 +112,12 @@ class Model(object):
         return symbols
 
     def get_historical_prices(self):
+        """
+        :description: Get historical prices
+
+        :return: Historical prices
+        :rtype: pandas.DataFrame
+        """
         if self.api_source == 'yahoo':
             if self.period is None:
                 start_date_obj = datetime.strptime(self.start_date, '%m-%d-%Y')
