@@ -14,6 +14,12 @@ Welcome to etradebot's documentation!
 
 .. toctree::
    :maxdepth: 2
+   :caption: Configuration
+
+   credentials
+
+.. toctree::
+   :maxdepth: 2
    :caption: Core Modules
 
    authentication
