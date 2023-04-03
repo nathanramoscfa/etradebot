@@ -22,7 +22,7 @@ setup(
     ],
     python_requires=">=3.11",
     install_requires=[
-        'blpapi==3.19.1 --extra-index-url https://bcms.bloomberg.com/pip/simple',
+        'blpapi==3.19.1',
         'cvxpy==1.3.0',
         'jupyterlab==3.6.1',
         'keyring==23.13.1',
@@ -38,5 +38,8 @@ setup(
         'xmltodict==0.13.0',
         'yahooquery==2.3.0',
         'yfinance==0.2.12'
+    ],
+    dependency_links=[
+        'https://bcms.bloomberg.com/pip/simple/blpapi/'
     ]
 )
