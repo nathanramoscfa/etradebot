@@ -32,6 +32,7 @@ def create_fake_portfolio(buying_power, prints=False):
     :param prints: Prints, default is False
     :type prints: bool, optional
     :return: Fake portfolio
+    :rtype: pandas.core.frame.DataFrame
     """
     tickers = ['SPY', 'AGG', 'PSCD', 'QQQ', 'SPSM', 'OIH']
     weights = [0.80, 0.40, 0.10, -0.10, -0.10, -0.10]
