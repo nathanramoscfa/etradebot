@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selenium &mdash; etradebot 0.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Credentials" href="credentials.html" />
+    <link rel="prev" title="Environment" href="environment.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            etradebot
+          </a>
+              <div class="version">
+                0.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">ETradeBot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Selenium</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-selenium">Configuring Selenium</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drivers">Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chrome">Chrome</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edge">Edge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduling.html">Scheduling</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bot.html">bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="etrade.html">etrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute.html">execute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategy.html">strategy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utilities</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fake_data.html">fake_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio.html">portfolio</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">etradebot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Selenium</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/selenium.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="selenium">
+<span id="id1"></span><h1>Selenium<a class="headerlink" href="#selenium" title="Permalink to this heading"></a></h1>
+<section id="configuring-selenium">
+<h2>Configuring Selenium<a class="headerlink" href="#configuring-selenium" title="Permalink to this heading"></a></h2>
+<p>ETradeBot uses the Python library Selenium to interact with the E*TRADE website. If you plan to use ETradeBot, you will need to install Selenium on your machine.</p>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
+<p>If you followed the instructions in the <a class="reference internal" href="environment.html#environment"><span class="std std-ref">Environment</span></a> section, you should already have selenium installed in your Python environment. If not, you can install Selenium using pip, the Python package manager. To install the latest version of Selenium, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>selenium
+</pre></div>
+</div>
+</section>
+<section id="drivers">
+<h3>Drivers<a class="headerlink" href="#drivers" title="Permalink to this heading"></a></h3>
+<p>Selenium requires a web driver to interact with web pages. The driver acts as a proxy between Selenium and the web page being automated.</p>
+<p>ETradeBot supports two web drivers: Chrome and Edge. You should choose the driver that matches the browser you plan to use with ETradeBot. The ETradeBot root directory contains a <code class="docutils literal notranslate"><span class="pre">chromedriver.exe</span></code> and <code class="docutils literal notranslate"><span class="pre">msedgedriver.exe</span></code>, however, these web drivers may not correspond to your browser version. You will simply have to replace these executable files with the version of web driver that matches your browser version. Follow the instruction below to proceed.</p>
+</section>
+<section id="chrome">
+<h3>Chrome<a class="headerlink" href="#chrome" title="Permalink to this heading"></a></h3>
+<p>To use Chrome with Selenium, you will need to download the <a class="reference external" href="https://sites.google.com/chromium.org/driver/">ChromeDriver</a> executable and place it in the root directory of ETradeBot.</p>
+<p>You can download the ChromeDriver executable for your operating system from the <a class="reference external" href="https://sites.google.com/chromium.org/driver/">official ChromeDriver downloads page</a>. Make sure to download the version that matches the version of Chrome you have installed. You can find your version of Chrome by:</p>
+<ol class="arabic">
+<li><p>Opening the Chrome browser and click on the three dots in the top right corner.</p></li>
+<li><p>Click on “About Chrome” at the bottom of the left-panel menu.</p></li>
+<li><p>You should see your version displayed, for example:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Version 111.0.5563.64 (Official Build) (64-bit)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>You would then download the ChromeDriver version whose version number is closest to yours.</p></li>
+</ol>
+<p>Once you have downloaded the ChromeDriver executable, extract it to the root directory of your ETradeBot project. This is the same directory that contains the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p>
+</section>
+<section id="edge">
+<h3>Edge<a class="headerlink" href="#edge" title="Permalink to this heading"></a></h3>
+<p>To use Edge with Selenium, you will need to download the <a class="reference external" href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/">EdgeDriver</a> executable and add it to your system path.</p>
+<p>You can download the EdgeDriver executable for your operating system from the <a class="reference external" href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/">official EdgeDriver downloads page</a>. Make sure to download the version that matches the version of Edge you have installed. You can find your version of Edge by:</p>
+<ol class="arabic">
+<li><p>Opening the Edge browser and click on the three dots in the top right corner.</p></li>
+<li><p>Click on “About Microsoft Edge” at the bottom of the left-panel menu.</p></li>
+<li><p>You should see your version displayed, for example:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Version 111.0.1661.44 (Official build) (64-bit)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>You would then download the EdgeDriver version whose version number is closest to yours.</p></li>
+</ol>
+<p>Once you have downloaded the EdgeDriver executable, extract it to the root directory of your ETradeBot project. This is the same directory that contains the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p>
+</section>
+<section id="further-reading">
+<h3>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this heading"></a></h3>
+<p>For more information on using Selenium with Python, please refer to the official <a class="reference external" href="https://selenium-python.readthedocs.io/">Selenium documentation</a>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="environment.html" class="btn btn-neutral float-left" title="Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="credentials.html" class="btn btn-neutral float-right" title="Credentials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Nathan Ramos, CFA®.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

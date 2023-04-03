@@ -11,13 +11,23 @@ Welcome to ETradeBot's documentation!
    :caption: Introduction
 
    README
+   disclaimer
 
 .. toctree::
    :maxdepth: 2
    :caption: Configuration
 
    environment
+   selenium
    credentials
+   strategies
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Usage
+
+   running
+   scheduling
 
 .. toctree::
    :maxdepth: 2

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scheduling &mdash; etradebot 0.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="authentication" href="authentication.html" />
+    <link rel="prev" title="Running" href="running.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            etradebot
+          </a>
+              <div class="version">
+                0.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">ETradeBot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Scheduling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-your-strategy">Running your strategy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method-1-windows-task-scheduler">Method 1: Windows Task Scheduler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-2-google-cloud">Method 2: Google Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-3-amazon-web-services">Method 3: Amazon Web Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-4-microsoft-azure">Method 4: Microsoft Azure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bot.html">bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="etrade.html">etrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute.html">execute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategy.html">strategy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utilities</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fake_data.html">fake_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio.html">portfolio</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">etradebot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Scheduling</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/scheduling.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scheduling">
+<span id="id1"></span><h1>Scheduling<a class="headerlink" href="#scheduling" title="Permalink to this heading"></a></h1>
+<section id="running-your-strategy">
+<h2>Running your strategy<a class="headerlink" href="#running-your-strategy" title="Permalink to this heading"></a></h2>
+<p>You can schedule <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to run at any time of the day or night.</p>
+<section id="method-1-windows-task-scheduler">
+<h3>Method 1: Windows Task Scheduler<a class="headerlink" href="#method-1-windows-task-scheduler" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
+<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
+<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
+<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Python311\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
+<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
+</ol>
+</section>
+<section id="method-2-google-cloud">
+<h3>Method 2: Google Cloud<a class="headerlink" href="#method-2-google-cloud" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
+<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
+<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
+<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Python311\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
+<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
+</ol>
+</section>
+<section id="method-3-amazon-web-services">
+<h3>Method 3: Amazon Web Services<a class="headerlink" href="#method-3-amazon-web-services" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
+<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
+<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
+<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Python311\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
+<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
+</ol>
+</section>
+<section id="method-4-microsoft-azure">
+<h3>Method 4: Microsoft Azure<a class="headerlink" href="#method-4-microsoft-azure" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
+<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
+<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
+<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Python311\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
+<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="running.html" class="btn btn-neutral float-left" title="Running" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authentication.html" class="btn btn-neutral float-right" title="authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Nathan Ramos, CFA®.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

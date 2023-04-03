@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search &mdash; etradebot 0.0.0 documentation</title>
+  <title>Running &mdash; etradebot 0.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -17,10 +17,10 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Scheduling" href="scheduling.html" />
+    <link rel="prev" title="Strategies" href="strategies.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,7 +38,7 @@
                 0.0.0
               </div>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -48,7 +48,6 @@
               <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">ETradeBot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="disclaimer.html">Disclaimer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
@@ -58,8 +57,15 @@
 <li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="running.html">Running</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-your-strategy">Running your strategy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preview-mode">Preview Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#live-trading-mode">Live Trading Mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="scheduling.html">Scheduling</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
@@ -91,8 +97,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Search</li>
+      <li class="breadcrumb-item active">Running</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/running.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -100,22 +107,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <section id="running">
+<span id="id1"></span><h1>Running<a class="headerlink" href="#running" title="Permalink to this heading"></a></h1>
+<section id="running-your-strategy">
+<h2>Running your strategy<a class="headerlink" href="#running-your-strategy" title="Permalink to this heading"></a></h2>
+<section id="preview-mode">
+<h3>Preview Mode<a class="headerlink" href="#preview-mode" title="Permalink to this heading"></a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, the <code class="docutils literal notranslate"><span class="pre">preview</span></code> variable is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default allowing the user to run ETradeBot without executing any trades. You can use preview mode to test the program before going live. The program will access your account, obtain market data, and submit preview trades through the E-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.</p>
+<ol class="arabic">
+<li><p>Run the bot:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>In your terminal or command prompt, navigate to the root directory of the ETradeBot project.</p></li>
+<li><p>Run the following command to start the bot:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Monitor the bot:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The bot will automatically execute trades based on your strategy.</p></li>
+<li><p>You can monitor the bot’s activity through the console output.</p></li>
+<li><p>If you encounter any errors or issues, refer to the console output in the root directory for more information.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="live-trading-mode">
+<h3>Live Trading Mode<a class="headerlink" href="#live-trading-mode" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">preview</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p>Repeat steps 1 and 2 from above.</p></li>
+</ol>
+</section>
+</section>
+</section>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="strategies.html" class="btn btn-neutral float-left" title="Strategies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="scheduling.html" class="btn btn-neutral float-right" title="Scheduling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
@@ -137,14 +175,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-  <script>
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>
