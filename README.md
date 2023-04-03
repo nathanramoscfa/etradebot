@@ -1,6 +1,6 @@
 # ETradeBot
 
-ETradeBot is an automated trading software for E-Trade accounts that allows users to execute trades based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. This project is not affiliated with E-Trade or any other financial institution.
+ETradeBot is an automated trading software written in Python for E-Trade accounts that allows users to execute trades based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. This project is not affiliated with E-Trade or any other financial institution.
 
 ## Features
 
@@ -13,7 +13,14 @@ Options, futures, and Forex will be added in future releases.
 
 ## Getting Started
 
-Refer to the [ETradeBot documentation](https://nr-capital-management.gitbook.io/etradebot/) for instructions on installing, configuring, and using the software. Your E-Trade account must be approved and have the required forms signed and submitted for each trade type. 
+Refer to the [ETradeBot documentation](https://etradebot.readthedocs.io/en/latest/index.html) for instructions on installing, configuring, and using the software. 
+
+1. [Create](https://etradebot.readthedocs.io/en/latest/environment.html) your Python environment and install ETradeBot.
+2. [Configure](https://etradebot.readthedocs.io/en/latest/selenium.html) Selenium to work with your browser.
+3. [Obtain](https://etradebot.readthedocs.io/en/latest/credentials.html) and securely store your E-Trade credentials.
+4. [Insert](https://etradebot.readthedocs.io/en/latest/strategies.html) your strategy into the strategies directory as a .py file.
+5. [Run](https://etradebot.readthedocs.io/en/latest/running.html) main.py from the root directory to test functionality.
+6. [Schedule](https://etradebot.readthedocs.io/en/latest/scheduling.html) main.py to run automatically.
 
 ## Contributing
 

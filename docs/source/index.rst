@@ -22,13 +22,12 @@ Options, futures, and Forex will be added in future releases.
 Getting Started
 ===============
 
-Refer to the `ETradeBot documentation <https://nr-capital-management.gitbook.io/etradebot/>`_ for instructions on installing, configuring, and using the software. Your E-Trade account must be approved and have the required forms signed and submitted for each trade type.
-
-1. :ref:`Configure <environment>` your Python environment and install ETradeBot.
+1. :ref:`Create <environment>` your Python environment and install ETradeBot.
 2. :ref:`Configure <selenium>` Selenium to work with your browser.
 3. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
 4. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
-5. :ref:`Run <running>` main.py from the root directory.
+5. :ref:`Run <running>` main.py from the root directory to test functionality.
+6. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
 
 Important Links
 ===============
