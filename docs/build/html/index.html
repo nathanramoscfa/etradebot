@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to ETradeBot’s documentation! &mdash; etradebot 0.0.0 documentation</title>
+  <title>ETradeBot &mdash; etradebot 0.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="ETradeBot" href="README.html" /> 
+    <link rel="next" title="Environment" href="environment.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,12 +44,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="README.html">ETradeBot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="disclaimer.html">Disclaimer</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
@@ -75,6 +70,10 @@
 <li class="toctree-l1"><a class="reference internal" href="model.html">model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="portfolio.html">portfolio</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Disclaimer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="disclaimer.html">Disclaimer</a></li>
+</ul>
 
         </div>
       </div>
@@ -90,7 +89,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Welcome to ETradeBot’s documentation!</li>
+      <li class="breadcrumb-item active">ETradeBot</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -100,25 +99,46 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="welcome-to-etradebot-s-documentation">
-<h1>Welcome to ETradeBot’s documentation!<a class="headerlink" href="#welcome-to-etradebot-s-documentation" title="Permalink to this heading"></a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="README.html">ETradeBot</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="README.html#features">Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#contributing">Contributing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#disclaimer">Disclaimer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#license">License</a></li>
+  <section id="etradebot">
+<h1>ETradeBot<a class="headerlink" href="#etradebot" title="Permalink to this heading"></a></h1>
+<p>ETradeBot is an automated trading software for E-Trade accounts that allows users to execute trades based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. This project is not affiliated with E-Trade or any other financial institution.</p>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Fetches real-time market data from E-Trade API</p></li>
+<li><p>Executes trades (buy/sell/sell short/short cover) based on user-defined strategies</p></li>
+<li><p>Manages portfolio: tracks positions, balance, and performance</p></li>
+<li><p>Trades common stocks, ETFs, and mutual funds</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="disclaimer.html">Disclaimer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="disclaimer.html#read-carefully">Read carefully</a></li>
+<p>Options, futures, and Forex will be added in future releases.</p>
+</section>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
+<p>Refer to the <a class="reference external" href="https://nr-capital-management.gitbook.io/etradebot/">ETradeBot documentation</a> for instructions on installing, configuring, and using the software. Your E-Trade account must be approved and have the required forms signed and submitted for each trade type.</p>
+</section>
+<section id="important-links">
+<h2>Important Links<a class="headerlink" href="#important-links" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>ETradeBot GitHub: <a class="reference external" href="https://github.com/nathanramoscfa/etradebot">https://github.com/nathanramoscfa/etradebot</a></p></li>
+<li><p>E-Trade Developer: <a class="reference external" href="https://developer.etrade.com/home">https://developer.etrade.com/home</a></p></li>
+<li><p>E-Trade API Documentation: <a class="reference external" href="https://apisb.etrade.com/docs/api/account/api-account-v1.html">https://apisb.etrade.com/docs/api/account/api-account-v1.html</a></p></li>
+<li><p>Keyring documentation: <a class="reference external" href="https://keyring.readthedocs.io/en/latest/">https://keyring.readthedocs.io/en/latest/</a></p></li>
 </ul>
-</li>
-</ul>
-</div>
+</section>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading"></a></h2>
+<p>Contributions to ETradeBot are welcome! Please see the <a class="reference external" href="https://github.com/nathanramoscfa/etradebot/blob/main/CONTRIBUTING.md">contributing guidelines</a> for more information.</p>
+</section>
+<section id="disclaimer">
+<h2>Disclaimer<a class="headerlink" href="#disclaimer" title="Permalink to this heading"></a></h2>
+<p>You can read the full disclaimer <a class="reference internal" href="disclaimer.html#disclaimer"><span class="std std-ref">here</span></a>. Please note that while the developer has taken care to ensure the quality and functionality of ETradeBot, there is no guarantee that the software is free from errors or bugs. The developer does not assume responsibility or liability for any damages or losses incurred as a result of using ETradeBot. Users of ETradeBot should use the software at their own risk and verify the accuracy and correctness of its output before making any investment decisions. By using ETradeBot, users agree to release the developer from any and all liability related to their use of the software. Users should read and understand all documentation and instructions provided before using ETradeBot. If you do not agree with any part of this disclaimer, do not use ETradeBot.</p>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this heading"></a></h2>
+<p>ETradeBot is licensed under the <a class="reference external" href="https://github.com/nathanramoscfa/etradebot/blob/main/LICENSE">MIT License</a>.</p>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
@@ -198,21 +218,31 @@
 </li>
 </ul>
 </div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Disclaimer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="disclaimer.html">Disclaimer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disclaimer.html#read-carefully">Read carefully</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="README.html" class="btn btn-neutral float-right" title="ETradeBot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="environment.html" class="btn btn-neutral float-right" title="Environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
