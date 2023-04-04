@@ -45,11 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="README.html">ETradeBot</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
@@ -81,6 +77,10 @@
 <li class="toctree-l1"><a class="reference internal" href="fake_data.html">fake_data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model.html">model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="portfolio.html">portfolio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Disclaimer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="disclaimer.html">Disclaimer</a></li>
 </ul>
 
         </div>
@@ -117,13 +117,35 @@
 <ol class="arabic">
 <li><p>Run the bot:</p>
 <blockquote>
+<div><ul>
+<li><p>In your terminal or command prompt, activate your <code class="docutils literal notranslate"><span class="pre">etradebot</span></code> virtual environment:</p>
+<blockquote>
 <div><ul class="simple">
-<li><p>In your terminal or command prompt, navigate to the root directory of the ETradeBot project.</p></li>
+<li><p>If you are using <code class="docutils literal notranslate"><span class="pre">conda</span></code>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>etradebot
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If you are using <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>etradebot/bin/activate
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Navigate to the root directory of the ETradeBot project.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/etradebot
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>Run the following command to start the bot:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
 </pre></div>
 </div>
+<img alt="Preview Trades" src="_static/preview_trades.gif" />
 </div></blockquote>
 </li>
 <li><p>Monitor the bot:</p>

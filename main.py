@@ -40,6 +40,7 @@ def main():
 
     # Run the strategy
     bot.run()
+    print('\nDone!')
 
 
 if __name__ == '__main__':

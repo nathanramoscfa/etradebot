@@ -14,12 +14,34 @@ In ``main.py``, the ``preview`` variable is set to ``True`` by default allowing 
 
 1. Run the bot:
 
-    * In your terminal or command prompt, navigate to the root directory of the ETradeBot project.
+    * In your terminal or command prompt, activate your ``etradebot`` virtual environment:
+
+        * If you are using ``conda``:
+
+        .. code-block:: bash
+
+            conda activate etradebot
+
+        * If you are using ``virtualenv``:
+
+        .. code-block:: bash
+
+            source etradebot/bin/activate
+
+    * Navigate to the root directory of the ETradeBot project.
+
+    .. code-block:: bash
+
+        cd /path/to/etradebot
+
     * Run the following command to start the bot:
 
     .. code-block:: bash
 
         python main.py
+
+    .. image:: _static/preview_trades.gif
+       :alt: Preview Trades
 
 2. Monitor the bot:
 
