@@ -29,6 +29,8 @@ Getting Started
 5. :ref:`Run <running>` main.py from the root directory to test functionality.
 6. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
 
+Refer to the :ref:`troubleshooting <troubleshooting>` section if you encounter any issues.
+
 Important Links
 ===============
 
@@ -70,6 +72,12 @@ Contents
 
    running
    scheduling
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Troubleshooting
+
+   troubleshooting
 
 .. toctree::
    :maxdepth: 2

@@ -14,7 +14,7 @@ etrade_cookie = ast.literal_eval(keyring.get_password("etrade", "cookie"))
 account_id_key = keyring.get_password("etrade", "account_id_key")
 
 # Define the strategy name
-strategy_name = 'example_strategy'
+strategy_name = 'cape_strategy'
 
 
 # Define the main function
@@ -34,7 +34,7 @@ def main():
         dev=False,  # Set to False for production, True for sandbox
         headless=True,  # Set to False to show browser window, True to hide
         browser='chrome',  # Set to 'chrome' or 'edge'
-        preview=True,  # Set to False to execute trades, True to preview
+        preview=False,  # Set to False to execute trades, True to preview
         prints=True,  # Set to True to print information to console
     )
 

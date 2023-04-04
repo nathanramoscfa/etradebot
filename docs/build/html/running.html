@@ -64,6 +64,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="scheduling.html">Scheduling</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">authentication</a></li>
@@ -111,9 +115,10 @@
 <span id="id1"></span><h1>Running<a class="headerlink" href="#running" title="Permalink to this heading"></a></h1>
 <section id="running-your-strategy">
 <h2>Running your strategy<a class="headerlink" href="#running-your-strategy" title="Permalink to this heading"></a></h2>
+<p>Refer to the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section if you encounter any issues.</p>
 <section id="preview-mode">
 <h3>Preview Mode<a class="headerlink" href="#preview-mode" title="Permalink to this heading"></a></h3>
-<p>In <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, the <code class="docutils literal notranslate"><span class="pre">preview</span></code> variable is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default allowing the user to run ETradeBot without executing any trades. You can use preview mode to test the program before going live. The program will access your account, obtain market data, and submit preview trades through the E-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, the <code class="docutils literal notranslate"><span class="pre">preview</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default allowing the user to run ETradeBot without executing any real trades. You can use preview mode to test the program’s responses before going live. The program will access your account, obtain market data, and submit preview trades through the E-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.</p>
 <ol class="arabic">
 <li><p>Run the bot:</p>
 <blockquote>
@@ -145,7 +150,6 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
 </pre></div>
 </div>
-<img alt="Preview Trades" src="_static/preview_trades.gif" />
 </div></blockquote>
 </li>
 <li><p>Monitor the bot:</p>
@@ -153,11 +157,12 @@
 <div><ul class="simple">
 <li><p>The bot will automatically execute trades based on your strategy.</p></li>
 <li><p>You can monitor the bot’s activity through the console output.</p></li>
-<li><p>If you encounter any errors or issues, refer to the console output in the root directory for more information.</p></li>
+<li><p>If you encounter any errors or issues, refer to the console output and the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section for more information.</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ol>
+<img alt="Preview Trades" src="_images/preview_trades.gif" />
 </section>
 <section id="live-trading-mode">
 <h3>Live Trading Mode<a class="headerlink" href="#live-trading-mode" title="Permalink to this heading"></a></h3>
@@ -165,6 +170,7 @@
 <li><p>Set <code class="docutils literal notranslate"><span class="pre">preview</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p>Repeat steps 1 and 2 from above.</p></li>
 </ol>
+<img alt="Execute Trades" src="_images/preview_trades.gif" />
 </section>
 </section>
 </section>
