@@ -57,5 +57,5 @@ Live Trading Mode
 1. Set ``preview`` parameter in ``main.py`` to ``True``.
 2. Repeat steps 1 and 2 from above.
 
-.. image:: _static/preview_trades.gif
+.. image:: _static/execute_trades.gif
    :alt: Execute Trades
