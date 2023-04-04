@@ -31,6 +31,9 @@ Getting Started
 
 Refer to the :ref:`troubleshooting <troubleshooting>` section if you encounter any issues.
 
+.. image:: _static/execute_trades.gif
+   :alt: Execute Trades
+
 Important Links
 ===============
 

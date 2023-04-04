@@ -22,6 +22,10 @@ Refer to the [ETradeBot documentation](https://etradebot.readthedocs.io/en/lates
 5. [Run](https://etradebot.readthedocs.io/en/latest/running.html) main.py from the root directory to test functionality.
 6. [Schedule](https://etradebot.readthedocs.io/en/latest/scheduling.html) main.py to run automatically.
 
+Refer to the [troubleshooting](https://etradebot.readthedocs.io/en/latest/scheduling.html) section of the documentation if you encounter any issues.
+
+![Execute Trades](https://github.com/nathanramoscfa/etradebot/blob/main/docs/source/_static/execute_trades.gif)
+
 ## Contributing
 
 Contributions to ETradeBot are welcome! Please see the [contributing guidelines](https://github.com/nathanramoscfa/etradebot/blob/main/CONTRIBUTING.md) for more information.
