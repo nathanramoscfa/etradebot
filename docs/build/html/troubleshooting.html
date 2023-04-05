@@ -115,13 +115,14 @@
 <ol class="arabic simple">
 <li><p>Are you in the right Python environment? If you followed the instructions in the <a class="reference internal" href="environment.html#environment"><span class="std std-ref">environment</span></a> section, you should be in the <code class="docutils literal notranslate"><span class="pre">etrade</span></code> environment.</p></li>
 <li><p>Did you navigate to the correct directory? This should be the directory where you cloned the repository. If you followed the instructions in the <a class="reference internal" href="environment.html#environment"><span class="std std-ref">environment</span></a> section, you should be in the <code class="docutils literal notranslate"><span class="pre">etrade</span></code> directory.</p></li>
+<li><p>Did you configure Selenium correctly? Your webdriver must be configured to work with the browser version you are using. See <a class="reference internal" href="selenium.html#selenium"><span class="std std-ref">selenium</span></a> for more information.</p></li>
 <li><p>Did you configure your <a class="reference internal" href="credentials.html#credentials"><span class="std std-ref">credentials</span></a> correctly and do they match what you see on the E-Trade developer site?</p></li>
-<li><p>Did you configure your strategy correctly? See <a class="reference internal" href="strategies.html#strategies"><span class="std std-ref">strategies</span></a> for more information.</p></li>
+<li><p>Did you configure your strategy correctly? The <code class="docutils literal notranslate"><span class="pre">strategy</span></code> function within your <code class="docutils literal notranslate"><span class="pre">custom_strategy.py</span></code> file must return a pd.Series. See <a class="reference internal" href="strategies.html#strategies"><span class="std std-ref">strategies</span></a> for more information.</p></li>
 </ol>
-<p>You may still encounter errors even if you configured ETradeBot and/or previously successfully ran it. Here are some common errors encountered by the developer and their solutions:</p>
+<p>You may still encounter errors even if you configured ETradeBot correctly and previously successfully ran it usually due to server errors from E-Trade. Here are some common errors encountered by the developer and their solutions:</p>
 <ol class="arabic simple">
-<li><p>Running ETradeBot to submit real trades outside of normal market trading hours (e.g. nights and weekends) may result in a server error. This is because E-Trade’s servers may not be responsive during these times for reasons unknown to the developer. It is best to only submit real trades during normal market trading hours.</p></li>
-<li><p>E-Trade’s servers may return a server error for reasons unknown to the developer. If this happens, try running ETradeBot again. Sometimes, simply rerunning ETradeBot resolved the error.</p></li>
+<li><p>Running ETradeBot to submit real trades outside of normal market trading hours (e.g. nights and weekends) may result in a server error. This is because E-Trade’s servers may not be as responsive during these times for reasons unknown to the developer. It is best to only submit real trades during normal market trading hours.</p></li>
+<li><p>E-Trade’s servers may return a server error for reasons unknown to the developer. If this happens, try running ETradeBot again after a few minutes. Sometimes, simply rerunning ETradeBot resolved the error.</p></li>
 </ol>
 <p>If you are still encountering errors, please <a class="reference external" href="https://github.com/nathanramoscfa/etradebot/issues">open an issue</a> and provide as much information as possible.</p>
 </section>
