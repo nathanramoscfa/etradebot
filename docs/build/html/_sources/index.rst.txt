@@ -32,10 +32,12 @@ Getting Started
 Example
 =======
 
-See this [jupyter notebook](https://github.com/nathanramoscfa/etradebot/blob/main/tests/test_etradebot.ipynb) for an example of how to use ETradeBot to execute a simple trading strategy. The following example shows ETradeBot being run in Anaconda Prompt:
+The following example shows ETradeBot being run in Anaconda Prompt:
 
 .. image:: _static/execute_trades.gif
    :alt: Execute Trades
+
+Also see this example of ETradeBot being run within a `jupyter notebook <https://github.com/nathanramoscfa/etradebot/blob/main/tests/test_etradebot.ipynb>`_.
 
 Troubleshooting
 ===============

@@ -24,9 +24,11 @@ Refer to the [ETradeBot documentation](https://etradebot.readthedocs.io/en/lates
 
 ## Example
 
-See this [jupyter notebook](https://github.com/nathanramoscfa/etradebot/blob/main/tests/test_etradebot.ipynb) for an example of how to use ETradeBot to execute a simple trading strategy. The following example shows ETradeBot being run in Anaconda Prompt:
+The following example shows ETradeBot being run in Anaconda Prompt:
 
 ![Execute Trades](https://github.com/nathanramoscfa/etradebot/blob/main/docs/source/_static/execute_trades.gif)
+
+Also see this example of ETradeBot being run within a [jupyter notebook](https://github.com/nathanramoscfa/etradebot/blob/main/tests/test_etradebot.ipynb).
 
 ## Troubleshooting
 
