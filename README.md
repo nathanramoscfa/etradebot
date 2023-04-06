@@ -22,9 +22,15 @@ Refer to the [ETradeBot documentation](https://etradebot.readthedocs.io/en/lates
 5. [Run](https://etradebot.readthedocs.io/en/latest/running.html) main.py from the root directory to test functionality.
 6. [Schedule](https://etradebot.readthedocs.io/en/latest/scheduling.html) main.py to run automatically.
 
-Refer to the [troubleshooting](https://etradebot.readthedocs.io/en/latest/scheduling.html) section of the documentation if you encounter any issues.
+## Example
+
+See this [jupyter notebook](https://github.com/nathanramoscfa/etradebot/blob/main/tests/test_etradebot.ipynb) for an example of how to use ETradeBot to execute a simple trading strategy. The following example shows ETradeBot being run in Anaconda Prompt:
 
 ![Execute Trades](https://github.com/nathanramoscfa/etradebot/blob/main/docs/source/_static/execute_trades.gif)
+
+## Troubleshooting
+
+Refer to the [troubleshooting](https://etradebot.readthedocs.io/en/latest/scheduling.html) section of the documentation if you encounter any issues.
 
 ## Contributing
 

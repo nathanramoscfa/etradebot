@@ -29,10 +29,18 @@ Getting Started
 5. :ref:`Run <running>` main.py from the root directory to test functionality.
 6. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
 
-Refer to the :ref:`troubleshooting <troubleshooting>` section if you encounter any issues.
+Example
+=======
+
+See this [jupyter notebook](https://github.com/nathanramoscfa/etradebot/blob/main/tests/test_etradebot.ipynb) for an example of how to use ETradeBot to execute a simple trading strategy. The following example shows ETradeBot being run in Anaconda Prompt:
 
 .. image:: _static/execute_trades.gif
    :alt: Execute Trades
+
+Troubleshooting
+===============
+
+Refer to the :ref:`troubleshooting <troubleshooting>` section if you encounter any issues.
 
 Important Links
 ===============
