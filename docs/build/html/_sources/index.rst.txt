@@ -7,7 +7,7 @@
 ETradeBot
 #########
 
-ETradeBot is an automated trading software written in Python for E-Trade accounts that allows users to execute trades based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. This project is not affiliated with E-Trade or any other financial institution.
+ETradeBot is an automated trading software written in Python for E-Trade accounts that allows users to execute trades based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. This project is not affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the terms of the `disclaimer <https://etradebot.readthedocs.io/en/latest/disclaimer.html>`_.
 
 Features
 ========
