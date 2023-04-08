@@ -16,7 +16,7 @@ The following is rough guide to scheduling ETradeBot to run automatically. Refer
 * `Amazon Web Services <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html>`_
 * `Microsoft Azure <https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer>`_
 
-Method 1: Windows Task Scheduler
+Run Locally: Windows Task Scheduler
 --------------------------------
 
 This method allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The easiest way to configure the task is to use a batch file.
@@ -96,7 +96,7 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 Option 2: Configuring the Task Scheduler Manually
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_ for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.
+Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_ for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, you may have to have use a different method compatible with your system.
 
 1. Open the Task Scheduler and click on "Create Task" in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.
 2. Give the task a name (e.g., "etradebot") and description (e.g., "Run etradebot") on the "General" tab.
@@ -124,35 +124,18 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 
 7. Click "OK" to save the task.
 
-Method 2: Google Cloud
-----------------------
+Cloud Method:
+-------------
 
-1. Open the Task Scheduler by pressing the Windows key + R and typing ``taskschd.msc``.
-2. Click on the "Create Basic Task" option on the right-hand side of the Task Scheduler window.
-3. Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).
-4. In the "Actions" tab, select "Start a program" and enter the path to your Python executable (e.g., ``C:\Users\User\anaconda3\envs\etradebot\python.exe``) followed by the path to your ``main.py`` file.
-5. Click "Finish" to create the task and schedule it to run daily at 9AM CST.
+Running etradebot on a cloud platform is a great way to run etradebot 24/7 without having to worry about your computer being on. There are many cloud platforms that you can use to run etradebot, including:
 
-Refer to the `Google Cloud documentation <https://cloud.google.com/scheduler/docs/quickstart>`_ for more information.
-
-Method 3: Amazon Web Services
------------------------------
-
-1. Open the Task Scheduler by pressing the Windows key + R and typing ``taskschd.msc``.
-2. Click on the "Create Basic Task" option on the right-hand side of the Task Scheduler window.
-3. Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).
-4. In the "Actions" tab, select "Start a program" and enter the path to your Python executable (e.g., ``C:\Users\User\anaconda3\envs\etradebot\python.exe``) followed by the path to your ``main.py`` file.
-5. Click "Finish" to create the task and schedule it to run daily at 9AM CST.
-
-Refer to the `Amazon Web Services documentation <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html>`_ for more information.
-
-Method 4: Microsoft Azure
--------------------------
-
-1. Open the Task Scheduler by pressing the Windows key + R and typing ``taskschd.msc``.
-2. Click on the "Create Basic Task" option on the right-hand side of the Task Scheduler window.
-3. Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).
-4. In the "Actions" tab, select "Start a program" and enter the path to your Python executable (e.g., ``C:\Users\User\anaconda3\envs\etradebot\python.exe``) followed by the path to your ``main.py`` file.
-5. Click "Finish" to create the task and schedule it to run daily at 9AM CST.
-
-Refer to the `Microsoft Azure documentation <https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer>`_ for more information.
+1. Google Cloud Platform: Refer to the `Google Cloud documentation <https://cloud.google.com/scheduler/docs/quickstart>`_ for more information.
+2. Amazon Web Services: Refer to the `Amazon Web Services documentation <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html>`_ for more information.
+3. Microsoft Azure: Refer to the `Microsoft Azure documentation <https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer>`_ for more information.
+4. IBM Cloud: Refer to the `IBM Cloud documentation <https://cloud.ibm.com/docs/Functions?topic=Functions-scheduler>`_ for more information.
+5. Oracle Cloud: Refer to the `Oracle Cloud documentation <https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionscreatingfunction.htm>`_ for more information.
+6. Alibaba Cloud: Refer to the `Alibaba Cloud documentation <https://www.alibabacloud.com/help/doc-detail/140626.htm>`_ for more information.
+7. DigitalOcean: Refer to the `DigitalOcean documentation <https://www.digitalocean.com/docs/functions/how-to/schedule/>`_ for more information.
+8. Rackspace: Refer to the `Rackspace documentation <https://developer.rackspace.com/docs/rackspace-federation/1/getting-started-with-rackspace-federation/>`_ for more information.
+9. Linode: Refer to the `Linode documentation <https://www.linode.com/docs/guides/how-to-use-linode-scheduler/>`_ for more information.
+10. Vultr: Refer to the `Vultr documentation <https://www.vultr.com/docs/how-to-use-vultr-scheduler>`_ for more information.
