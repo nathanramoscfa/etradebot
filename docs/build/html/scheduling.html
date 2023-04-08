@@ -57,14 +57,14 @@
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Scheduling</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#running-your-strategy">Running your strategy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#option-1-windows-task-scheduler">Option 1: Windows Task Scheduler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#method-1-configuring-the-task-scheduler-with-a-batch-file">Method 1: Configuring the Task Scheduler with a Batch File</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#method-2-configuring-the-task-scheduler-manually">Method 2: Configuring the Task Scheduler Manually</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-1-windows-task-scheduler">Method 1: Windows Task Scheduler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#option-1-configuring-the-task-scheduler-with-a-batch-file">Option 1: Configuring the Task Scheduler with a Batch File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#option-2-configuring-the-task-scheduler-manually">Option 2: Configuring the Task Scheduler Manually</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#option-2-google-cloud">Option 2: Google Cloud</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#option-3-amazon-web-services">Option 3: Amazon Web Services</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#option-4-microsoft-azure">Option 4: Microsoft Azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-2-google-cloud">Method 2: Google Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-3-amazon-web-services">Method 3: Amazon Web Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-4-microsoft-azure">Method 4: Microsoft Azure</a></li>
 </ul>
 </li>
 </ul>
@@ -122,28 +122,26 @@
 <section id="running-your-strategy">
 <h2>Running your strategy<a class="headerlink" href="#running-your-strategy" title="Permalink to this heading"></a></h2>
 <p>You can schedule <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to run automatically. However, ETradeBot in live trading mode will only run if the New York Stock Exchange (NYSE) is open. The program will check if the NYSE is open and halt if it is closed. This is intended to prevent E-Trade server errors when submitting trades because server errors are highly likely to occur when the market is closed.</p>
-<p>The following is rough guide to scheduling ETradeBot to run automatically. Refer to the documentation for each option before using:</p>
+<p>The following is rough guide to scheduling ETradeBot to run automatically. Refer to the documentation for each method before using:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler</a></p></li>
 <li><p><a class="reference external" href="https://cloud.google.com/scheduler/docs/quickstart">Google Cloud</a></p></li>
 <li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">Amazon Web Services</a></p></li>
 <li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer">Microsoft Azure</a></p></li>
 </ul>
-<section id="option-1-windows-task-scheduler">
-<h3>Option 1: Windows Task Scheduler<a class="headerlink" href="#option-1-windows-task-scheduler" title="Permalink to this heading"></a></h3>
-<p>This option allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The easiest way to configure the task is to use a batch file.</p>
+<section id="method-1-windows-task-scheduler">
+<h3>Method 1: Windows Task Scheduler<a class="headerlink" href="#method-1-windows-task-scheduler" title="Permalink to this heading"></a></h3>
+<p>This method allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The easiest way to configure the task is to use a batch file.</p>
 <p>Note that the task scheduler will only run the task if the following conditions are true:</p>
 <ol class="arabic simple">
 <li><p>The user setting up the task must have administrative privileges.</p></li>
 <li><p>The computer must be turned on and the user must be logged in.</p></li>
-<li><p>The task will not run if the computer is turned off or in sleep mode where sign-in is required.</p></li>
 <li><p>The computer must be connected to the internet.</p></li>
 </ol>
-<p>If these conditions are not true, the task will not run and ETradeBot will not be able to submit trades.</p>
-<p>The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.</p>
-<section id="method-1-configuring-the-task-scheduler-with-a-batch-file">
-<h4>Method 1: Configuring the Task Scheduler with a Batch File<a class="headerlink" href="#method-1-configuring-the-task-scheduler-with-a-batch-file" title="Permalink to this heading"></a></h4>
-<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a> for more information.</p>
+<p>If these conditions are not true, the task will not run and ETradeBot will not be able to submit trades. The task will not run if the computer is turned off or in sleep mode where sign-in is required.</p>
+<section id="option-1-configuring-the-task-scheduler-with-a-batch-file">
+<h4>Option 1: Configuring the Task Scheduler with a Batch File<a class="headerlink" href="#option-1-configuring-the-task-scheduler-with-a-batch-file" title="Permalink to this heading"></a></h4>
+<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a> for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.</p>
 <ol class="arabic">
 <li><p>Open a text editor like Notepad and copy and paste the following commands, replacing the paths with the correct paths on your system:</p>
 <blockquote>
@@ -215,9 +213,9 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 <li><p>Click “OK” to save the task.</p></li>
 </ol>
 </section>
-<section id="method-2-configuring-the-task-scheduler-manually">
-<h4>Method 2: Configuring the Task Scheduler Manually<a class="headerlink" href="#method-2-configuring-the-task-scheduler-manually" title="Permalink to this heading"></a></h4>
-<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a> for more information.</p>
+<section id="option-2-configuring-the-task-scheduler-manually">
+<h4>Option 2: Configuring the Task Scheduler Manually<a class="headerlink" href="#option-2-configuring-the-task-scheduler-manually" title="Permalink to this heading"></a></h4>
+<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a> for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.</p>
 <ol class="arabic">
 <li><p>Open the Task Scheduler and click on “Create Task” in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.</p></li>
 <li><p>Give the task a name (e.g., “etradebot”) and description (e.g., “Run etradebot”) on the “General” tab.</p></li>
@@ -256,8 +254,8 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 </ol>
 </section>
 </section>
-<section id="option-2-google-cloud">
-<h3>Option 2: Google Cloud<a class="headerlink" href="#option-2-google-cloud" title="Permalink to this heading"></a></h3>
+<section id="method-2-google-cloud">
+<h3>Method 2: Google Cloud<a class="headerlink" href="#method-2-google-cloud" title="Permalink to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
 <li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
@@ -267,8 +265,8 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 </ol>
 <p>Refer to the <a class="reference external" href="https://cloud.google.com/scheduler/docs/quickstart">Google Cloud documentation</a> for more information.</p>
 </section>
-<section id="option-3-amazon-web-services">
-<h3>Option 3: Amazon Web Services<a class="headerlink" href="#option-3-amazon-web-services" title="Permalink to this heading"></a></h3>
+<section id="method-3-amazon-web-services">
+<h3>Method 3: Amazon Web Services<a class="headerlink" href="#method-3-amazon-web-services" title="Permalink to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
 <li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
@@ -278,8 +276,8 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 </ol>
 <p>Refer to the <a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">Amazon Web Services documentation</a> for more information.</p>
 </section>
-<section id="option-4-microsoft-azure">
-<h3>Option 4: Microsoft Azure<a class="headerlink" href="#option-4-microsoft-azure" title="Permalink to this heading"></a></h3>
+<section id="method-4-microsoft-azure">
+<h3>Method 4: Microsoft Azure<a class="headerlink" href="#method-4-microsoft-azure" title="Permalink to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
 <li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
