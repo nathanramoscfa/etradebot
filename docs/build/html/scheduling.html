@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="authentication" href="authentication.html" />
+    <link rel="next" title="Troubleshooting" href="troubleshooting.html" />
     <link rel="prev" title="Running" href="running.html" /> 
 </head>
 
@@ -45,11 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="README.html">ETradeBot</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
@@ -61,14 +57,22 @@
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Scheduling</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#running-your-strategy">Running your strategy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#method-1-windows-task-scheduler">Method 1: Windows Task Scheduler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#method-2-google-cloud">Method 2: Google Cloud</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#method-3-amazon-web-services">Method 3: Amazon Web Services</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#method-4-microsoft-azure">Method 4: Microsoft Azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-1-windows-task-scheduler">Option 1: Windows Task Scheduler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#method-1-configuring-the-task-scheduler-with-a-batch-file">Method 1: Configuring the Task Scheduler with a Batch File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-2-configuring-the-task-scheduler-manually">Method 2: Configuring the Task Scheduler Manually</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#option-2-google-cloud">Option 2: Google Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-3-amazon-web-services">Option 3: Amazon Web Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-4-microsoft-azure">Option 4: Microsoft Azure</a></li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
 <ul>
@@ -83,6 +87,10 @@
 <li class="toctree-l1"><a class="reference internal" href="fake_data.html">fake_data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model.html">model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="portfolio.html">portfolio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Disclaimer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="disclaimer.html">Disclaimer</a></li>
 </ul>
 
         </div>
@@ -113,46 +121,172 @@
 <span id="id1"></span><h1>Scheduling<a class="headerlink" href="#scheduling" title="Permalink to this heading"></a></h1>
 <section id="running-your-strategy">
 <h2>Running your strategy<a class="headerlink" href="#running-your-strategy" title="Permalink to this heading"></a></h2>
-<p>You can schedule <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to run at any time of the day or night.</p>
-<section id="method-1-windows-task-scheduler">
-<h3>Method 1: Windows Task Scheduler<a class="headerlink" href="#method-1-windows-task-scheduler" title="Permalink to this heading"></a></h3>
+<p>You can schedule <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to run automatically. However, ETradeBot in live trading mode will only run if the New York Stock Exchange (NYSE) is open. The program will check if the NYSE is open and halt if it is closed. This is intended to prevent E-Trade server errors when submitting trades because server errors are highly likely to occur when the market is closed.</p>
+<p>The following is rough guide to scheduling ETradeBot to run automatically. Refer to the documentation for each option before using:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler</a></p></li>
+<li><p><a class="reference external" href="https://cloud.google.com/scheduler/docs/quickstart">Google Cloud</a></p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">Amazon Web Services</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer">Microsoft Azure</a></p></li>
+</ul>
+<section id="option-1-windows-task-scheduler">
+<h3>Option 1: Windows Task Scheduler<a class="headerlink" href="#option-1-windows-task-scheduler" title="Permalink to this heading"></a></h3>
+<p>This option allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The easiest way to configure the task is to use a batch file.</p>
+<p>Note that the task scheduler will only run the task if the following conditions are true:</p>
 <ol class="arabic simple">
-<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
-<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
-<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
-<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Python311\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
-<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
+<li><p>The user setting up the task must have administrative privileges.</p></li>
+<li><p>The computer must be turned on and the user must be logged in.</p></li>
+<li><p>The task will not run if the computer is turned off or in sleep mode where sign-in is required.</p></li>
+<li><p>The computer must be connected to the internet.</p></li>
+</ol>
+<p>If these conditions are not true, the task will not run and ETradeBot will not be able to submit trades.</p>
+<p>The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.</p>
+<section id="method-1-configuring-the-task-scheduler-with-a-batch-file">
+<h4>Method 1: Configuring the Task Scheduler with a Batch File<a class="headerlink" href="#method-1-configuring-the-task-scheduler-with-a-batch-file" title="Permalink to this heading"></a></h4>
+<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a> for more information.</p>
+<ol class="arabic">
+<li><p>Open a text editor like Notepad and copy and paste the following commands, replacing the paths with the correct paths on your system:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_PATH</span></code> with the path to your conda installation.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_ENV</span></code> with the name of your conda environment. If you named your conda environment <code class="docutils literal notranslate"><span class="pre">etradebot</span></code>, then you do not need to change this.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">C:\Users\User\etradebot</span></code> with the path to the etradebot root directory.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@echo<span class="w"> </span>off
+rem<span class="w"> </span>Run<span class="w"> </span>Python<span class="w"> </span>script<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span>conda<span class="w"> </span>environment<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>batch<span class="w"> </span>file.
+
+rem<span class="w"> </span>Define<span class="w"> </span>here<span class="w"> </span>the<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>conda<span class="w"> </span>installation.
+<span class="nb">set</span><span class="w"> </span><span class="nv">CONDA_PATH</span><span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\U</span>ser<span class="se">\a</span>naconda3
+
+rem<span class="w"> </span>Define<span class="w"> </span>here<span class="w"> </span>the<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>your<span class="w"> </span>conda<span class="w"> </span>environment.
+<span class="nb">set</span><span class="w"> </span><span class="nv">CONDA_ENV</span><span class="o">=</span>etradebot
+
+rem<span class="w"> </span>Activate<span class="w"> </span>the<span class="w"> </span>conda<span class="w"> </span>environment.
+call<span class="w"> </span>%CONDA_PATH%<span class="se">\S</span>cripts<span class="se">\a</span>ctivate.bat<span class="w"> </span>%CONDA_ENV%
+
+rem<span class="w"> </span>Navigate<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>directory<span class="w"> </span>where<span class="w"> </span>etradebot<span class="w"> </span>root<span class="w"> </span>directory<span class="w"> </span>is<span class="w"> </span>located.
+<span class="nb">cd</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\U</span>ser<span class="se">\e</span>tradebot
+
+rem<span class="w"> </span>Run<span class="w"> </span>your<span class="w"> </span>script.
+python<span class="w"> </span>main.py
+
+rem<span class="w"> </span>End<span class="w"> </span>the<span class="w"> </span>Python<span class="w"> </span>program.
+taskkill<span class="w"> </span>/IM<span class="w"> </span>python.exe<span class="w"> </span>/F
+
+rem<span class="w"> </span>Deactivate<span class="w"> </span>the<span class="w"> </span>conda<span class="w"> </span>environment.
+call<span class="w"> </span>conda<span class="w"> </span>deactivate
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Save the file as <code class="docutils literal notranslate"><span class="pre">main_run.bat</span></code>, in the etradebot root directory. This will be the file that the task scheduler will run.</p></li>
+<li><p>Open the Task Scheduler and click on “Create Task” in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.</p></li>
+<li><p>Give the task a name (e.g., “etradebot”) and description (e.g., “Run etradebot”) on the “General” tab.</p></li>
+<li><p>In the “Security options” section, select the options, “Run only when user is logged on” and “Run with highest privileges”.</p></li>
+<li><p>In the “Triggers” tab, click “New” to add a new trigger.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Choose a frequency from the list: One time, Daily, Weekly, Monthly.</p></li>
+<li><p>Choose a start date and time.</p></li>
+<li><p>In the “Advanced settings” section, check the box labelled “Enabled”.</p></li>
+<li><p>Click “OK” to save the trigger.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>In the “Actions” tab, click “New” to add a new action.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>In the “Action” dropdown, select “Start a program”.</p></li>
+<li><p>In the “Program/script” field, enter the full path to the Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;C:\Users\User\etradebot\run_main.bat&quot;</span></code>).</p></li>
+<li><p>Click “OK” to save the action.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>In the “Conditions” tab, “Power” section, select all of the options:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“Start the task only if the computer is on AC power”.</p></li>
+<li><p>“Stop if the computer switches to battery power”.</p></li>
+<li><p>“Wake the computer to run this task”.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click “OK” to save the task.</p></li>
 </ol>
 </section>
-<section id="method-2-google-cloud">
-<h3>Method 2: Google Cloud<a class="headerlink" href="#method-2-google-cloud" title="Permalink to this heading"></a></h3>
-<ol class="arabic simple">
-<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
-<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
-<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
-<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Python311\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
-<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
+<section id="method-2-configuring-the-task-scheduler-manually">
+<h4>Method 2: Configuring the Task Scheduler Manually<a class="headerlink" href="#method-2-configuring-the-task-scheduler-manually" title="Permalink to this heading"></a></h4>
+<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a> for more information.</p>
+<ol class="arabic">
+<li><p>Open the Task Scheduler and click on “Create Task” in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.</p></li>
+<li><p>Give the task a name (e.g., “etradebot”) and description (e.g., “Run etradebot”) on the “General” tab.</p></li>
+<li><p>In the “Security options” section, select the options, “Run only when user is logged on” and “Run with highest privileges”.</p></li>
+<li><p>In the “Triggers” tab, click “New” to add a new trigger.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Choose a frequency from the list: One time, Daily, Weekly, Monthly.</p></li>
+<li><p>Choose a start date and time.</p></li>
+<li><p>In the “Advanced settings” section, check the box labelled “Enabled”.</p></li>
+<li><p>Click “OK” to save the trigger.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>In the “Actions” tab, click “New” to add a new action.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>In the “Action” dropdown, select “Start a program”.</p></li>
+<li><p>In the “Program/script” field, enter the full path to the Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\anaconda3\envs\etradebot\python.exe</span></code>).</p></li>
+<li><p>In the “Add arguments” field, enter the full path to the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file (e.g., <code class="docutils literal notranslate"><span class="pre">main.py</span></code>).</p></li>
+<li><p>In the “Start in” field, enter the full path to the etradebot root directory (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\etradebot</span></code>).</p></li>
+<li><p>Click “OK” to save the action.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>In the “Conditions” tab, “Power” section, select all of the options:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“Start the task only if the computer is on AC power”.</p></li>
+<li><p>“Stop if the computer switches to battery power”.</p></li>
+<li><p>“Wake the computer to run this task”.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click “OK” to save the task.</p></li>
 </ol>
 </section>
-<section id="method-3-amazon-web-services">
-<h3>Method 3: Amazon Web Services<a class="headerlink" href="#method-3-amazon-web-services" title="Permalink to this heading"></a></h3>
-<ol class="arabic simple">
-<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
-<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
-<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
-<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Python311\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
-<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
-</ol>
 </section>
-<section id="method-4-microsoft-azure">
-<h3>Method 4: Microsoft Azure<a class="headerlink" href="#method-4-microsoft-azure" title="Permalink to this heading"></a></h3>
+<section id="option-2-google-cloud">
+<h3>Option 2: Google Cloud<a class="headerlink" href="#option-2-google-cloud" title="Permalink to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
 <li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
 <li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
-<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Python311\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
+<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\anaconda3\envs\etradebot\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
 <li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
 </ol>
+<p>Refer to the <a class="reference external" href="https://cloud.google.com/scheduler/docs/quickstart">Google Cloud documentation</a> for more information.</p>
+</section>
+<section id="option-3-amazon-web-services">
+<h3>Option 3: Amazon Web Services<a class="headerlink" href="#option-3-amazon-web-services" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
+<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
+<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
+<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\anaconda3\envs\etradebot\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
+<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
+</ol>
+<p>Refer to the <a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">Amazon Web Services documentation</a> for more information.</p>
+</section>
+<section id="option-4-microsoft-azure">
+<h3>Option 4: Microsoft Azure<a class="headerlink" href="#option-4-microsoft-azure" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
+<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
+<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
+<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\anaconda3\envs\etradebot\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
+<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
+</ol>
+<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer">Microsoft Azure documentation</a> for more information.</p>
 </section>
 </section>
 </section>
@@ -162,7 +296,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="running.html" class="btn btn-neutral float-left" title="Running" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="authentication.html" class="btn btn-neutral float-right" title="authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
