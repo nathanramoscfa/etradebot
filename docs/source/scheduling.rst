@@ -96,7 +96,7 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 Option 2: Configuring the Task Scheduler Manually
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_ for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.
+Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_ for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, you may have to have use a different method compatible with your system.
 
 1. Open the Task Scheduler and click on "Create Task" in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.
 2. Give the task a name (e.g., "etradebot") and description (e.g., "Run etradebot") on the "General" tab.
