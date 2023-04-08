@@ -18,7 +18,7 @@ If you followed the instructions in the :ref:`Environment <environment>` section
 
     pip install selenium
 
-Drivers
+Web Drivers
 -------
 
 Selenium requires a web driver to interact with web pages. The driver acts as a proxy between Selenium and the web page being automated.
@@ -26,7 +26,7 @@ Selenium requires a web driver to interact with web pages. The driver acts as a 
 ETradeBot supports two web drivers: Chrome and Edge. You should choose the driver that matches the browser you plan to use with ETradeBot. The ETradeBot root directory contains a ``chromedriver.exe`` and ``msedgedriver.exe``, however, these web drivers may not correspond to your browser version. You will simply have to replace these executable files with the version of web driver that matches your browser version. Follow the instruction below to proceed.
 
 Chrome
-------
+~~~~~~
 
 To use Chrome with Selenium, you will need to download the `ChromeDriver <https://sites.google.com/chromium.org/driver/>`_ executable and place it in the root directory of ETradeBot.
 
@@ -43,7 +43,7 @@ You can download the ChromeDriver executable for your operating system from the 
 Once you have downloaded the ChromeDriver executable, extract it to the root directory of your ETradeBot project. This is the same directory that contains the ``main.py`` file.
 
 Edge
-----
+~~~~
 
 To use Edge with Selenium, you will need to download the `EdgeDriver <https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/>`_ executable and add it to your system path.
 
