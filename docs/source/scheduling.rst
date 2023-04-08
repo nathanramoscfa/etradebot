@@ -9,33 +9,30 @@ Running your strategy
 
 You can schedule ``main.py`` to run automatically. However, ETradeBot in live trading mode will only run if the New York Stock Exchange (NYSE) is open. The program will check if the NYSE is open and halt if it is closed. This is intended to prevent E-Trade server errors when submitting trades because server errors are highly likely to occur when the market is closed.
 
-The following is rough guide to scheduling ETradeBot to run automatically. Refer to the documentation for each option before using:
+The following is rough guide to scheduling ETradeBot to run automatically. Refer to the documentation for each method before using:
 
 * `Windows Task Scheduler <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_
 * `Google Cloud <https://cloud.google.com/scheduler/docs/quickstart>`_
 * `Amazon Web Services <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html>`_
 * `Microsoft Azure <https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer>`_
 
-Option 1: Windows Task Scheduler
+Method 1: Windows Task Scheduler
 --------------------------------
 
-This option allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The easiest way to configure the task is to use a batch file.
+This method allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The easiest way to configure the task is to use a batch file.
 
 Note that the task scheduler will only run the task if the following conditions are true:
 
 1. The user setting up the task must have administrative privileges.
 2. The computer must be turned on and the user must be logged in.
-3. The task will not run if the computer is turned off or in sleep mode where sign-in is required.
-4. The computer must be connected to the internet.
+3. The computer must be connected to the internet.
 
-If these conditions are not true, the task will not run and ETradeBot will not be able to submit trades.
+If these conditions are not true, the task will not run and ETradeBot will not be able to submit trades. The task will not run if the computer is turned off or in sleep mode where sign-in is required.
 
-The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.
-
-Method 1: Configuring the Task Scheduler with a Batch File
+Option 1: Configuring the Task Scheduler with a Batch File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_ for more information.
+Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_ for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.
 
 1. Open a text editor like Notepad and copy and paste the following commands, replacing the paths with the correct paths on your system:
 
@@ -96,10 +93,10 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 
 9. Click "OK" to save the task.
 
-Method 2: Configuring the Task Scheduler Manually
+Option 2: Configuring the Task Scheduler Manually
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_ for more information.
+Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_ for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.
 
 1. Open the Task Scheduler and click on "Create Task" in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.
 2. Give the task a name (e.g., "etradebot") and description (e.g., "Run etradebot") on the "General" tab.
@@ -127,7 +124,7 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 
 7. Click "OK" to save the task.
 
-Option 2: Google Cloud
+Method 2: Google Cloud
 ----------------------
 
 1. Open the Task Scheduler by pressing the Windows key + R and typing ``taskschd.msc``.
@@ -138,7 +135,7 @@ Option 2: Google Cloud
 
 Refer to the `Google Cloud documentation <https://cloud.google.com/scheduler/docs/quickstart>`_ for more information.
 
-Option 3: Amazon Web Services
+Method 3: Amazon Web Services
 -----------------------------
 
 1. Open the Task Scheduler by pressing the Windows key + R and typing ``taskschd.msc``.
@@ -149,7 +146,7 @@ Option 3: Amazon Web Services
 
 Refer to the `Amazon Web Services documentation <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html>`_ for more information.
 
-Option 4: Microsoft Azure
+Method 4: Microsoft Azure
 -------------------------
 
 1. Open the Task Scheduler by pressing the Windows key + R and typing ``taskschd.msc``.
