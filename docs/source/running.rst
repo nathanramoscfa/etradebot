@@ -44,7 +44,7 @@ In ``main.py``, the ``preview`` parameter is set to ``True`` by default allowing
 
 2. Monitor the bot:
 
-    * The bot will automatically execute trades based on your strategy.
+    * The bot will automatically generate preview trades based on your strategy.
     * You can monitor the bot's activity through the console output.
     * If you encounter any errors or issues, refer to the console output and the :ref:`troubleshooting <troubleshooting>` section for more information.
 
@@ -56,6 +56,10 @@ Live Trading Mode
 
 1. Set ``preview`` parameter in ``main.py`` to ``True``.
 2. Repeat steps 1 and 2 from above.
+
+    * The bot will automatically execute trades based on your strategy.
+    * You can monitor the bot's activity through the console output.
+    * If you encounter any errors or issues, refer to the console output and the :ref:`troubleshooting <troubleshooting>` section for more information.
 
 .. image:: _static/execute_trades.gif
    :alt: Execute Trades
