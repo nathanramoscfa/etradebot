@@ -39,10 +39,6 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 
 1. Open a text editor like Notepad and copy and paste the following commands, replacing the paths with the correct paths on your system:
 
-    * Replace ``CONDA_PATH`` with the path to your conda installation.
-    * Replace ``CONDA_ENV`` with the name of your conda environment. If you named your conda environment ``etradebot``, then you do not need to change this.
-    * Replace ``C:\Users\User\etradebot`` with the path to the etradebot root directory.
-
     .. code-block:: bash
 
         @echo off
@@ -69,8 +65,14 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
         rem Deactivate the conda environment.
         call conda deactivate
 
+    Note to:
+
+    * Replace ``CONDA_PATH`` with the path to your conda installation.
+    * Replace ``CONDA_ENV`` with the name of your conda environment. If you named your conda environment ``etradebot``, then you do not need to change this.
+    * Replace ``C:\Users\User\etradebot`` with the path to the etradebot root directory.
+
 2. Save the file as ``main_run.bat``, in the etradebot root directory. This will be the file that the task scheduler will run.
-3. Open the Task Scheduler and click on "Create Task" in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.
+3. Open Windows Task Scheduler and click on "Create Task" in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.
 4. Give the task a name (e.g., "etradebot") and description (e.g., "Run etradebot") on the "General" tab.
 5. In the "Security options" section, select the options, "Run only when user is logged on" and "Run with highest privileges".
 6. In the "Triggers" tab, click "New" to add a new trigger.

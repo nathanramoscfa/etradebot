@@ -147,12 +147,7 @@
 <ol class="arabic">
 <li><p>Open a text editor like Notepad and copy and paste the following commands, replacing the paths with the correct paths on your system:</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_PATH</span></code> with the path to your conda installation.</p></li>
-<li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_ENV</span></code> with the name of your conda environment. If you named your conda environment <code class="docutils literal notranslate"><span class="pre">etradebot</span></code>, then you do not need to change this.</p></li>
-<li><p>Replace <code class="docutils literal notranslate"><span class="pre">C:\Users\User\etradebot</span></code> with the path to the etradebot root directory.</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@echo<span class="w"> </span>off
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@echo<span class="w"> </span>off
 rem<span class="w"> </span>Run<span class="w"> </span>Python<span class="w"> </span>script<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span>conda<span class="w"> </span>environment<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>batch<span class="w"> </span>file.
 
 rem<span class="w"> </span>Define<span class="w"> </span>here<span class="w"> </span>the<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>conda<span class="w"> </span>installation.
@@ -177,10 +172,16 @@ rem<span class="w"> </span>Deactivate<span class="w"> </span>the<span class="w">
 call<span class="w"> </span>conda<span class="w"> </span>deactivate
 </pre></div>
 </div>
+<p>Note to:</p>
+<ul class="simple">
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_PATH</span></code> with the path to your conda installation.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_ENV</span></code> with the name of your conda environment. If you named your conda environment <code class="docutils literal notranslate"><span class="pre">etradebot</span></code>, then you do not need to change this.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">C:\Users\User\etradebot</span></code> with the path to the etradebot root directory.</p></li>
+</ul>
 </div></blockquote>
 </li>
 <li><p>Save the file as <code class="docutils literal notranslate"><span class="pre">main_run.bat</span></code>, in the etradebot root directory. This will be the file that the task scheduler will run.</p></li>
-<li><p>Open the Task Scheduler and click on “Create Task” in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.</p></li>
+<li><p>Open Windows Task Scheduler and click on “Create Task” in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.</p></li>
 <li><p>Give the task a name (e.g., “etradebot”) and description (e.g., “Run etradebot”) on the “General” tab.</p></li>
 <li><p>In the “Security options” section, select the options, “Run only when user is logged on” and “Run with highest privileges”.</p></li>
 <li><p>In the “Triggers” tab, click “New” to add a new trigger.</p>
