@@ -57,14 +57,12 @@
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Scheduling</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#running-your-strategy">Running your strategy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#method-1-windows-task-scheduler">Method 1: Windows Task Scheduler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-locally-windows-task-scheduler">Run Locally: Windows Task Scheduler</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#option-1-configuring-the-task-scheduler-with-a-batch-file">Option 1: Configuring the Task Scheduler with a Batch File</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#option-2-configuring-the-task-scheduler-manually">Option 2: Configuring the Task Scheduler Manually</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#method-2-google-cloud">Method 2: Google Cloud</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#method-3-amazon-web-services">Method 3: Amazon Web Services</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#method-4-microsoft-azure">Method 4: Microsoft Azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cloud-method">Cloud Method:</a></li>
 </ul>
 </li>
 </ul>
@@ -129,8 +127,8 @@
 <li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">Amazon Web Services</a></p></li>
 <li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer">Microsoft Azure</a></p></li>
 </ul>
-<section id="method-1-windows-task-scheduler">
-<h3>Method 1: Windows Task Scheduler<a class="headerlink" href="#method-1-windows-task-scheduler" title="Permalink to this heading"></a></h3>
+<section id="run-locally-windows-task-scheduler">
+<h3>Run Locally: Windows Task Scheduler<a class="headerlink" href="#run-locally-windows-task-scheduler" title="Permalink to this heading"></a></h3>
 <p>This method allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The easiest way to configure the task is to use a batch file.</p>
 <p>Note that the task scheduler will only run the task if the following conditions are true:</p>
 <ol class="arabic simple">
@@ -215,7 +213,7 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 </section>
 <section id="option-2-configuring-the-task-scheduler-manually">
 <h4>Option 2: Configuring the Task Scheduler Manually<a class="headerlink" href="#option-2-configuring-the-task-scheduler-manually" title="Permalink to this heading"></a></h4>
-<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a> for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.</p>
+<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a> for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, you may have to have use a different method compatible with your system.</p>
 <ol class="arabic">
 <li><p>Open the Task Scheduler and click on “Create Task” in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.</p></li>
 <li><p>Give the task a name (e.g., “etradebot”) and description (e.g., “Run etradebot”) on the “General” tab.</p></li>
@@ -254,38 +252,21 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 </ol>
 </section>
 </section>
-<section id="method-2-google-cloud">
-<h3>Method 2: Google Cloud<a class="headerlink" href="#method-2-google-cloud" title="Permalink to this heading"></a></h3>
+<section id="cloud-method">
+<h3>Cloud Method:<a class="headerlink" href="#cloud-method" title="Permalink to this heading"></a></h3>
+<p>Running etradebot on a cloud platform is a great way to run etradebot 24/7 without having to worry about your computer being on. There are many cloud platforms that you can use to run etradebot, including:</p>
 <ol class="arabic simple">
-<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
-<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
-<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
-<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\anaconda3\envs\etradebot\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
-<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
+<li><p>Google Cloud Platform: Refer to the <a class="reference external" href="https://cloud.google.com/scheduler/docs/quickstart">Google Cloud documentation</a> for more information.</p></li>
+<li><p>Amazon Web Services: Refer to the <a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">Amazon Web Services documentation</a> for more information.</p></li>
+<li><p>Microsoft Azure: Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer">Microsoft Azure documentation</a> for more information.</p></li>
+<li><p>IBM Cloud: Refer to the <a class="reference external" href="https://cloud.ibm.com/docs/Functions?topic=Functions-scheduler">IBM Cloud documentation</a> for more information.</p></li>
+<li><p>Oracle Cloud: Refer to the <a class="reference external" href="https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionscreatingfunction.htm">Oracle Cloud documentation</a> for more information.</p></li>
+<li><p>Alibaba Cloud: Refer to the <a class="reference external" href="https://www.alibabacloud.com/help/doc-detail/140626.htm">Alibaba Cloud documentation</a> for more information.</p></li>
+<li><p>DigitalOcean: Refer to the <a class="reference external" href="https://www.digitalocean.com/docs/functions/how-to/schedule/">DigitalOcean documentation</a> for more information.</p></li>
+<li><p>Rackspace: Refer to the <a class="reference external" href="https://developer.rackspace.com/docs/rackspace-federation/1/getting-started-with-rackspace-federation/">Rackspace documentation</a> for more information.</p></li>
+<li><p>Linode: Refer to the <a class="reference external" href="https://www.linode.com/docs/guides/how-to-use-linode-scheduler/">Linode documentation</a> for more information.</p></li>
+<li><p>Vultr: Refer to the <a class="reference external" href="https://www.vultr.com/docs/how-to-use-vultr-scheduler">Vultr documentation</a> for more information.</p></li>
 </ol>
-<p>Refer to the <a class="reference external" href="https://cloud.google.com/scheduler/docs/quickstart">Google Cloud documentation</a> for more information.</p>
-</section>
-<section id="method-3-amazon-web-services">
-<h3>Method 3: Amazon Web Services<a class="headerlink" href="#method-3-amazon-web-services" title="Permalink to this heading"></a></h3>
-<ol class="arabic simple">
-<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
-<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
-<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
-<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\anaconda3\envs\etradebot\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
-<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
-</ol>
-<p>Refer to the <a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">Amazon Web Services documentation</a> for more information.</p>
-</section>
-<section id="method-4-microsoft-azure">
-<h3>Method 4: Microsoft Azure<a class="headerlink" href="#method-4-microsoft-azure" title="Permalink to this heading"></a></h3>
-<ol class="arabic simple">
-<li><p>Open the Task Scheduler by pressing the Windows key + R and typing <code class="docutils literal notranslate"><span class="pre">taskschd.msc</span></code>.</p></li>
-<li><p>Click on the “Create Basic Task” option on the right-hand side of the Task Scheduler window.</p></li>
-<li><p>Follow the prompts to create a new task, including selecting the trigger for when you want the task to run (in this case, daily at 9AM CST).</p></li>
-<li><p>In the “Actions” tab, select “Start a program” and enter the path to your Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\anaconda3\envs\etradebot\python.exe</span></code>) followed by the path to your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p></li>
-<li><p>Click “Finish” to create the task and schedule it to run daily at 9AM CST.</p></li>
-</ol>
-<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer">Microsoft Azure documentation</a> for more information.</p>
 </section>
 </section>
 </section>

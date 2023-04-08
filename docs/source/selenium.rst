@@ -19,7 +19,7 @@ If you followed the instructions in the :ref:`Environment <environment>` section
     pip install selenium
 
 Web Drivers
--------
+-----------
 
 Selenium requires a web driver to interact with web pages. The driver acts as a proxy between Selenium and the web page being automated.
 
