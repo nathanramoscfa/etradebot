@@ -14,6 +14,7 @@ dependencies:
     - matplotlib==3.7.1
     - numpy==1.24.2
     - pandas==1.5.3
+    - pandas-market-calendars==4.1.4
     - pyportfolioopt==1.5.2
     - scikit-learn==1.2.2
     - scipy==1.10.1

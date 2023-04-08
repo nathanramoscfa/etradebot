@@ -79,7 +79,7 @@ class Bot:
         """
         :description: This method runs the strategy and previews or executes the trades.
 
-        :return: The trade responses from E*Trade
+        :return: The trade responses from E-Trade
         :rtype: pd.DataFrame
         """
         print('Running strategy...')

@@ -6,7 +6,9 @@ keyring==23.13.1
 matplotlib==3.7.1
 numpy==1.24.2
 pandas==1.5.3
+pandas-market-calendars==4.1.4
 pyportfolioopt==1.5.2
+pytz==2022.7.1
 scikit-learn==1.2.2
 scipy==1.10.1
 selenium==4.8.2
