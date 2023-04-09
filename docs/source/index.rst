@@ -51,6 +51,9 @@ Important Links
 -   E-Trade Developer: https://developer.etrade.com/home
 -   E-Trade API Documentation: https://apisb.etrade.com/docs/api/account/api-account-v1.html
 -   Keyring documentation: https://keyring.readthedocs.io/en/latest/
+-   Anaconda: https://www.anaconda.com/products/individual
+-   Selenium documentation: https://selenium-python.readthedocs.io/
+-   Windows Task Scheduler: https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page
 
 Contributing
 ============
