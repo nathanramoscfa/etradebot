@@ -17,7 +17,7 @@ The following is rough guide to scheduling ETradeBot to run automatically. Refer
 * `Microsoft Azure <https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer>`_
 
 Run Locally: Windows Task Scheduler
---------------------------------
+-----------------------------------
 
 This method allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The easiest way to configure the task is to use a batch file.
 
@@ -42,10 +42,13 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
         rem Run Python script in a given conda environment from a batch file.
 
         rem Define here the path to your conda installation.
-        set CONDA_PATH=C:\Users\User\anaconda3
+        set CONDA_PATH=C:\Users\25del\anaconda3
 
         rem Define here the name of your conda environment.
         set CONDA_ENV=etradebot
+
+        rem Set ETradeBot to either preview or live trading mode.
+        set PREVIEW=True
 
         rem Activate the conda environment.
         call %CONDA_PATH%\Scripts\activate.bat %CONDA_ENV%
@@ -54,7 +57,7 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
         cd C:\Users\User\etradebot
 
         rem Run your script.
-        python main.py
+        python main.py %PREVIEW%
 
         rem End the Python program.
         taskkill /IM python.exe /F
@@ -66,6 +69,7 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 
     * Replace ``CONDA_PATH`` with the path to your conda installation.
     * Replace ``CONDA_ENV`` with the name of your conda environment. If you named your conda environment ``etradebot``, then you do not need to change this.
+    * Change ``PREVIEW`` to ``False`` if you want to run ETradeBot in live trading mode.
     * Replace ``C:\Users\User\etradebot`` with the path to the etradebot root directory.
 
 2. Save the file as ``main_run.bat``, in the etradebot root directory. This will be the file that the task scheduler will run.

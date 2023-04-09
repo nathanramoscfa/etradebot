@@ -49,7 +49,7 @@ class Bot:
         :return: None
         :rtype: None
         """
-        print('Initializing bot...')
+        print('Starting bot...')
         # Initialize objects
         self.etrade = ETrade(
             consumer_key, consumer_secret, web_username, web_password, account_id, etrade_cookie,

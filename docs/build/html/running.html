@@ -115,7 +115,14 @@
 <span id="id1"></span><h1>Running<a class="headerlink" href="#running" title="Permalink to this heading"></a></h1>
 <section id="running-your-strategy">
 <h2>Running your strategy<a class="headerlink" href="#running-your-strategy" title="Permalink to this heading"></a></h2>
-<p>Refer to the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section if you encounter any issues.</p>
+<p>ETradeBot can run in one of two modes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Preview Mode.</p></li>
+<li><p>Live Trading Mode.</p></li>
+</ul>
+</div></blockquote>
+<p>ETradeBot will save the output and events of the bot to a log file within the <code class="docutils literal notranslate"><span class="pre">logs</span></code>. Review the generated log file to see the bot’s activity and during troubleshooting. Refer to the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section if you encounter any issues.</p>
 <section id="preview-mode">
 <h3>Preview Mode<a class="headerlink" href="#preview-mode" title="Permalink to this heading"></a></h3>
 <p>In <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, the <code class="docutils literal notranslate"><span class="pre">preview</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default allowing the user to run ETradeBot without executing any real trades. You can use preview mode to test the program’s responses before going live. The program will access your account, obtain market data, and submit preview trades through the E-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.</p>
@@ -167,10 +174,16 @@
 <section id="live-trading-mode">
 <h3>Live Trading Mode<a class="headerlink" href="#live-trading-mode" title="Permalink to this heading"></a></h3>
 <ol class="arabic">
-<li><p>Set <code class="docutils literal notranslate"><span class="pre">preview</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p>Repeat steps 1 and 2 from above.</p>
+<li><p>Repeat steps 1 and 2 from above but instead of running:</p>
 <blockquote>
-<div><ul class="simple">
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
+</pre></div>
+</div>
+<p>You will run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py<span class="w"> </span>False
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>The bot will automatically execute trades based on your strategy.</p></li>
 <li><p>You can monitor the bot’s activity through the console output.</p></li>
 <li><p>If you encounter any errors or issues, refer to the console output and the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section for more information.</p></li>

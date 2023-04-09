@@ -147,10 +147,13 @@
 rem<span class="w"> </span>Run<span class="w"> </span>Python<span class="w"> </span>script<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span>conda<span class="w"> </span>environment<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>batch<span class="w"> </span>file.
 
 rem<span class="w"> </span>Define<span class="w"> </span>here<span class="w"> </span>the<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>conda<span class="w"> </span>installation.
-<span class="nb">set</span><span class="w"> </span><span class="nv">CONDA_PATH</span><span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\U</span>ser<span class="se">\a</span>naconda3
+<span class="nb">set</span><span class="w"> </span><span class="nv">CONDA_PATH</span><span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\2</span>5del<span class="se">\a</span>naconda3
 
 rem<span class="w"> </span>Define<span class="w"> </span>here<span class="w"> </span>the<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>your<span class="w"> </span>conda<span class="w"> </span>environment.
 <span class="nb">set</span><span class="w"> </span><span class="nv">CONDA_ENV</span><span class="o">=</span>etradebot
+
+rem<span class="w"> </span>Set<span class="w"> </span>ETradeBot<span class="w"> </span>to<span class="w"> </span>either<span class="w"> </span>preview<span class="w"> </span>or<span class="w"> </span>live<span class="w"> </span>trading<span class="w"> </span>mode.
+<span class="nb">set</span><span class="w"> </span><span class="nv">PREVIEW</span><span class="o">=</span>True
 
 rem<span class="w"> </span>Activate<span class="w"> </span>the<span class="w"> </span>conda<span class="w"> </span>environment.
 call<span class="w"> </span>%CONDA_PATH%<span class="se">\S</span>cripts<span class="se">\a</span>ctivate.bat<span class="w"> </span>%CONDA_ENV%
@@ -159,7 +162,7 @@ rem<span class="w"> </span>Navigate<span class="w"> </span>to<span class="w"> </
 <span class="nb">cd</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\U</span>ser<span class="se">\e</span>tradebot
 
 rem<span class="w"> </span>Run<span class="w"> </span>your<span class="w"> </span>script.
-python<span class="w"> </span>main.py
+python<span class="w"> </span>main.py<span class="w"> </span>%PREVIEW%
 
 rem<span class="w"> </span>End<span class="w"> </span>the<span class="w"> </span>Python<span class="w"> </span>program.
 taskkill<span class="w"> </span>/IM<span class="w"> </span>python.exe<span class="w"> </span>/F
@@ -172,6 +175,7 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 <ul class="simple">
 <li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_PATH</span></code> with the path to your conda installation.</p></li>
 <li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_ENV</span></code> with the name of your conda environment. If you named your conda environment <code class="docutils literal notranslate"><span class="pre">etradebot</span></code>, then you do not need to change this.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">PREVIEW</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code> if you want to run ETradeBot in live trading mode.</p></li>
 <li><p>Replace <code class="docutils literal notranslate"><span class="pre">C:\Users\User\etradebot</span></code> with the path to the etradebot root directory.</p></li>
 </ul>
 </div></blockquote>

@@ -7,6 +7,9 @@ set CONDA_PATH=C:\Users\25del\anaconda3
 rem Define here the name of your conda environment.
 set CONDA_ENV=etradebot
 
+rem Set ETradeBot to either preview or live trading mode.
+set PREVIEW=False
+
 rem Activate the conda environment.
 call %CONDA_PATH%\Scripts\activate.bat %CONDA_ENV%
 
@@ -15,7 +18,7 @@ G:
 cd G:\My Drive\etradebot
 
 rem Run your script.
-python main.py
+python main.py %PREVIEW%
 
 rem End the Python program.
 taskkill /IM python.exe /F
