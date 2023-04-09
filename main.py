@@ -79,7 +79,7 @@ def main(preview_mode=True):
         logging.info('Bot run complete.')
     elif not bot.preview and not market_open:
         logging.info(f"Bot not running because: {reason}")
-        print(f"Bot not running because: {reason}")
+        print(f"\nBot not running because: {reason}")
 
 
 if __name__ == '__main__':
