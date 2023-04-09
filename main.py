@@ -1,11 +1,14 @@
+import os
+import sys
 import ast
+import pytz
 import keyring
 import logging
-import os
+import pandas_market_calendars as mcal
+
 from bot import Bot
 from datetime import datetime, time
-import pytz
-import pandas_market_calendars as mcal
+
 
 # Retrieve credentials from keyring
 consumer_key = keyring.get_password("etrade", "consumer_key")
@@ -40,7 +43,7 @@ def is_market_open():
 
 
 # Define the main function
-def main():
+def main(preview_mode=True):
     # Set up logging
     log_dir = os.path.join(os.path.dirname(__file__), 'logs')
     os.makedirs(log_dir, exist_ok=True)
@@ -64,7 +67,7 @@ def main():
         dev=False,  # Set to False for production, True for sandbox
         headless=True,  # Set to False to show browser window, True to hide
         browser='chrome',  # Set to 'chrome' or 'edge'
-        preview=True,  # Set to False to execute trades, True to preview
+        preview=preview_mode,  # Set to False to execute trades, True to preview
         prints=True,  # Set to True to print information to console
     )
 
@@ -76,7 +79,8 @@ def main():
         logging.info('Bot run complete.')
     elif not bot.preview and not market_open:
         logging.info(f"Bot not running because: {reason}")
+        print(f"Bot not running because: {reason}")
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1].lower() == 'true' if len(sys.argv) > 1 else True)

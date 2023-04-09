@@ -7,7 +7,12 @@ Running
 Running your strategy
 =====================
 
-Refer to the :ref:`troubleshooting <troubleshooting>` section if you encounter any issues.
+ETradeBot can run in one of two modes:
+
+    - Preview Mode.
+    - Live Trading Mode.
+
+ETradeBot will save the output and events of the bot to a log file within the ``logs``. Review the generated log file to see the bot's activity and during troubleshooting. Refer to the :ref:`troubleshooting <troubleshooting>` section if you encounter any issues.
 
 Preview Mode
 ------------
@@ -54,8 +59,17 @@ In ``main.py``, the ``preview`` parameter is set to ``True`` by default allowing
 Live Trading Mode
 -----------------
 
-1. Set ``preview`` parameter in ``main.py`` to ``True``.
-2. Repeat steps 1 and 2 from above.
+1. Repeat steps 1 and 2 from above but instead of running:
+
+    .. code-block:: bash
+
+        python main.py
+
+    You will run:
+
+    .. code-block:: bash
+
+        python main.py False
 
     * The bot will automatically execute trades based on your strategy.
     * You can monitor the bot's activity through the console output.
