@@ -74,7 +74,7 @@ class Execute:
 
     def generate_trades(
             self, account_id_key, symbol, order_action, quantity, price_type='MARKET', order_term='GOOD_FOR_DAY',
-            market_session='REGULAR', preview=True, prints=False
+            market_session='REGULAR', limit_price=None, preview=True, prints=False
     ):
         """
         :description: Generate trades. If preview is True, trades will be previewed. If False, trades will be executed.
@@ -93,6 +93,8 @@ class Execute:
         :type order_term: str, optional
         :param market_session: Market session, default is 'REGULAR'
         :type market_session: str, optional
+        :param limit_price: Limit price, default is None
+        :type limit_price: float, optional
         :param preview: Preview trades, default is True. If False, trades will be executed.
         :type preview: bool, optional
         :param prints: Prints, default is False
@@ -101,6 +103,8 @@ class Execute:
         :rtype: dict
         """
         trade_response = None
+        if limit_price is not None:
+            price_type = 'LIMIT'
         if preview:
             trade_response = self.etrade.orders.preview_equity_order(
                 resp_format="xml",
@@ -111,7 +115,8 @@ class Execute:
                 priceType=price_type,
                 quantity=abs(quantity),
                 orderTerm=order_term,
-                marketSession=market_session
+                marketSession=market_session,
+                limitPrice=limit_price
             )
         elif not preview:
             trade_response = self.etrade.orders.place_equity_order(
@@ -123,7 +128,8 @@ class Execute:
                 priceType=price_type,
                 quantity=abs(quantity),
                 orderTerm=order_term,
-                marketSession=market_session
+                marketSession=market_session,
+                limitPrice=limit_price
             )
         if prints:
             print(trade_response)
