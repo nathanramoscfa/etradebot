@@ -8,7 +8,7 @@ ETradeBot is an automated trading software written in Python for E-Trade account
 -   Executes trade types: buy, sell, sell short, and short cover trade types based on user-defined strategies
 -   Submits price types: market orders to E-Trade API (limit, stop, and other order types will be added in future releases)
 -   Manages portfolio: tracks positions, balance, and performance
--   Security types: common stocks, ETFs, and mutual funds (options will be added in future releases)
+-   Trades: common stocks, ETFs, and mutual funds (options will be added in future releases)
 
 ## Getting Started
 
