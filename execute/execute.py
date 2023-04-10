@@ -87,7 +87,7 @@ class Execute:
         :type order_action: str, required
         :param quantity: Quantity
         :type quantity: int, required
-        :param price_type: Price type, default is 'MARKET'
+        :param price_type: Price type, default is 'MARKET'.
         :type price_type: str, optional
         :param order_term: Order term, default is 'GOOD_FOR_DAY'
         :type order_term: str, optional

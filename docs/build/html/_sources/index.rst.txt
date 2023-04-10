@@ -13,11 +13,12 @@ Features
 ========
 
 -   Fetches real-time market data from E-Trade API
--   Executes trades (buy/sell/sell short/short cover) based on user-defined strategies
+-   Executes buy, sell, sell short, and short cover trade types based on user-defined strategies
+-   Submits market orders to E-Trade API
 -   Manages portfolio: tracks positions, balance, and performance
 -   Trades common stocks, ETFs, and mutual funds
 
-Options, futures, and Forex will be added in future releases.
+Options, futures, and Forex will be added in future releases. Limit, stop, and other order types will also be added in future releases.
 
 Getting Started
 ===============
@@ -48,11 +49,11 @@ Important Links
 ===============
 
 -   ETradeBot GitHub: https://github.com/nathanramoscfa/etradebot
--   E-Trade Developer: https://developer.etrade.com/home
+-   E-Trade Developer Website: https://developer.etrade.com/home
 -   E-Trade API Documentation: https://apisb.etrade.com/docs/api/account/api-account-v1.html
--   Keyring documentation: https://keyring.readthedocs.io/en/latest/
--   Anaconda: https://www.anaconda.com/products/individual
--   Selenium documentation: https://selenium-python.readthedocs.io/
+-   Keyring Documentation: https://keyring.readthedocs.io/en/latest/
+-   Anaconda Distribution: https://www.anaconda.com/products/individual
+-   Selenium Documentation: https://selenium-python.readthedocs.io/
 -   Windows Task Scheduler: https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page
 
 Contributing
