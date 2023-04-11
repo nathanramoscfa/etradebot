@@ -56,6 +56,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Running</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#running-your-strategy">Running your strategy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configure-batch-file">Configure Batch File</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preview-mode">Preview Mode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#live-trading-mode">Live Trading Mode</a></li>
 </ul>
@@ -122,7 +123,61 @@
 <li><p>Live Trading Mode.</p></li>
 </ul>
 </div></blockquote>
-<p>ETradeBot will save the output and events of the bot to a log file within the <code class="docutils literal notranslate"><span class="pre">logs</span></code>. Review the generated log file to see the bot’s activity and during troubleshooting. Refer to the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section if you encounter any issues.</p>
+<p>Preview Mode allows you to test your strategy without executing any real trades. Live Trading Mode allows you to execute trades based on your strategy.</p>
+<section id="configure-batch-file">
+<h3>Configure Batch File<a class="headerlink" href="#configure-batch-file" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Open a text editor and create a new file named <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>.</p></li>
+<li><p>Copy and paste the following code into the file:</p>
+<blockquote>
+<div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">echo</span> off
+<span class="c1">rem Run Python script in a given conda environment from a batch file.</span>
+
+<span class="c1">rem User-defined variables:</span>
+<span class="c1">rem ---------------------------------------------------------------</span>
+<span class="c1">rem Define here the path to your conda installation.</span>
+<span class="k">set</span> <span class="nv">CONDA_PATH</span><span class="p">=</span>C:\Users\25del\anaconda3
+
+<span class="c1">rem Define here the path to your etradebot root directory.</span>
+<span class="k">set</span> <span class="nv">ETRADEBOT_PATH</span><span class="p">=</span>G:\My Drive\etradebot
+
+<span class="c1">rem Define here the name of your conda environment.</span>
+<span class="k">set</span> <span class="nv">CONDA_ENV</span><span class="p">=</span>etradebot
+
+<span class="c1">rem Define the strategy name.</span>
+<span class="k">set</span> <span class="nv">STRATEGY_NAME</span><span class="p">=</span>cape_strategy
+
+<span class="c1">rem Set ETradeBot to either preview or live trading mode.</span>
+<span class="c1">rem SETTING THIS TO FALSE WILL PLACE LIVE TRADES! PROCEED WITH CAUTION!</span>
+<span class="k">set</span> <span class="nv">PREVIEW</span><span class="p">=</span>True
+
+<span class="c1">rem End of user-defined variables.</span>
+<span class="c1">rem ---------------------------------------------------------------</span>
+
+<span class="c1">rem Do not modify these commands unless you know what you are doing:</span>
+<span class="c1">rem ---------------------------------------------------------------</span>
+<span class="c1">rem Activate the conda environment.</span>
+<span class="k">call</span> <span class="nv">%CONDA_PATH%</span>\Scripts\activate.bat <span class="nv">%CONDA_ENV%</span>
+
+<span class="c1">rem Navigate to the directory where etradebot root directory is located.</span>
+<span class="k">pushd</span> <span class="nv">%ETRADEBOT_PATH%</span>
+
+<span class="c1">rem Run your script.</span>
+python main.py <span class="nv">%PREVIEW%</span> <span class="nv">%STRATEGY_NAME%</span>
+
+<span class="c1">rem End the Python program.</span>
+taskkill /IM python.exe /F
+
+<span class="c1">rem Deactivate the conda environment.</span>
+<span class="k">call</span> conda deactivate
+<span class="c1">rem ---------------------------------------------------------------</span>
+<span class="c1">rem End of commands.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</section>
 <section id="preview-mode">
 <h3>Preview Mode<a class="headerlink" href="#preview-mode" title="Permalink to this heading"></a></h3>
 <p>In <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, the <code class="docutils literal notranslate"><span class="pre">preview</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default allowing the user to run ETradeBot without executing any real trades. You can use preview mode to test the program’s responses before going live. The program will access your account, obtain market data, and submit preview trades through the E-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.</p>
@@ -152,9 +207,9 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Run the following command to start the bot:</p></li>
+<li><p>Type the following command and press Enter to start the bot:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>run_main.bat
 </pre></div>
 </div>
 </div></blockquote>
@@ -164,6 +219,7 @@
 <div><ul class="simple">
 <li><p>The bot will automatically generate preview trades based on your strategy.</p></li>
 <li><p>You can monitor the bot’s activity through the console output.</p></li>
+<li><p>The bot will save the output and events of the bot to a log file within the <code class="docutils literal notranslate"><span class="pre">logs</span></code> directory.</p></li>
 <li><p>If you encounter any errors or issues, refer to the console output and the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section for more information.</p></li>
 </ul>
 </div></blockquote>
@@ -174,18 +230,19 @@
 <section id="live-trading-mode">
 <h3>Live Trading Mode<a class="headerlink" href="#live-trading-mode" title="Permalink to this heading"></a></h3>
 <ol class="arabic">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>, change the <code class="docutils literal notranslate"><span class="pre">PREVIEW</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="w"> </span><span class="nv">PREVIEW</span><span class="o">=</span>False
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 <li><p>Repeat steps 1 and 2 from above but instead of running:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
-</pre></div>
-</div>
-<p>You will run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py<span class="w"> </span>False
-</pre></div>
-</div>
-<ul class="simple">
+<div><ul class="simple">
 <li><p>The bot will automatically execute trades based on your strategy.</p></li>
 <li><p>You can monitor the bot’s activity through the console output.</p></li>
+<li><p>The bot will save the output and events of the bot to a log file within the <code class="docutils literal notranslate"><span class="pre">logs</span></code> directory.</p></li>
 <li><p>If you encounter any errors or issues, refer to the console output and the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section for more information.</p></li>
 </ul>
 </div></blockquote>

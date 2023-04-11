@@ -12,6 +12,9 @@ set ETRADEBOT_PATH=G:\My Drive\etradebot
 rem Define here the name of your conda environment.
 set CONDA_ENV=etradebot
 
+rem Define the strategy name.
+set STRATEGY_NAME=cape_strategy
+
 rem Set ETradeBot to either preview or live trading mode.
 rem SETTING THIS TO FALSE WILL PLACE LIVE TRADES! PROCEED WITH CAUTION!
 set PREVIEW=True
@@ -25,11 +28,10 @@ rem Activate the conda environment.
 call %CONDA_PATH%\Scripts\activate.bat %CONDA_ENV%
 
 rem Navigate to the directory where etradebot root directory is located.
-G:
-cd G:\My Drive\etradebot
+pushd %ETRADEBOT_PATH%
 
 rem Run your script.
-python main.py %PREVIEW%
+python main.py %PREVIEW% %STRATEGY_NAME%
 
 rem End the Python program.
 taskkill /IM python.exe /F

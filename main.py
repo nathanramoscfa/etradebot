@@ -21,9 +21,6 @@ account_id = keyring.get_password("etrade", "account_id")
 etrade_cookie = ast.literal_eval(keyring.get_password("etrade", "cookie"))
 account_id_key = keyring.get_password("etrade", "account_id_key")
 
-# Define the strategy name
-strategy_name = 'cape_strategy'
-
 
 def is_market_open():
     now = datetime.now(pytz.timezone('US/Eastern'))
@@ -43,7 +40,7 @@ def is_market_open():
 
 
 # Define the main function
-def main(preview_mode=True):
+def main(preview_mode=True, strategy_name='example_strategy'):
     # Set up logging
     log_dir = os.path.join(os.path.dirname(__file__), 'logs')
     os.makedirs(log_dir, exist_ok=True)
@@ -83,4 +80,7 @@ def main(preview_mode=True):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1].lower() == 'true' if len(sys.argv) > 1 else True)
+    main(
+        sys.argv[1].lower() == 'true' if len(sys.argv) > 1 else True,
+        sys.argv[2] if len(sys.argv) > 2 else 'example_strategy'
+    )
