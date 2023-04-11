@@ -22,7 +22,7 @@ etrade_cookie = ast.literal_eval(keyring.get_password("etrade", "cookie"))
 account_id_key = keyring.get_password("etrade", "account_id_key")
 
 # Define the strategy name
-strategy_name = 'example_strategy'
+strategy_name = 'cape_strategy'
 
 
 def is_market_open():
