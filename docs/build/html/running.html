@@ -128,7 +128,7 @@
 <h3>Configure Batch File<a class="headerlink" href="#configure-batch-file" title="Permalink to this heading"></a></h3>
 <ol class="arabic">
 <li><p>Open a text editor and create a new file named <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>.</p></li>
-<li><p>Copy and paste the following code into the file:</p>
+<li><p>Copy and paste the following code into the file while modifying the user-defined variables to match your setup:</p>
 <blockquote>
 <div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">echo</span> off
 <span class="c1">rem Run Python script in a given conda environment from a batch file.</span>
@@ -136,16 +136,16 @@
 <span class="c1">rem User-defined variables:</span>
 <span class="c1">rem ---------------------------------------------------------------</span>
 <span class="c1">rem Define here the path to your conda installation.</span>
-<span class="k">set</span> <span class="nv">CONDA_PATH</span><span class="p">=</span>C:\Users\25del\anaconda3
+<span class="k">set</span> <span class="nv">CONDA_PATH</span><span class="p">=</span>C:\Users\User\anaconda3
 
 <span class="c1">rem Define here the path to your etradebot root directory.</span>
-<span class="k">set</span> <span class="nv">ETRADEBOT_PATH</span><span class="p">=</span>G:\My Drive\etradebot
+<span class="k">set</span> <span class="nv">ETRADEBOT_PATH</span><span class="p">=</span>C:\Users\User\etradebot
 
 <span class="c1">rem Define here the name of your conda environment.</span>
 <span class="k">set</span> <span class="nv">CONDA_ENV</span><span class="p">=</span>etradebot
 
 <span class="c1">rem Define the strategy name.</span>
-<span class="k">set</span> <span class="nv">STRATEGY_NAME</span><span class="p">=</span>cape_strategy
+<span class="k">set</span> <span class="nv">STRATEGY_NAME</span><span class="p">=</span>example_strategy
 
 <span class="c1">rem Set ETradeBot to either preview or live trading mode.</span>
 <span class="c1">rem SETTING THIS TO FALSE WILL PLACE LIVE TRADES! PROCEED WITH CAUTION!</span>
@@ -180,8 +180,28 @@ taskkill /IM python.exe /F
 </section>
 <section id="preview-mode">
 <h3>Preview Mode<a class="headerlink" href="#preview-mode" title="Permalink to this heading"></a></h3>
-<p>In <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, the <code class="docutils literal notranslate"><span class="pre">preview</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default allowing the user to run ETradeBot without executing any real trades. You can use preview mode to test the program’s responses before going live. The program will access your account, obtain market data, and submit preview trades through the E-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>, the <code class="docutils literal notranslate"><span class="pre">PREVIEW</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default allowing the user to run ETradeBot without executing any real trades. You can use preview mode to test the program’s responses before going live. The program will access your account, obtain market data, and submit preview trades through the E-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.</p>
 <ol class="arabic">
+<li><p>Configure the batch file:</p>
+<blockquote>
+<div><ul>
+<li><p>Set the PREVIEW variable to <code class="docutils literal notranslate"><span class="pre">True</span></code> in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>:</p>
+<blockquote>
+<div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">PREVIEW</span><span class="p">=</span>True
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Set the name of your strategy in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> which should match the name of your strategy file in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code> directory without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
+<blockquote>
+<div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">STRATEGY_NAME</span><span class="p">=</span>example_strategy
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
 <li><p>Run the bot:</p>
 <blockquote>
 <div><ul>
@@ -230,14 +250,27 @@ taskkill /IM python.exe /F
 <section id="live-trading-mode">
 <h3>Live Trading Mode<a class="headerlink" href="#live-trading-mode" title="Permalink to this heading"></a></h3>
 <ol class="arabic">
-<li><p>In <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>, change the <code class="docutils literal notranslate"><span class="pre">PREVIEW</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p>
+<li><p>Configure the batch file:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="w"> </span><span class="nv">PREVIEW</span><span class="o">=</span>False
+<div><ul>
+<li><p>Set the PREVIEW variable to <code class="docutils literal notranslate"><span class="pre">False</span></code> in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>:</p>
+<blockquote>
+<div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">PREVIEW</span><span class="p">=</span>False
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p>Repeat steps 1 and 2 from above but instead of running:</p>
+<li><p>Set the name of your strategy in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> which should match the name of your strategy file in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code> directory without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
+<blockquote>
+<div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">STRATEGY_NAME</span><span class="p">=</span>example_strategy
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Repeat steps 2 and 3 from above:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>The bot will automatically execute trades based on your strategy.</p></li>
