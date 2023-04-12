@@ -330,9 +330,9 @@ class Model(object):
             market_prices.name = market_name
 
         if prints:
-            print('Market Symbol:', self.market_symbol)
+            print('\nMarket Symbol:', self.market_symbol)
             print('Market Name:', market_name)
-            print('\nMarket Prices:')
+            print('Market Prices:')
             print(market_prices.apply(lambda x: '${:,.2f}'.format(round(x, 2))))
 
         return self.market_symbol, market_name, market_prices

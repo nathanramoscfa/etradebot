@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Scheduling" href="scheduling.html" />
-    <link rel="prev" title="Strategies" href="strategies.html" /> 
+    <link rel="prev" title="Configure" href="configure.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,12 +51,12 @@
 <li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configure.html">Configure</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Running</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#running-your-strategy">Running your strategy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#configure-batch-file">Configure Batch File</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preview-mode">Preview Mode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#live-trading-mode">Live Trading Mode</a></li>
 </ul>
@@ -116,83 +116,38 @@
 <span id="id1"></span><h1>Running<a class="headerlink" href="#running" title="Permalink to this heading"></a></h1>
 <section id="running-your-strategy">
 <h2>Running your strategy<a class="headerlink" href="#running-your-strategy" title="Permalink to this heading"></a></h2>
+<p>Ensure you have completed the following steps before running your strategy:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><a class="reference internal" href="environment.html#environment"><span class="std std-ref">Create</span></a> your Python environment and install ETradeBot.</p></li>
+<li><p><a class="reference internal" href="selenium.html#selenium"><span class="std std-ref">Configure</span></a> Selenium to work with your browser.</p></li>
+<li><p><a class="reference internal" href="credentials.html#credentials"><span class="std std-ref">Obtain</span></a> and securely store your E-Trade credentials.</p></li>
+<li><p><a class="reference internal" href="strategies.html#strategies"><span class="std std-ref">Insert</span></a> your strategy into the strategies directory as a .py file.</p></li>
+<li><p><a class="reference internal" href="configure.html#configure"><span class="std std-ref">Configure</span></a> batch files to run ETradeBot.</p></li>
+</ol>
+</div></blockquote>
 <p>ETradeBot can run in one of two modes:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Preview Mode.</p></li>
-<li><p>Live Trading Mode.</p></li>
+<li><p>Preview Mode: displays the strategy with preview trades.</p></li>
+<li><p>Live Trading Mode: executes trades based on your strategy.</p></li>
 </ul>
 </div></blockquote>
-<p>Preview Mode allows you to test your strategy without executing any real trades. Live Trading Mode allows you to execute trades based on your strategy.</p>
-<section id="configure-batch-file">
-<h3>Configure Batch File<a class="headerlink" href="#configure-batch-file" title="Permalink to this heading"></a></h3>
-<ol class="arabic">
-<li><p>Open a text editor and create a new file named <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>.</p></li>
-<li><p>Copy and paste the following code into the file while modifying the user-defined variables to match your setup:</p>
-<blockquote>
-<div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">echo</span> off
-<span class="c1">rem Run Python script in a given conda environment from a batch file.</span>
-
-<span class="c1">rem User-defined variables:</span>
-<span class="c1">rem ---------------------------------------------------------------</span>
-<span class="c1">rem Define here the path to your conda installation.</span>
-<span class="k">set</span> <span class="nv">CONDA_PATH</span><span class="p">=</span>C:\Users\User\anaconda3
-
-<span class="c1">rem Define here the path to your etradebot root directory.</span>
-<span class="k">set</span> <span class="nv">ETRADEBOT_PATH</span><span class="p">=</span>C:\Users\User\etradebot
-
-<span class="c1">rem Define here the name of your conda environment.</span>
-<span class="k">set</span> <span class="nv">CONDA_ENV</span><span class="p">=</span>etradebot
-
-<span class="c1">rem Define the strategy name.</span>
-<span class="k">set</span> <span class="nv">STRATEGY_NAME</span><span class="p">=</span>example_strategy
-
-<span class="c1">rem Set ETradeBot to either preview or live trading mode.</span>
-<span class="c1">rem SETTING THIS TO FALSE WILL PLACE LIVE TRADES! PROCEED WITH CAUTION!</span>
-<span class="k">set</span> <span class="nv">PREVIEW</span><span class="p">=</span>True
-
-<span class="c1">rem End of user-defined variables.</span>
-<span class="c1">rem ---------------------------------------------------------------</span>
-
-<span class="c1">rem Do not modify these commands unless you know what you are doing:</span>
-<span class="c1">rem ---------------------------------------------------------------</span>
-<span class="c1">rem Activate the conda environment.</span>
-<span class="k">call</span> <span class="nv">%CONDA_PATH%</span>\Scripts\activate.bat <span class="nv">%CONDA_ENV%</span>
-
-<span class="c1">rem Navigate to the directory where etradebot root directory is located.</span>
-<span class="k">pushd</span> <span class="nv">%ETRADEBOT_PATH%</span>
-
-<span class="c1">rem Run your script.</span>
-python main.py <span class="nv">%PREVIEW%</span> <span class="nv">%STRATEGY_NAME%</span>
-
-<span class="c1">rem End the Python program.</span>
-taskkill /IM python.exe /F
-
-<span class="c1">rem Deactivate the conda environment.</span>
-<span class="k">call</span> conda deactivate
-<span class="c1">rem ---------------------------------------------------------------</span>
-<span class="c1">rem End of commands.</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-</ol>
-</section>
 <section id="preview-mode">
 <h3>Preview Mode<a class="headerlink" href="#preview-mode" title="Permalink to this heading"></a></h3>
-<p>In <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>, the <code class="docutils literal notranslate"><span class="pre">PREVIEW</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default allowing the user to run ETradeBot without executing any real trades. You can use preview mode to test the program’s responses before going live. The program will access your account, obtain market data, and submit preview trades through the E-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.</p>
+<p>You can use preview mode to test the program’s responses before going live. The program will access your account, obtain market data, and submit preview trades through the E-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.</p>
 <ol class="arabic">
-<li><p>Configure the batch file:</p>
+<li><p>Verify the batch file:</p>
 <blockquote>
 <div><ul>
-<li><p>Set the PREVIEW variable to <code class="docutils literal notranslate"><span class="pre">True</span></code> in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>:</p>
+<li><p>Ensure the PREVIEW variable is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>:</p>
 <blockquote>
 <div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">PREVIEW</span><span class="p">=</span>True
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p>Set the name of your strategy in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> which should match the name of your strategy file in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code> directory without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
+<li><p>Ensure the name of your strategy in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> matches the name of your strategy file in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code> directory without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
 <blockquote>
 <div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">STRATEGY_NAME</span><span class="p">=</span>example_strategy
 </pre></div>
@@ -223,7 +178,7 @@ taskkill /IM python.exe /F
 </li>
 <li><p>Navigate to the root directory of the ETradeBot project.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/etradebot
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\U</span>ser<span class="se">\e</span>tradebot
 </pre></div>
 </div>
 <ul class="simple">
@@ -250,17 +205,17 @@ taskkill /IM python.exe /F
 <section id="live-trading-mode">
 <h3>Live Trading Mode<a class="headerlink" href="#live-trading-mode" title="Permalink to this heading"></a></h3>
 <ol class="arabic">
-<li><p>Configure the batch file:</p>
+<li><p>Verify the batch file:</p>
 <blockquote>
 <div><ul>
-<li><p>Set the PREVIEW variable to <code class="docutils literal notranslate"><span class="pre">False</span></code> in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>:</p>
+<li><p>Ensure the PREVIEW variable is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code>:</p>
 <blockquote>
 <div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">PREVIEW</span><span class="p">=</span>False
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p>Set the name of your strategy in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> which should match the name of your strategy file in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code> directory without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
+<li><p>Ensure the name of your strategy in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> matches the name of your strategy file in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code> directory without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
 <blockquote>
 <div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">STRATEGY_NAME</span><span class="p">=</span>example_strategy
 </pre></div>
@@ -290,7 +245,7 @@ taskkill /IM python.exe /F
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="strategies.html" class="btn btn-neutral float-left" title="Strategies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="configure.html" class="btn btn-neutral float-left" title="Configure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="scheduling.html" class="btn btn-neutral float-right" title="Scheduling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

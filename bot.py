@@ -82,7 +82,7 @@ class Bot:
         :return: The trade responses from E-Trade
         :rtype: pd.DataFrame
         """
-        print('Running strategy...')
+        print('\nRunning strategy: {}'.format(self.strategy_name))
 
         # Get current portfolio
         current_portfolio = self.etrade.get_portfolio_data(self.account_id_key)[[
