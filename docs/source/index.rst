@@ -13,10 +13,10 @@ Features
 ========
 
 -   Fetches real-time market data from E-Trade API used to execute trades
--   Executes trade types: buy, sell, sell short, and short cover trade types based on user-defined strategies
--   Submits price types: market orders to E-Trade API (limit, stop, and other order types will be added in future releases)
+-   Executes trade types: buy, sell, sell short, and short cover trade types
+-   Submits price type: market orders to E-Trade API
 -   Manages portfolio: tracks positions, balance, and performance
--   Trades: common stocks and ETFs (options, mutual funds, and other security types will be added in future releases)
+-   Trades: common stocks and ETFs
 
 Getting Started
 ===============
@@ -43,6 +43,14 @@ Troubleshooting
 ===============
 
 Refer to the :ref:`troubleshooting <troubleshooting>` section if you encounter any issues.
+
+Roadmap
+=======
+
+Future releases will include the following features:
+
+-   More price types: limit, stop, and other order types
+-   More security types: options, mutual funds, and other security types
 
 Important Links
 ===============

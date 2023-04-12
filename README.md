@@ -34,6 +34,13 @@ Also see this example of ETradeBot being run within a [jupyter notebook](https:/
 
 Refer to the [troubleshooting](https://etradebot.readthedocs.io/en/latest/scheduling.html) section of the documentation if you encounter any issues.
 
+## Roadmap
+
+Future releases will include the following features:
+
+-   More price types: limit, stop, and other order types
+-   More security types: options, mutual funds, and other security types
+
 ## Important Links
 
 -   [ETradeBot Documentation](https://etradebot.readthedocs.io/en/latest/)
