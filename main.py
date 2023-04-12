@@ -74,6 +74,7 @@ def main(preview_mode=True, strategy_name='example_strategy'):
         logging.info('Starting bot...')
         bot.run()
         logging.info('Bot run complete.')
+        print('\nBot run complete.')
     elif not bot.preview and not market_open:
         logging.info(f"Bot not running because: {reason}")
         print(f"\nBot not running because: {reason}")

@@ -17,7 +17,7 @@ set STRATEGY_NAME=cape_strategy
 
 rem Set ETradeBot to either preview or live trading mode.
 rem SETTING THIS TO FALSE WILL PLACE LIVE TRADES! PROCEED WITH CAUTION!
-set PREVIEW=True
+set PREVIEW=False
 
 rem End of user-defined variables.
 rem ---------------------------------------------------------------
@@ -31,10 +31,7 @@ rem Navigate to the directory where etradebot root directory is located.
 pushd %ETRADEBOT_PATH%
 
 rem Run your script.
-python main.py %PREVIEW% %STRATEGY_NAME%
-
-rem End the Python program.
-taskkill /IM python.exe /F
+"%CONDA_PATH%\envs\%CONDA_ENV%\python.exe" main.py %PREVIEW% %STRATEGY_NAME%
 
 rem Deactivate the conda environment.
 call conda deactivate

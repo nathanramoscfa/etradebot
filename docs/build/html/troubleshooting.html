@@ -51,6 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configure.html">Configure</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul>
@@ -122,8 +123,51 @@
 <p>You may still encounter errors even if you configured ETradeBot correctly and previously successfully ran it usually due to server errors from E-Trade. Here are some common errors encountered by the developer and their solutions:</p>
 <ol class="arabic simple">
 <li><p>Running ETradeBot to submit real trades outside of normal market trading hours (e.g. nights and weekends) may result in a server error. This is because E-Trade’s servers may not be as responsive during these times for reasons unknown to the developer. It is best to only submit real trades during normal market trading hours.</p></li>
-<li><p>E-Trade’s servers may return a server error for reasons unknown to the developer. If this happens, try running ETradeBot again after a few minutes. Sometimes, simply rerunning ETradeBot resolved the error.</p></li>
+<li><p>E-Trade’s servers may return a server error for reasons unknown to the developer. If this happens, try running ETradeBot again after a few minutes. Sometimes, simply rerunning ETradeBot resolved the error. You might also have to retry multiple times. When ETradeBot is configured correctly, E-Trade servers will usually respond as expected but this is not always the case. Here is an example of an actual Traceback of a server error returned by E-Trade where simply rerunning ETradeBot resolved the error:</p></li>
 </ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Traceback (most recent call last):</span>
+<span class="go">  File &quot;C:\Users\User\etradebot\main.py&quot;, line 84, in &lt;module&gt;</span>
+<span class="go">    main(</span>
+<span class="go">  File &quot;C:\Users\User\etradebot\main.py&quot;, line 53, in main</span>
+<span class="go">    bot = Bot(</span>
+<span class="go">          ^^^^</span>
+<span class="go">  File &quot;C:\Users\User\etradebot\bot.py&quot;, line 54, in __init__</span>
+<span class="go">    self.etrade = ETrade(</span>
+<span class="go">                  ^^^^^^^</span>
+<span class="go">  File &quot;C:\Users\User\etradebot\etrade\etrade.py&quot;, line 46, in __init__</span>
+<span class="go">    self.accounts, self.orders, self.market = self.auth.etrade_login()</span>
+<span class="go">                                              ^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="go">  File &quot;C:\Users\User\etradebot\authentication\authentication.py&quot;, line 160, in etrade_login</span>
+<span class="go">    accounts, orders, market = self.access_api()</span>
+<span class="go">                               ^^^^^^^^^^^^^^^^^</span>
+<span class="go">  File &quot;C:\Users\User\etradebot\authentication\authentication.py&quot;, line 143, in access_api</span>
+<span class="go">    tokens = self.get_access_tokens(oauth, verifier_code)</span>
+<span class="go">             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="go">  File &quot;C:\Users\User\etradebot\authentication\authentication.py&quot;, line 81, in get_access_tokens</span>
+<span class="go">    return oauth.get_access_token(verifier_code)</span>
+<span class="go">           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="go">  File &quot;C:\Users\User\anaconda3\envs\etradebot\Lib\site-packages\pyetrade\authorization.py&quot;, line 168, in get_access_token</span>
+<span class="go">    self.access_token = self.session.fetch_access_token(self.access_token_url)</span>
+<span class="go">                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="go">  File &quot;C:\Users\User\anaconda3\envs\etradebot\Lib\site-packages\requests_oauthlib\oauth1_session.py&quot;, line 323, in fetch_access_token</span>
+<span class="go">    token = self._fetch_token(url, **request_kwargs)</span>
+<span class="go">            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="go">  File &quot;C:\Users\User\anaconda3\envs\etradebot\Lib\site-packages\requests_oauthlib\oauth1_session.py&quot;, line 369, in _fetch_token</span>
+<span class="go">    raise TokenRequestDenied(error % (r.status_code, r.text), r)</span>
+<span class="go">requests_oauthlib.oauth1_session.TokenRequestDenied: Token request failed with code 500, response was &#39;&lt;!doctype html&gt;</span>
+<span class="go">&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;title&gt;HTTP Status 500 – Internal Server Error&lt;/title&gt;&lt;style type=&quot;text/css&quot;&gt;</span>
+<span class="go">h1 {font-family:Tahoma,Arial,sans-serif; color:white;background-color:#525D76;font-size:22px;}</span>
+<span class="go">h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;}</span>
+<span class="go">h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;}</span>
+<span class="go">body {font-family:Tahoma,Arial, sans-serif;color:black;background-color:white;}</span>
+<span class="go">b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;}</span>
+<span class="go">p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}</span>
+<span class="go">a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;</span>
+<span class="go">&lt;h1&gt;HTTP Status 500 – Internal Server Error&lt;/h1&gt;&lt;hr class=&quot;line&quot; /&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Status Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt;</span>
+<span class="go">The server encountered an unexpected condition that prevented it from fulfilling the request.&lt;/p&gt;&lt;hr class=&quot;line&quot; /&gt;</span>
+<span class="go">&lt;h3&gt;&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;&#39;.</span>
+</pre></div>
+</div>
 <p>If you are still encountering errors, please <a class="reference external" href="https://github.com/nathanramoscfa/etradebot/issues">open an issue</a> and provide as much information as possible.</p>
 </section>
 </section>

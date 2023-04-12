@@ -25,8 +25,9 @@ Getting Started
 2. :ref:`Configure <selenium>` Selenium to work with your browser.
 3. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
 4. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
-5. :ref:`Run <running>` main.py from the root directory to test functionality.
-6. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
+5. :ref:`Configure <configure>` batch file to run ETradeBot.
+6. :ref:`Run <running>` ETradeBot in either preview or live trading mode.
+7. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
 
 Example
 =======
@@ -80,6 +81,7 @@ Contents
    selenium
    credentials
    strategies
+   configure
 
 .. toctree::
    :maxdepth: 2
