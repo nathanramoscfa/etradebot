@@ -5,7 +5,7 @@ ETradeBot is an automated trading software written in Python for E-Trade account
 ## Features
 
 -   Fetches real-time market data from E-Trade API used to execute trades
--   Executes trade types: buy, sell, sell short, and short cover trade types
+-   Executes trade types: buy, sell, sell short, and short cover
 -   Submits price type: market orders to E-Trade API
 -   Manages portfolio: tracks positions, balance, and performance
 -   Trades: common stocks and ETFs
@@ -18,7 +18,7 @@ Refer to the [ETradeBot documentation](https://etradebot.readthedocs.io/en/lates
 2. [Configure](https://etradebot.readthedocs.io/en/latest/selenium.html) Selenium to work with your browser.
 3. [Obtain](https://etradebot.readthedocs.io/en/latest/credentials.html) and securely store your E-Trade credentials.
 4. [Insert](https://etradebot.readthedocs.io/en/latest/strategies.html) your strategy into the strategies directory as a .py file.
-5. [Configure](https://etradebot.readthedocs.io/en/latest/configure.html) batch file to run ETradeBot.
+5. [Configure](https://etradebot.readthedocs.io/en/latest/configure.html) a batch file to run ETradeBot.
 6. [Run](https://etradebot.readthedocs.io/en/latest/running.html) ETradeBot in either preview or live trading mode.
 7. [Schedule](https://etradebot.readthedocs.io/en/latest/scheduling.html) ETradeBot to run automatically.
 
