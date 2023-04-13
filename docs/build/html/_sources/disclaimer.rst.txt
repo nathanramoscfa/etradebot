@@ -13,7 +13,7 @@ Please note that while the developer has taken care to ensure the quality and fu
 
 Users of ETradeBot should understand that past performance is not indicative of future results. The performance of any trading strategy is not guaranteed, and users should properly backtest their strategies out-of-sample and perform appropriate due diligence before using them for real trading. Users are solely responsible for determining whether any investment, trading or strategy is appropriate or suitable for them based on their objectives, risk tolerance, and financial situation.
 
-The user assumes full responsibility and risk of using ETradeBot. The developer is not responsible for any losses or damages incurred as a result of using ETradeBot or for any errors, inaccuracies, or omissions in the information or data provided. Users of ETradeBot should also maintain proper cybersecurity protocols to ensure the security of their E*Trade API credentials and their trading accounts.
+The user assumes full responsibility and risk of using ETradeBot. The developer is not responsible for any losses or damages incurred as a result of using ETradeBot or for any errors, inaccuracies, or omissions in the information or data provided. Users of ETradeBot should also maintain proper cybersecurity protocols to ensure the security of their E-Trade API credentials and their trading accounts.
 
 By using ETradeBot, users agree to release the developer from any and all liability related to their use of the software. Users should read and understand all documentation and instructions provided before using ETradeBot. If you do not agree with any part of this disclaimer, do not use ETradeBot.
 
