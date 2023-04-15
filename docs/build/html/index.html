@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ETradeBot &mdash; etradebot 0.0.0 documentation</title>
+  <title>ETradeBot &mdash; etradebot 1.0.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Environment" href="environment.html" /> 
+    <link rel="next" title="Bloomberg SDK" href="bloomberg.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -34,7 +34,7 @@
             etradebot
           </a>
               <div class="version">
-                0.0.0
+                1.0.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -46,6 +46,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="bloomberg.html">Bloomberg SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
@@ -110,16 +111,19 @@
 <section id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
 <ul class="simple">
-<li><p>Fetches real-time market data from the E-Trade API used to execute trades</p></li>
+<li><p>Fetches real-time market data from the E-Trade API</p></li>
+<li><p>Accesses market data from the Bloomberg API or Yahoo Finance API</p></li>
 <li><p>Executes trade types: buy, sell, sell short, and short cover</p></li>
 <li><p>Submits price type: market orders to E-Trade API</p></li>
 <li><p>Manages portfolio: tracks positions, balance, and performance</p></li>
 <li><p>Trades: common stocks and ETFs</p></li>
 </ul>
+<p>The Bloomberg API requires a Bloomberg Terminal subscription, however, the Yahoo Finance API is free to use. ETradeBot will automatically use the Yahoo Finance API if the Bloomberg API is not available.</p>
 </section>
 <section id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
+<li><p><a class="reference internal" href="bloomberg.html#bloomberg"><span class="std std-ref">Install</span></a> the Bloomberg SDK and C++ Build Tools.</p></li>
 <li><p><a class="reference internal" href="environment.html#environment"><span class="std std-ref">Create</span></a> your Python environment and install ETradeBot.</p></li>
 <li><p><a class="reference internal" href="selenium.html#selenium"><span class="std std-ref">Configure</span></a> Selenium to work with your browser.</p></li>
 <li><p><a class="reference internal" href="credentials.html#credentials"><span class="std std-ref">Obtain</span></a> and securely store your E-Trade credentials.</p></li>
@@ -176,6 +180,10 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="bloomberg.html">Bloomberg SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bloomberg.html#configuring-the-bloomberg-sdk">Configuring the Bloomberg SDK</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="environment.html#configuring-environment">Configuring environment</a></li>
 </ul>
@@ -289,7 +297,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="environment.html" class="btn btn-neutral float-right" title="Environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="bloomberg.html" class="btn btn-neutral float-right" title="Bloomberg SDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

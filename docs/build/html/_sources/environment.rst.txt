@@ -7,6 +7,8 @@ Environment
 Configuring environment
 =======================
 
+These instructions assume your computer is brand new and has no Python or other development tools installed. Feel free to skip any steps that you have already completed.
+
 Using Anaconda
 --------------
 
@@ -35,9 +37,6 @@ Using Anaconda
 4. Create an environment using an environment.yml file:
 
     * Navigate to the cloned repository directory.
-    * Open the ``environment.yml`` file in a text editor.
-    * Make any necessary modifications to the file.
-    * Save the changes to the ``environment.yml`` file.
     * Run the following command to create the environment:
 
     .. code-block:: bash
@@ -72,14 +71,6 @@ Using Anaconda
     .. code-block:: bash
 
         pip install -r requirements.txt
-
-8. Install ETradeBot:
-
-    * With the virtual environment activated, install ETradeBot using the following command:
-
-    .. code-block:: bash
-
-        pip install etradebot
 
 Using venv
 ----------
@@ -138,11 +129,3 @@ Using venv
         pip list
 
     * This will list all the installed packages.
-
-7. Install ETradeBot:
-
-    * With the virtual environment activated, install ETradeBot using the following command:
-
-    .. code-block:: bash
-
-        pip install etradebot
