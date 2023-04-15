@@ -14,8 +14,8 @@ sys.path.insert(0, os.path.abspath('../..'))
 project = 'etradebot'
 copyright = '2023, Nathan Ramos, CFA®'
 author = 'Nathan Ramos, CFA®'
-version = '0.0.0'
-release = '0.0.0'
+version = '1.0.2'
+release = '1.0.2'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -30,10 +30,7 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 # Configure the source suffix to include both 'bloomberg.rst' and '.md' file types
-source_suffix = {
-    'bloomberg.rst': 'restructuredtext',
-    '.md': 'markdown',
-}
+source_suffix = ['.rst', '.md']
 source_encoding = 'utf-8'
 master_doc = 'index'
 
