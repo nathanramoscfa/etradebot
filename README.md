@@ -15,13 +15,14 @@ ETradeBot is an automated trading software written in Python for E-Trade account
 
 Refer to the [ETradeBot documentation](https://etradebot.readthedocs.io/en/latest/index.html) for instructions on installing, configuring, and using the software. 
 
-1. [Create](https://etradebot.readthedocs.io/en/latest/environment.html) your Python environment and install ETradeBot.
-2. [Configure](https://etradebot.readthedocs.io/en/latest/selenium.html) Selenium to work with your browser.
-3. [Obtain](https://etradebot.readthedocs.io/en/latest/credentials.html) and securely store your E-Trade credentials.
-4. [Insert](https://etradebot.readthedocs.io/en/latest/strategies.html) your strategy into the strategies directory as a .py file.
-5. [Configure](https://etradebot.readthedocs.io/en/latest/configure.html) a batch file to run ETradeBot.
-6. [Run](https://etradebot.readthedocs.io/en/latest/running.html) ETradeBot in either preview or live trading mode.
-7. [Schedule](https://etradebot.readthedocs.io/en/latest/scheduling.html) ETradeBot to run automatically.
+1. [Install](https://etradebot.readthedocs.io/en/latest/bloomberg.html) the Bloomberg SDK and C++ Build Tools.
+2. [Create](https://etradebot.readthedocs.io/en/latest/environment.html) your Python environment and install ETradeBot.
+3. [Configure](https://etradebot.readthedocs.io/en/latest/selenium.html) Selenium to work with your browser.
+4. [Obtain](https://etradebot.readthedocs.io/en/latest/credentials.html) and securely store your E-Trade credentials.
+5. [Insert](https://etradebot.readthedocs.io/en/latest/strategies.html) your strategy into the strategies directory as a .py file.
+6. [Configure](https://etradebot.readthedocs.io/en/latest/configure.html) a batch file to run ETradeBot.
+7. [Run](https://etradebot.readthedocs.io/en/latest/running.html) ETradeBot in either preview or live trading mode.
+8. [Schedule](https://etradebot.readthedocs.io/en/latest/scheduling.html) ETradeBot to run automatically.
 
 ## Example
 
