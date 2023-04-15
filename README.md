@@ -4,7 +4,8 @@ ETradeBot is an automated trading software written in Python for E-Trade account
 
 ## Features
 
--   Fetches real-time market data from E-Trade API used to execute trades
+-   Fetches real-time market data from E-Trade API
+-   Accesses market data from the Bloomberg API or Yahoo Finance API
 -   Executes trade types: buy, sell, sell short, and short cover
 -   Submits price type: market orders to E-Trade API
 -   Manages portfolio: tracks positions, balance, and performance
