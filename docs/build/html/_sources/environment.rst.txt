@@ -16,7 +16,13 @@ Using Anaconda
     * Download the version of Anaconda Navigator that corresponds to your operating system.
     * Follow the installation instructions for your operating system.
 
-2. Clone the GitHub repository:
+2. Install Git:
+
+    * Go to the Git `download page <https://git-scm.com/downloads>`_.
+    * Download the version of Git that corresponds to your operating system.
+    * Follow the installation instructions for your operating system.
+
+3. Clone the GitHub repository:
 
     * Open a terminal or command prompt.
     * Navigate to the directory where you want to clone the repository.
@@ -26,7 +32,7 @@ Using Anaconda
 
         git clone https://github.com/nathanramoscfa/etradebot.git
 
-3. Create an environment using an environment.yml file:
+4. Create an environment using an environment.yml file:
 
     * Navigate to the cloned repository directory.
     * Open the ``environment.yml`` file in a text editor.
@@ -40,7 +46,7 @@ Using Anaconda
 
     * This will create an environment with the name specified in the ``environment.yml`` file.
 
-4. Activate the environment:
+5. Activate the environment:
 
     * Run the following command to activate the environment:
 
@@ -48,7 +54,7 @@ Using Anaconda
 
         conda activate etradebot
 
-5. Verify the environment:
+6. Verify the environment:
 
     * Run the following command to verify that the environment was created successfully:
 
@@ -59,7 +65,7 @@ Using Anaconda
     * This will list all of the environments that are currently available.
     * The environment you created should be listed.
 
-6. Install dependencies:
+7. Install dependencies:
 
     * With the virtual environment activated, run the following command to install the dependencies from the ``requirements.txt`` file:
 
@@ -67,7 +73,7 @@ Using Anaconda
 
         pip install -r requirements.txt
 
-7. Install ETradeBot:
+8. Install ETradeBot:
 
     * With the virtual environment activated, install ETradeBot using the following command:
 
@@ -78,7 +84,13 @@ Using Anaconda
 Using venv
 ----------
 
-1. Clone the GitHub repository:
+1. Install Git:
+
+    * Go to the Git `download page <https://git-scm.com/downloads>`_.
+    * Download the version of Git that corresponds to your operating system.
+    * Follow the installation instructions for your operating system.
+
+2. Clone the GitHub repository:
 
     * Open a terminal or command prompt.
     * Navigate to the directory where you want to clone the repository.
@@ -88,7 +100,7 @@ Using venv
 
         git clone https://github.com/nathanramoscfa/etradebot.git
 
-2. Create a virtual environment:
+3. Create a virtual environment:
 
     * Navigate to the cloned repository directory.
     * Run the following command to create a new virtual environment:
@@ -99,7 +111,7 @@ Using venv
 
     * This will create a new virtual environment named ``env`` in the current directory.
 
-3. Activate the virtual environment:
+4. Activate the virtual environment:
 
     * Run the following command to activate the virtual environment:
 
@@ -107,7 +119,7 @@ Using venv
 
         source etradebot/bin/activate
 
-4. Install dependencies:
+5. Install dependencies:
 
     * With the virtual environment activated, run the following command to install the dependencies from the ``requirements.txt`` file:
 
@@ -117,7 +129,7 @@ Using venv
 
     * This will install all the required packages listed in the ``requirements.txt`` file.
 
-5. Verify the installation:
+6. Verify the installation:
 
     * Run the following command to verify that the packages were installed correctly:
 
@@ -127,7 +139,7 @@ Using venv
 
     * This will list all the installed packages.
 
-6. Install ETradeBot:
+7. Install ETradeBot:
 
     * With the virtual environment activated, install ETradeBot using the following command:
 
