@@ -12,22 +12,26 @@ ETradeBot is an automated trading software written in Python for E-Trade account
 Features
 ========
 
--   Fetches real-time market data from the E-Trade API used to execute trades
+-   Fetches real-time market data from the E-Trade API
+-   Accesses market data from the Bloomberg API or Yahoo Finance API
 -   Executes trade types: buy, sell, sell short, and short cover
 -   Submits price type: market orders to E-Trade API
 -   Manages portfolio: tracks positions, balance, and performance
 -   Trades: common stocks and ETFs
 
+The Bloomberg API requires a Bloomberg Terminal subscription, however, the Yahoo Finance API is free to use. ETradeBot will automatically use the Yahoo Finance API if the Bloomberg API is not available.
+
 Getting Started
 ===============
 
-1. :ref:`Create <environment>` your Python environment and install ETradeBot.
-2. :ref:`Configure <selenium>` Selenium to work with your browser.
-3. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
-4. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
-5. :ref:`Configure <configure>` a batch file to run ETradeBot.
-6. :ref:`Run <running>` ETradeBot in either preview or live trading mode.
-7. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
+1. :ref:`Install <bloomberg>` the Bloomberg SDK and C++ Build Tools.
+2. :ref:`Create <environment>` your Python environment and install ETradeBot.
+3. :ref:`Configure <selenium>` Selenium to work with your browser.
+4. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
+5. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
+6. :ref:`Configure <configure>` a batch file to run ETradeBot.
+7. :ref:`Run <running>` ETradeBot in either preview or live trading mode.
+8. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
 
 Example
 =======
@@ -85,6 +89,7 @@ Contents
    :maxdepth: 2
    :caption: Configuration
 
+   bloomberg
    environment
    selenium
    credentials

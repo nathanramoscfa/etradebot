@@ -29,9 +29,9 @@ extensions = [
 templates_path = ['_templates']
 exclude_patterns = []
 
-# Configure the source suffix to include both '.rst' and '.md' file types
+# Configure the source suffix to include both 'bloomberg.rst' and '.md' file types
 source_suffix = {
-    '.rst': 'restructuredtext',
+    'bloomberg.rst': 'restructuredtext',
     '.md': 'markdown',
 }
 source_encoding = 'utf-8'
