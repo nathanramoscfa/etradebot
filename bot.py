@@ -7,27 +7,27 @@ class Bot:
     """
     :description: This class is the main strategy class that will be used to run the strategy.
 
-    :param consumer_key: Your E*Trade API consumer key
+    :param consumer_key: Your E-Trade API consumer key
     :type consumer_key: str, required
-    :param consumer_secret: Your E*Trade API consumer secret
+    :param consumer_secret: Your E-Trade API consumer secret
     :type consumer_secret: str, required
-    :param web_username: Your E*Trade web username
+    :param web_username: Your E-Trade web username
     :type web_username: str, required
-    :param web_password: Your E*Trade web password
+    :param web_password: Your E-Trade web password
     :type web_password: str, required
-    :param account_id: Your E*Trade account ID
+    :param account_id: Your E-Trade account ID
     :type account_id: str, required
-    :param etrade_cookie: Your E*Trade cookie
+    :param etrade_cookie: Your E-Trade cookie
     :type etrade_cookie: str, required
-    :param account_id_key: Your E*Trade account ID key
+    :param account_id_key: Your E-Trade account ID key
     :type account_id_key: str, required
     :param strategy_name: The name of the strategy to run
     :type strategy_name: str, required
-    :param sandbox_key: Your E*Trade sandbox API key, defaults to None
+    :param sandbox_key: Your E-Trade sandbox API key, defaults to None
     :type sandbox_key: str, optional
-    :param sandbox_secret: Your E*Trade sandbox API secret, defaults to None
+    :param sandbox_secret: Your E-Trade sandbox API secret, defaults to None
     :type sandbox_secret: str, optional
-    :param dev: Whether to use the E*Trade sandbox, defaults to True
+    :param dev: Whether to use the E-Trade sandbox, defaults to True
     :type dev: bool, optional
     :param headless: Whether to run the browser in headless mode, defaults to True
     :type headless: bool, optional

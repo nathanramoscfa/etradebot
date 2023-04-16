@@ -7,7 +7,7 @@ Selenium
 Configuring Selenium
 ====================
 
-ETradeBot uses the Python library Selenium to interact with the E*TRADE website. If you plan to use ETradeBot, you will
+ETradeBot uses the Python library Selenium to interact with the E-TRADE website. If you plan to use ETradeBot, you will
 need to install Selenium on your machine.
 
 Installation
