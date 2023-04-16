@@ -13,15 +13,19 @@ Obtaining credentials
 
 2. Obtain API Credentials:
 
-    * Log into the `E-Trade Developer website <https://developer.etrade.com/home>`_ and log in with your E\-Trade login and password.
+    * Log into the `E-Trade Developer website <https://developer.etrade.com/home>`_ and log in with your E\-Trade login
+      and password.
     * Select your account from the ``Accounts`` menu.
     * Select ``Create Key`` as the "Operation Type" and then click the ``Get Sandbox Key`` button.
     * The website should then show you your consumer key, consumer secret, sandbox key, and sandbox secret.
 
 3. Obtain API Cookie:
 
-    * You will need to contact `E\-Trade customer service <https://us.etrade.com/contact-us>`_ to obtain a cookie that will need to be passed to the API so that their servers recognize your automated trading program, otherwise it will be blocked.
-    * The best way to do this is to call the 1-800 number listed on the E-Trade website "`Contact Us <https://us.etrade.com/contact-us>`_" page.
+    * You will need to contact `E\-Trade customer service <https://us.etrade.com/contact-us>`_ to obtain a cookie that
+      will need to be passed to the API so that their servers recognize your automated trading program, otherwise it
+      will be blocked.
+    * The best way to do this is to call the 1-800 number listed on the E-Trade website
+      "`Contact Us <https://us.etrade.com/contact-us>`_" page.
     * Tell them you are calling to request an API cookie for your Python automated trading program.
     * They will then give you instructions on what you need to do.
     * It might take a couple days to verify you and obtain the cookie, and call center wait times may vary.

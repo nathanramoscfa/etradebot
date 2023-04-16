@@ -1,11 +1,11 @@
-.. _bloomberg:
+.. _data:
 
-#############
-Bloomberg SDK
-#############
+#########
+Data APIs
+#########
 
-Configuring the Bloomberg SDK
-=============================
+About Data APIs
+=====================
 
 To run automated trading strategies, ETradeBot needs financial data APIs installed. There are two options for accessing
 financial data with ETradeBot: the free `Yahooquery <https://yahooquery.dpguthrie.com/>`_ library that comes bundled

@@ -47,7 +47,6 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="bloomberg.html">Bloomberg SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Selenium</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-selenium">Configuring Selenium</a><ul>
@@ -64,7 +63,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configure.html">Configure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batch.html">Batch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul>
@@ -122,22 +121,33 @@
 <span id="id1"></span><h1>Selenium<a class="headerlink" href="#selenium" title="Permalink to this heading"></a></h1>
 <section id="configuring-selenium">
 <h2>Configuring Selenium<a class="headerlink" href="#configuring-selenium" title="Permalink to this heading"></a></h2>
-<p>ETradeBot uses the Python library Selenium to interact with the E*TRADE website. If you plan to use ETradeBot, you will need to install Selenium on your machine.</p>
+<p>ETradeBot uses the Python library Selenium to interact with the E*TRADE website. If you plan to use ETradeBot, you will
+need to install Selenium on your machine.</p>
 <section id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
-<p>If you followed the instructions in the <a class="reference internal" href="environment.html#environment"><span class="std std-ref">Environment</span></a> section, you should already have selenium installed in your Python environment. If not, you can install Selenium using pip, the Python package manager. To install the latest version of Selenium, run the following command:</p>
+<p>If you followed the instructions in the <a class="reference internal" href="environment.html#environment"><span class="std std-ref">Environment</span></a> section, you should already have selenium
+installed in your Python environment. If not, you can install Selenium using pip, the Python package manager. To
+install the latest version of Selenium, run the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>selenium
 </pre></div>
 </div>
 </section>
 <section id="web-drivers">
 <h3>Web Drivers<a class="headerlink" href="#web-drivers" title="Permalink to this heading"></a></h3>
-<p>Selenium requires a web driver to interact with web pages. The driver acts as a proxy between Selenium and the web page being automated.</p>
-<p>ETradeBot supports two web drivers: Chrome and Edge. You should choose the driver that matches the browser you plan to use with ETradeBot. The ETradeBot root directory contains a <code class="docutils literal notranslate"><span class="pre">chromedriver.exe</span></code> and <code class="docutils literal notranslate"><span class="pre">msedgedriver.exe</span></code>, however, these web drivers may not correspond to your browser version. You will simply have to replace these executable files with the version of web driver that matches your browser version. Follow the instruction below to proceed.</p>
+<p>Selenium requires a web driver to interact with web pages. The driver acts as a proxy between Selenium and the web page
+being automated.</p>
+<p>ETradeBot supports two web drivers: Chrome and Edge. You should choose the driver that matches the browser you plan to
+use with ETradeBot. The ETradeBot root directory contains a <code class="docutils literal notranslate"><span class="pre">chromedriver.exe</span></code> and <code class="docutils literal notranslate"><span class="pre">msedgedriver.exe</span></code>, however,
+these web drivers may not correspond to your browser version. You will simply have to replace these executable files
+with the version of web driver that matches your browser version. Follow the instruction below to proceed.</p>
 <section id="chrome">
 <h4>Chrome<a class="headerlink" href="#chrome" title="Permalink to this heading"></a></h4>
-<p>To use Chrome with Selenium, you will need to download the <a class="reference external" href="https://sites.google.com/chromium.org/driver/">ChromeDriver</a> executable and place it in the root directory of ETradeBot.</p>
-<p>You can download the ChromeDriver executable for your operating system from the <a class="reference external" href="https://sites.google.com/chromium.org/driver/">official ChromeDriver downloads page</a>. Make sure to download the version that matches the version of Chrome you have installed. You can find your version of Chrome by:</p>
+<p>To use Chrome with Selenium, you will need to download the
+<a class="reference external" href="https://sites.google.com/chromium.org/driver/">ChromeDriver</a> executable and place it in the root directory of
+ETradeBot.</p>
+<p>You can download the ChromeDriver executable for your operating system from the
+<a class="reference external" href="https://sites.google.com/chromium.org/driver/">official ChromeDriver downloads page</a>. Make sure to download the
+version that matches the version of Chrome you have installed. You can find your version of Chrome by:</p>
 <ol class="arabic">
 <li><p>Opening the Chrome browser and click on the three dots in the top right corner.</p></li>
 <li><p>Click on “About Chrome” at the bottom of the left-panel menu.</p></li>
@@ -150,12 +160,17 @@
 </li>
 <li><p>You would then download the ChromeDriver version whose version number is closest to yours.</p></li>
 </ol>
-<p>Once you have downloaded the ChromeDriver executable, extract it to the root directory of your ETradeBot project. This is the same directory that contains the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p>
+<p>Once you have downloaded the ChromeDriver executable, extract it to the root directory of your ETradeBot project. This
+is the same directory that contains the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p>
 </section>
 <section id="edge">
 <h4>Edge<a class="headerlink" href="#edge" title="Permalink to this heading"></a></h4>
-<p>To use Edge with Selenium, you will need to download the <a class="reference external" href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/">EdgeDriver</a> executable and add it to your system path.</p>
-<p>You can download the EdgeDriver executable for your operating system from the <a class="reference external" href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/">official EdgeDriver downloads page</a>. Make sure to download the version that matches the version of Edge you have installed. You can find your version of Edge by:</p>
+<p>To use Edge with Selenium, you will need to download the
+<a class="reference external" href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/">EdgeDriver</a> executable and add it to your
+system path.</p>
+<p>You can download the EdgeDriver executable for your operating system from the
+<a class="reference external" href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/">official EdgeDriver downloads page</a>. Make
+sure to download the version that matches the version of Edge you have installed. You can find your version of Edge by:</p>
 <ol class="arabic">
 <li><p>Opening the Edge browser and click on the three dots in the top right corner.</p></li>
 <li><p>Click on “About Microsoft Edge” at the bottom of the left-panel menu.</p></li>
@@ -168,12 +183,14 @@
 </li>
 <li><p>You would then download the EdgeDriver version whose version number is closest to yours.</p></li>
 </ol>
-<p>Once you have downloaded the EdgeDriver executable, extract it to the root directory of your ETradeBot project. This is the same directory that contains the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p>
+<p>Once you have downloaded the EdgeDriver executable, extract it to the root directory of your ETradeBot project. This is
+the same directory that contains the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p>
 </section>
 </section>
 <section id="further-reading">
 <h3>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this heading"></a></h3>
-<p>For more information on using Selenium with Python, please refer to the official <a class="reference external" href="https://selenium-python.readthedocs.io/">Selenium documentation</a>.</p>
+<p>For more information on using Selenium with Python, please refer to the official
+<a class="reference external" href="https://selenium-python.readthedocs.io/">Selenium documentation</a>.</p>
 </section>
 </section>
 </section>
