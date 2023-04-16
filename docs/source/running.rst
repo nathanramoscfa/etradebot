@@ -13,7 +13,7 @@ Ensure you have completed the following steps before running your strategy:
     2. :ref:`Configure <selenium>` Selenium to work with your browser.
     3. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
     4. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
-    5. :ref:`Configure <configure>` batch files to run ETradeBot.
+    5. :ref:`Configure <batch>` a batch file to run ETradeBot.
 
 ETradeBot can run in one of two modes:
 
@@ -23,7 +23,9 @@ ETradeBot can run in one of two modes:
 Preview Mode
 ------------
 
-You can use preview mode to test the program's responses before going live. The program will access your account, obtain market data, and submit preview trades through the E\-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.
+You can use preview mode to test the program's responses before going live. The program will access your account,
+obtain market data, and submit preview trades through the E\-Trade API. The console output will either display the
+strategy with preview trades, or, return an error with traceback.
 
 1. Verify the batch file:
 
@@ -33,7 +35,8 @@ You can use preview mode to test the program's responses before going live. The 
 
             set PREVIEW=True
 
-    * Ensure the name of your strategy in ``run_main.bat`` matches the name of your strategy file in the ``strategies`` directory without the ``.py`` extension:
+    * Ensure the name of your strategy in ``run_main.bat`` matches the name of your strategy file in the ``strategies``
+      directory without the ``.py`` extension:
 
         .. code-block:: bat
 
@@ -72,7 +75,8 @@ You can use preview mode to test the program's responses before going live. The 
     * The bot will automatically generate preview trades based on your strategy.
     * You can monitor the bot's activity through the console output.
     * The bot will save the output and events of the bot to a log file within the ``logs`` directory.
-    * If you encounter any errors or issues, refer to the console output and the :ref:`troubleshooting <troubleshooting>` section for more information.
+    * If you encounter any errors or issues, refer to the console output and the
+      :ref:`troubleshooting <troubleshooting>` section for more information.
 
 .. image:: _static/preview_trades.gif
    :alt: Preview Trades
@@ -88,7 +92,8 @@ Live Trading Mode
 
             set PREVIEW=False
 
-    * Ensure the name of your strategy in ``run_main.bat`` matches the name of your strategy file in the ``strategies`` directory without the ``.py`` extension:
+    * Ensure the name of your strategy in ``run_main.bat`` matches the name of your strategy file in the ``strategies``
+      directory without the ``.py`` extension:
 
         .. code-block:: bat
 
@@ -99,7 +104,8 @@ Live Trading Mode
     * The bot will automatically execute trades based on your strategy.
     * You can monitor the bot's activity through the console output.
     * The bot will save the output and events of the bot to a log file within the ``logs`` directory.
-    * If you encounter any errors or issues, refer to the console output and the :ref:`troubleshooting <troubleshooting>` section for more information.
+    * If you encounter any errors or issues, refer to the console output and the
+      :ref:`troubleshooting <troubleshooting>` section for more information.
 
 .. image:: _static/execute_trades.gif
    :alt: Execute Trades
