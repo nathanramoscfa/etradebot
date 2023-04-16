@@ -7,19 +7,25 @@ Scheduling
 Running your strategy
 =====================
 
-You can schedule ``main.py`` to run automatically. However, ETradeBot in live trading mode will only run if the New York Stock Exchange (NYSE) is open. The program will check if the NYSE is open and halt if it is closed. This is intended to prevent E-Trade server errors when submitting trades because server errors are highly likely to occur when the market is closed.
+You can schedule ``main.py`` to run automatically. However, ETradeBot in live trading mode will only run if the New
+York Stock Exchange (NYSE) is open. The program will check if the NYSE is open and halt if it is closed. This is
+intended to prevent E-Trade server errors when submitting trades because server errors are highly likely to occur when
+the market is closed.
 
-The following is rough guide to scheduling ETradeBot to run automatically. Refer to the documentation for each method before using:
+The following is rough guide to scheduling ETradeBot to run automatically. Refer to the documentation for each method
+before using:
 
 * `Windows Task Scheduler <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_
+* `Microsoft Azure <https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer>`_
 * `Google Cloud <https://cloud.google.com/scheduler/docs/quickstart>`_
 * `Amazon Web Services <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html>`_
-* `Microsoft Azure <https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer>`_
 
 Run Locally: Windows Task Scheduler
 -----------------------------------
 
-This method allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The easiest way to configure the task is to use a batch file.
+This method allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler
+run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The
+easiest way to configure the task is to use a batch file.
 
 Note that the task scheduler will only run the task if the following conditions are true:
 
@@ -27,14 +33,18 @@ Note that the task scheduler will only run the task if the following conditions 
 2. The computer must be turned on and the user must be logged in.
 3. The computer must be connected to the internet.
 
-If these conditions are not true, the task will not run and ETradeBot will not be able to submit trades. The task will not run if the computer is turned off or in sleep mode where sign-in is required.
+If these conditions are not true, the task will not run and ETradeBot will not be able to submit trades. The task will
+not run if the computer is turned off or in sleep mode where sign-in is required.
 
 Option 1: Configuring the Task Scheduler with a Batch File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_ for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.
+Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_
+for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are
+using a different operating system, package distribution, or Python version, you may have to modify the commands.
 
-1. Open a text editor like Notepad and copy and paste the following commands, replacing the paths with the correct paths on your system:
+1. Open a text editor like Notepad and copy and paste the following commands, replacing the paths with the correct
+   paths on your system:
 
     .. code-block:: bash
 
@@ -68,14 +78,18 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
     Note to:
 
     * Replace ``CONDA_PATH`` with the path to your conda installation.
-    * Replace ``CONDA_ENV`` with the name of your conda environment. If you named your conda environment ``etradebot``, then you do not need to change this.
+    * Replace ``CONDA_ENV`` with the name of your conda environment. If you named your conda environment ``etradebot``,
+      then you do not need to change this.
     * Change ``PREVIEW`` to ``False`` if you want to run ETradeBot in live trading mode.
     * Replace ``C:\Users\User\etradebot`` with the path to the etradebot root directory.
 
-2. Save the file as ``main_run.bat``, in the etradebot root directory. This will be the file that the task scheduler will run.
-3. Open Windows Task Scheduler and click on "Create Task" in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.
+2. Save the file as ``main_run.bat``, in the etradebot root directory. This will be the file that the task scheduler
+   will run.
+3. Open Windows Task Scheduler and click on "Create Task" in the right-hand pane. If you are prompted to select a user,
+   select the user that you want to run the task as.
 4. Give the task a name (e.g., "etradebot") and description (e.g., "Run etradebot") on the "General" tab.
-5. In the "Security options" section, select the options, "Run only when user is logged on" and "Run with highest privileges".
+5. In the "Security options" section, select the options, "Run only when user is logged on" and "Run with highest
+   privileges".
 6. In the "Triggers" tab, click "New" to add a new trigger.
 
     * Choose a frequency from the list: One time, Daily, Weekly, Monthly.
@@ -86,7 +100,8 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 7. In the "Actions" tab, click "New" to add a new action.
 
     * In the "Action" dropdown, select "Start a program".
-    * In the "Program/script" field, enter the full path to the Python executable (e.g., ``"C:\Users\User\etradebot\run_main.bat"``).
+    * In the "Program/script" field, enter the full path to the Python executable
+      (e.g., ``"C:\Users\User\etradebot\run_main.bat"``).
     * Click "OK" to save the action.
 
 8. In the "Conditions" tab, "Power" section, select all of the options:
@@ -100,11 +115,15 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 Option 2: Configuring the Task Scheduler Manually
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_ for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, you may have to have use a different method compatible with your system.
+Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page>`_
+for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are
+using a different operating system, you may have to have use a different method compatible with your system.
 
-1. Open the Task Scheduler and click on "Create Task" in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.
+1. Open the Task Scheduler and click on "Create Task" in the right-hand pane. If you are prompted to select a user,
+   select the user that you want to run the task as.
 2. Give the task a name (e.g., "etradebot") and description (e.g., "Run etradebot") on the "General" tab.
-3. In the "Security options" section, select the options, "Run only when user is logged on" and "Run with highest privileges".
+3. In the "Security options" section, select the options, "Run only when user is logged on" and "Run with highest
+   privileges".
 4. In the "Triggers" tab, click "New" to add a new trigger.
 
     * Choose a frequency from the list: One time, Daily, Weekly, Monthly.
@@ -115,7 +134,8 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 5. In the "Actions" tab, click "New" to add a new action.
 
     * In the "Action" dropdown, select "Start a program".
-    * In the "Program/script" field, enter the full path to the Python executable (e.g., ``C:\Users\User\anaconda3\envs\etradebot\python.exe``).
+    * In the "Program/script" field, enter the full path to the Python executable
+      (e.g., ``C:\Users\User\anaconda3\envs\etradebot\python.exe``).
     * In the "Add arguments" field, enter the full path to the ``main.py`` file (e.g., ``main.py``).
     * In the "Start in" field, enter the full path to the etradebot root directory (e.g., ``C:\Users\User\etradebot``).
     * Click "OK" to save the action.
@@ -128,14 +148,23 @@ Refer to the `Windows Task Scheduler documentation <https://docs.microsoft.com/e
 
 7. Click "OK" to save the task.
 
-Cloud Method:
--------------
+Run on the Cloud: Cloud Services
+--------------------------------
 
-Running etradebot on a cloud platform is a great way to run etradebot 24/7 without having to worry about your computer being on. There are many cloud platforms that you can use to run etradebot, including:
+Running ETradeBot on a cloud platform is a great way to run the bot 24/7 without having to worry about your computer
+being on. Methods for running ETradeBot on the cloud include:
 
-1. Google Cloud Platform: Refer to the `Google Cloud documentation <https://cloud.google.com/scheduler/docs/quickstart>`_ for more information.
-2. Amazon Web Services: Refer to the `Amazon Web Services documentation <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html>`_ for more information.
-3. Microsoft Azure: Refer to the `Microsoft Azure documentation <https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer>`_ for more information.
+1. Create a virtual machine on a cloud platform and run ETradeBot on the virtual machine.
+2. Use a cloud platform's task scheduler to run ETradeBot as a script on a set schedule.
+
+The steps for running ETradeBot using a virtual machine are the same as running ETradeBot on your local machine. The
+steps for running ETradeBot using a cloud platform's task scheduler are beyond the scope of this documentation but you
+can find more information in the links below. There are many cloud platforms that you can use to run ETradeBot,
+including:
+
+1. Microsoft Azure: Refer to the `Microsoft Azure documentation <https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer>`_ for more information.
+2. Google Cloud Platform: Refer to the `Google Cloud documentation <https://cloud.google.com/scheduler/docs/quickstart>`_ for more information.
+3. Amazon Web Services: Refer to the `Amazon Web Services documentation <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html>`_ for more information.
 4. IBM Cloud: Refer to the `IBM Cloud documentation <https://cloud.ibm.com/docs/Functions?topic=Functions-scheduler>`_ for more information.
 5. Oracle Cloud: Refer to the `Oracle Cloud documentation <https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionscreatingfunction.htm>`_ for more information.
 6. Alibaba Cloud: Refer to the `Alibaba Cloud documentation <https://www.alibabacloud.com/help/doc-detail/140626.htm>`_ for more information.
