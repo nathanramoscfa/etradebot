@@ -20,7 +20,7 @@ Refer to the [ETradeBot documentation](https://etradebot.readthedocs.io/en/lates
 3. [Configure](https://etradebot.readthedocs.io/en/latest/selenium.html) Selenium to work with your browser.
 4. [Obtain](https://etradebot.readthedocs.io/en/latest/credentials.html) and securely store your E-Trade credentials.
 5. [Insert](https://etradebot.readthedocs.io/en/latest/strategies.html) your strategy into the strategies directory as a .py file.
-6. [Configure](https://etradebot.readthedocs.io/en/latest/configure.html) a batch file to run ETradeBot.
+6. [Configure](https://etradebot.readthedocs.io/en/latest/batch.html) a batch file to run ETradeBot.
 7. [Run](https://etradebot.readthedocs.io/en/latest/running.html) ETradeBot in either preview or live trading mode.
 8. [Schedule](https://etradebot.readthedocs.io/en/latest/scheduling.html) ETradeBot to run automatically.
 
