@@ -47,12 +47,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bloomberg.html">Bloomberg SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configure.html">Configure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batch.html">Batch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul class="current">
@@ -64,7 +64,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#option-2-configuring-the-task-scheduler-manually">Option 2: Configuring the Task Scheduler Manually</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#cloud-method">Cloud Method:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-on-the-cloud-cloud-services">Run on the Cloud: Cloud Services</a></li>
 </ul>
 </li>
 </ul>
@@ -121,29 +121,39 @@
 <span id="id1"></span><h1>Scheduling<a class="headerlink" href="#scheduling" title="Permalink to this heading"></a></h1>
 <section id="running-your-strategy">
 <h2>Running your strategy<a class="headerlink" href="#running-your-strategy" title="Permalink to this heading"></a></h2>
-<p>You can schedule <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to run automatically. However, ETradeBot in live trading mode will only run if the New York Stock Exchange (NYSE) is open. The program will check if the NYSE is open and halt if it is closed. This is intended to prevent E-Trade server errors when submitting trades because server errors are highly likely to occur when the market is closed.</p>
-<p>The following is rough guide to scheduling ETradeBot to run automatically. Refer to the documentation for each method before using:</p>
+<p>You can schedule <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to run automatically. However, ETradeBot in live trading mode will only run if the New
+York Stock Exchange (NYSE) is open. The program will check if the NYSE is open and halt if it is closed. This is
+intended to prevent E-Trade server errors when submitting trades because server errors are highly likely to occur when
+the market is closed.</p>
+<p>The following is rough guide to scheduling ETradeBot to run automatically. Refer to the documentation for each method
+before using:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer">Microsoft Azure</a></p></li>
 <li><p><a class="reference external" href="https://cloud.google.com/scheduler/docs/quickstart">Google Cloud</a></p></li>
 <li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">Amazon Web Services</a></p></li>
-<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer">Microsoft Azure</a></p></li>
 </ul>
 <section id="run-locally-windows-task-scheduler">
 <h3>Run Locally: Windows Task Scheduler<a class="headerlink" href="#run-locally-windows-task-scheduler" title="Permalink to this heading"></a></h3>
-<p>This method allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The easiest way to configure the task is to use a batch file.</p>
+<p>This method allows you to schedule main.py to run using the Windows Task Scheduler. You can have Windows Task Scheduler
+run a batch file (.bat) with all the commands or you can manually configure the task in Windows Task Scheduler. The
+easiest way to configure the task is to use a batch file.</p>
 <p>Note that the task scheduler will only run the task if the following conditions are true:</p>
 <ol class="arabic simple">
 <li><p>The user setting up the task must have administrative privileges.</p></li>
 <li><p>The computer must be turned on and the user must be logged in.</p></li>
 <li><p>The computer must be connected to the internet.</p></li>
 </ol>
-<p>If these conditions are not true, the task will not run and ETradeBot will not be able to submit trades. The task will not run if the computer is turned off or in sleep mode where sign-in is required.</p>
+<p>If these conditions are not true, the task will not run and ETradeBot will not be able to submit trades. The task will
+not run if the computer is turned off or in sleep mode where sign-in is required.</p>
 <section id="option-1-configuring-the-task-scheduler-with-a-batch-file">
 <h4>Option 1: Configuring the Task Scheduler with a Batch File<a class="headerlink" href="#option-1-configuring-the-task-scheduler-with-a-batch-file" title="Permalink to this heading"></a></h4>
-<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a> for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, package distribution, or Python version, you may have to modify the commands.</p>
+<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a>
+for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are
+using a different operating system, package distribution, or Python version, you may have to modify the commands.</p>
 <ol class="arabic">
-<li><p>Open a text editor like Notepad and copy and paste the following commands, replacing the paths with the correct paths on your system:</p>
+<li><p>Open a text editor like Notepad and copy and paste the following commands, replacing the paths with the correct
+paths on your system:</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@echo<span class="w"> </span>off
 rem<span class="w"> </span>Run<span class="w"> </span>Python<span class="w"> </span>script<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>given<span class="w"> </span>conda<span class="w"> </span>environment<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>batch<span class="w"> </span>file.
@@ -176,16 +186,20 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 <p>Note to:</p>
 <ul class="simple">
 <li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_PATH</span></code> with the path to your conda installation.</p></li>
-<li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_ENV</span></code> with the name of your conda environment. If you named your conda environment <code class="docutils literal notranslate"><span class="pre">etradebot</span></code>, then you do not need to change this.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">CONDA_ENV</span></code> with the name of your conda environment. If you named your conda environment <code class="docutils literal notranslate"><span class="pre">etradebot</span></code>,
+then you do not need to change this.</p></li>
 <li><p>Change <code class="docutils literal notranslate"><span class="pre">PREVIEW</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code> if you want to run ETradeBot in live trading mode.</p></li>
 <li><p>Replace <code class="docutils literal notranslate"><span class="pre">C:\Users\User\etradebot</span></code> with the path to the etradebot root directory.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Save the file as <code class="docutils literal notranslate"><span class="pre">main_run.bat</span></code>, in the etradebot root directory. This will be the file that the task scheduler will run.</p></li>
-<li><p>Open Windows Task Scheduler and click on “Create Task” in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.</p></li>
+<li><p>Save the file as <code class="docutils literal notranslate"><span class="pre">main_run.bat</span></code>, in the etradebot root directory. This will be the file that the task scheduler
+will run.</p></li>
+<li><p>Open Windows Task Scheduler and click on “Create Task” in the right-hand pane. If you are prompted to select a user,
+select the user that you want to run the task as.</p></li>
 <li><p>Give the task a name (e.g., “etradebot”) and description (e.g., “Run etradebot”) on the “General” tab.</p></li>
-<li><p>In the “Security options” section, select the options, “Run only when user is logged on” and “Run with highest privileges”.</p></li>
+<li><p>In the “Security options” section, select the options, “Run only when user is logged on” and “Run with highest
+privileges”.</p></li>
 <li><p>In the “Triggers” tab, click “New” to add a new trigger.</p>
 <blockquote>
 <div><ul class="simple">
@@ -200,7 +214,8 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 <blockquote>
 <div><ul class="simple">
 <li><p>In the “Action” dropdown, select “Start a program”.</p></li>
-<li><p>In the “Program/script” field, enter the full path to the Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;C:\Users\User\etradebot\run_main.bat&quot;</span></code>).</p></li>
+<li><p>In the “Program/script” field, enter the full path to the Python executable
+(e.g., <code class="docutils literal notranslate"><span class="pre">&quot;C:\Users\User\etradebot\run_main.bat&quot;</span></code>).</p></li>
 <li><p>Click “OK” to save the action.</p></li>
 </ul>
 </div></blockquote>
@@ -219,11 +234,15 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 </section>
 <section id="option-2-configuring-the-task-scheduler-manually">
 <h4>Option 2: Configuring the Task Scheduler Manually<a class="headerlink" href="#option-2-configuring-the-task-scheduler-manually" title="Permalink to this heading"></a></h4>
-<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a> for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are using a different operating system, you may have to have use a different method compatible with your system.</p>
+<p>Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page">Windows Task Scheduler documentation</a>
+for more information. The following configuration was tested on Windows 11 using Anaconda and Python 3.11. If you are
+using a different operating system, you may have to have use a different method compatible with your system.</p>
 <ol class="arabic">
-<li><p>Open the Task Scheduler and click on “Create Task” in the right-hand pane. If you are prompted to select a user, select the user that you want to run the task as.</p></li>
+<li><p>Open the Task Scheduler and click on “Create Task” in the right-hand pane. If you are prompted to select a user,
+select the user that you want to run the task as.</p></li>
 <li><p>Give the task a name (e.g., “etradebot”) and description (e.g., “Run etradebot”) on the “General” tab.</p></li>
-<li><p>In the “Security options” section, select the options, “Run only when user is logged on” and “Run with highest privileges”.</p></li>
+<li><p>In the “Security options” section, select the options, “Run only when user is logged on” and “Run with highest
+privileges”.</p></li>
 <li><p>In the “Triggers” tab, click “New” to add a new trigger.</p>
 <blockquote>
 <div><ul class="simple">
@@ -238,7 +257,8 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 <blockquote>
 <div><ul class="simple">
 <li><p>In the “Action” dropdown, select “Start a program”.</p></li>
-<li><p>In the “Program/script” field, enter the full path to the Python executable (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\anaconda3\envs\etradebot\python.exe</span></code>).</p></li>
+<li><p>In the “Program/script” field, enter the full path to the Python executable
+(e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\anaconda3\envs\etradebot\python.exe</span></code>).</p></li>
 <li><p>In the “Add arguments” field, enter the full path to the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file (e.g., <code class="docutils literal notranslate"><span class="pre">main.py</span></code>).</p></li>
 <li><p>In the “Start in” field, enter the full path to the etradebot root directory (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Users\User\etradebot</span></code>).</p></li>
 <li><p>Click “OK” to save the action.</p></li>
@@ -258,13 +278,22 @@ call<span class="w"> </span>conda<span class="w"> </span>deactivate
 </ol>
 </section>
 </section>
-<section id="cloud-method">
-<h3>Cloud Method:<a class="headerlink" href="#cloud-method" title="Permalink to this heading"></a></h3>
-<p>Running etradebot on a cloud platform is a great way to run etradebot 24/7 without having to worry about your computer being on. There are many cloud platforms that you can use to run etradebot, including:</p>
+<section id="run-on-the-cloud-cloud-services">
+<h3>Run on the Cloud: Cloud Services<a class="headerlink" href="#run-on-the-cloud-cloud-services" title="Permalink to this heading"></a></h3>
+<p>Running ETradeBot on a cloud platform is a great way to run the bot 24/7 without having to worry about your computer
+being on. Methods for running ETradeBot on the cloud include:</p>
 <ol class="arabic simple">
+<li><p>Create a virtual machine on a cloud platform and run ETradeBot on the virtual machine.</p></li>
+<li><p>Use a cloud platform’s task scheduler to run ETradeBot as a script on a set schedule.</p></li>
+</ol>
+<p>The steps for running ETradeBot using a virtual machine are the same as running ETradeBot on your local machine. The
+steps for running ETradeBot using a cloud platform’s task scheduler are beyond the scope of this documentation but you
+can find more information in the links below. There are many cloud platforms that you can use to run ETradeBot,
+including:</p>
+<ol class="arabic simple">
+<li><p>Microsoft Azure: Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer">Microsoft Azure documentation</a> for more information.</p></li>
 <li><p>Google Cloud Platform: Refer to the <a class="reference external" href="https://cloud.google.com/scheduler/docs/quickstart">Google Cloud documentation</a> for more information.</p></li>
 <li><p>Amazon Web Services: Refer to the <a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">Amazon Web Services documentation</a> for more information.</p></li>
-<li><p>Microsoft Azure: Refer to the <a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer">Microsoft Azure documentation</a> for more information.</p></li>
 <li><p>IBM Cloud: Refer to the <a class="reference external" href="https://cloud.ibm.com/docs/Functions?topic=Functions-scheduler">IBM Cloud documentation</a> for more information.</p></li>
 <li><p>Oracle Cloud: Refer to the <a class="reference external" href="https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionscreatingfunction.htm">Oracle Cloud documentation</a> for more information.</p></li>
 <li><p>Alibaba Cloud: Refer to the <a class="reference external" href="https://www.alibabacloud.com/help/doc-detail/140626.htm">Alibaba Cloud documentation</a> for more information.</p></li>
