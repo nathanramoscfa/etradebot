@@ -7,20 +7,21 @@ Environment
 Configuring environment
 =======================
 
-These instructions assume your computer is brand new and has no Python or other development tools installed. Feel free to skip any steps that you have already completed.
+These instructions assume your computer is brand new and has no Python or other development tools installed. Feel free
+to skip any steps that you have already completed.
 
 Using Anaconda
 --------------
 
 1. Install Anaconda Navigator:
 
-    * Go to the Anaconda `download page <https://www.anaconda.com/products/distribution>`_.
+    * Go to the `Anaconda download page <https://www.anaconda.com/products/distribution>`_.
     * Download the version of Anaconda Navigator that corresponds to your operating system.
     * Follow the installation instructions for your operating system.
 
 2. Install Git:
 
-    * Go to the Git `download page <https://git-scm.com/downloads>`_.
+    * Go to the `Git download page <https://git-scm.com/downloads>`_.
     * Download the version of Git that corresponds to your operating system.
     * Follow the installation instructions for your operating system.
 
@@ -66,7 +67,8 @@ Using Anaconda
 
 7. Install dependencies:
 
-    * With the virtual environment activated, run the following command to install the dependencies from the ``requirements.txt`` file:
+    * With the virtual environment activated, run the following command to install the dependencies from the
+      ``requirements.txt`` file:
 
     .. code-block:: bash
 
@@ -112,7 +114,8 @@ Using venv
 
 5. Install dependencies:
 
-    * With the virtual environment activated, run the following command to install the dependencies from the ``requirements.txt`` file:
+    * With the virtual environment activated, run the following command to install the dependencies from the
+      ``requirements.txt`` file:
 
     .. code-block:: bash
 

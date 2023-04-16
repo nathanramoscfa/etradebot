@@ -1,16 +1,18 @@
-.. _configure:
+.. _batch:
 
-#########
-Configure
-#########
+#####
+Batch
+#####
 
 Configuring Batch File
 ======================
 
-ETradeBot can be run from a batch file. This is useful for running the program on a schedule. Here are the steps to configure a batch file:
+ETradeBot can be run from a batch file. This is useful for running the program on a schedule. Here are the steps to
+configure a batch file:
 
 1. Open a text editor and create a new file in the ``etradebot`` root directory named ``run_main.bat``.
-2. Copy and paste the following commands into the file while modifying the user-defined variables (shown in bullet points) to match your setup:
+2. Copy and paste the following commands into the file while modifying the user-defined variables (shown in bullet
+   points) to match your setup:
 
     * ``CONDA_PATH``: The path to your conda installation.
     * ``ETRADEBOT_PATH``: The path to your ``etradebot`` root directory.

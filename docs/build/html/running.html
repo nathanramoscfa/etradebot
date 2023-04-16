@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Scheduling" href="scheduling.html" />
-    <link rel="prev" title="Configure" href="configure.html" /> 
+    <link rel="prev" title="Batch" href="batch.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,12 +47,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bloomberg.html">Bloomberg SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configure.html">Configure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batch.html">Batch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul class="current">
@@ -124,7 +123,7 @@
 <li><p><a class="reference internal" href="selenium.html#selenium"><span class="std std-ref">Configure</span></a> Selenium to work with your browser.</p></li>
 <li><p><a class="reference internal" href="credentials.html#credentials"><span class="std std-ref">Obtain</span></a> and securely store your E-Trade credentials.</p></li>
 <li><p><a class="reference internal" href="strategies.html#strategies"><span class="std std-ref">Insert</span></a> your strategy into the strategies directory as a .py file.</p></li>
-<li><p><a class="reference internal" href="configure.html#configure"><span class="std std-ref">Configure</span></a> batch files to run ETradeBot.</p></li>
+<li><p><a class="reference internal" href="batch.html#batch"><span class="std std-ref">Configure</span></a> a batch file to run ETradeBot.</p></li>
 </ol>
 </div></blockquote>
 <p>ETradeBot can run in one of two modes:</p>
@@ -136,7 +135,9 @@
 </div></blockquote>
 <section id="preview-mode">
 <h3>Preview Mode<a class="headerlink" href="#preview-mode" title="Permalink to this heading"></a></h3>
-<p>You can use preview mode to test the program’s responses before going live. The program will access your account, obtain market data, and submit preview trades through the E-Trade API. The console output will either display the strategy with preview trades, or, return an error with traceback.</p>
+<p>You can use preview mode to test the program’s responses before going live. The program will access your account,
+obtain market data, and submit preview trades through the E-Trade API. The console output will either display the
+strategy with preview trades, or, return an error with traceback.</p>
 <ol class="arabic">
 <li><p>Verify the batch file:</p>
 <blockquote>
@@ -148,7 +149,8 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Ensure the name of your strategy in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> matches the name of your strategy file in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code> directory without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
+<li><p>Ensure the name of your strategy in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> matches the name of your strategy file in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code>
+directory without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
 <blockquote>
 <div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">STRATEGY_NAME</span><span class="p">=</span>example_strategy
 </pre></div>
@@ -196,7 +198,8 @@
 <li><p>The bot will automatically generate preview trades based on your strategy.</p></li>
 <li><p>You can monitor the bot’s activity through the console output.</p></li>
 <li><p>The bot will save the output and events of the bot to a log file within the <code class="docutils literal notranslate"><span class="pre">logs</span></code> directory.</p></li>
-<li><p>If you encounter any errors or issues, refer to the console output and the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section for more information.</p></li>
+<li><p>If you encounter any errors or issues, refer to the console output and the
+<a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section for more information.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -216,7 +219,8 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Ensure the name of your strategy in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> matches the name of your strategy file in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code> directory without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
+<li><p>Ensure the name of your strategy in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> matches the name of your strategy file in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code>
+directory without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
 <blockquote>
 <div><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">STRATEGY_NAME</span><span class="p">=</span>example_strategy
 </pre></div>
@@ -232,7 +236,8 @@
 <li><p>The bot will automatically execute trades based on your strategy.</p></li>
 <li><p>You can monitor the bot’s activity through the console output.</p></li>
 <li><p>The bot will save the output and events of the bot to a log file within the <code class="docutils literal notranslate"><span class="pre">logs</span></code> directory.</p></li>
-<li><p>If you encounter any errors or issues, refer to the console output and the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section for more information.</p></li>
+<li><p>If you encounter any errors or issues, refer to the console output and the
+<a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting</span></a> section for more information.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -246,7 +251,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="configure.html" class="btn btn-neutral float-left" title="Configure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="batch.html" class="btn btn-neutral float-left" title="Batch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="scheduling.html" class="btn btn-neutral float-right" title="Scheduling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

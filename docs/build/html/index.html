@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bloomberg SDK" href="bloomberg.html" /> 
+    <link rel="next" title="Data APIs" href="data.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,12 +46,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bloomberg.html">Bloomberg SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configure.html">Configure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batch.html">Batch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul>
@@ -107,7 +107,10 @@
              
   <section id="etradebot">
 <h1>ETradeBot<a class="headerlink" href="#etradebot" title="Permalink to this heading"></a></h1>
-<p>ETradeBot is an automated trading software written in Python for E-Trade accounts that allows users to execute trades based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. This project is not affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the terms of the <a class="reference external" href="https://etradebot.readthedocs.io/en/latest/disclaimer.html">disclaimer</a>.</p>
+<p>ETradeBot is an automated trading software written in Python for E-Trade accounts that allows users to execute trades
+based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. This
+project is not affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the terms
+of the <a class="reference external" href="https://etradebot.readthedocs.io/en/latest/disclaimer.html">disclaimer</a>.</p>
 <section id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
 <ul class="simple">
@@ -118,17 +121,18 @@
 <li><p>Manages portfolio: tracks positions, balance, and performance</p></li>
 <li><p>Trades: common stocks and ETFs</p></li>
 </ul>
-<p>The Bloomberg API requires a Bloomberg Terminal subscription, however, the Yahoo Finance API is free to use. ETradeBot will automatically use the Yahoo Finance API if the Bloomberg API is not available.</p>
+<p>The Bloomberg API requires a Bloomberg Terminal subscription, however, the Yahoo Finance API is free to use. ETradeBot
+will automatically use the Yahoo Finance API if the Bloomberg API is not available.</p>
 </section>
 <section id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p><a class="reference internal" href="bloomberg.html#bloomberg"><span class="std std-ref">Install</span></a> the Bloomberg SDK and C++ Build Tools.</p></li>
+<li><p><a class="reference internal" href="data.html#data"><span class="std std-ref">Install</span></a> the Bloomberg SDK and C++ Build Tools.</p></li>
 <li><p><a class="reference internal" href="environment.html#environment"><span class="std std-ref">Create</span></a> your Python environment and install ETradeBot.</p></li>
 <li><p><a class="reference internal" href="selenium.html#selenium"><span class="std std-ref">Configure</span></a> Selenium to work with your browser.</p></li>
 <li><p><a class="reference internal" href="credentials.html#credentials"><span class="std std-ref">Obtain</span></a> and securely store your E-Trade credentials.</p></li>
 <li><p><a class="reference internal" href="strategies.html#strategies"><span class="std std-ref">Insert</span></a> your strategy into the strategies directory as a .py file.</p></li>
-<li><p><a class="reference internal" href="configure.html#configure"><span class="std std-ref">Configure</span></a> a batch file to run ETradeBot.</p></li>
+<li><p><a class="reference internal" href="batch.html#batch"><span class="std std-ref">Configure</span></a> a batch file to run ETradeBot.</p></li>
 <li><p><a class="reference internal" href="running.html#running"><span class="std std-ref">Run</span></a> ETradeBot in either preview or live trading mode.</p></li>
 <li><p><a class="reference internal" href="scheduling.html#scheduling"><span class="std std-ref">Schedule</span></a> ETradeBot to run automatically.</p></li>
 </ol>
@@ -137,7 +141,8 @@
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <p>The following example shows ETradeBot being run in Anaconda Prompt:</p>
 <img alt="Execute Trades" src="_images/execute_trades.gif" />
-<p>Also see this example of ETradeBot being run within a <a class="reference external" href="https://github.com/nathanramoscfa/etradebot/blob/main/tests/test_etradebot.ipynb">jupyter notebook</a>.</p>
+<p>Also see this example of ETradeBot being run within a
+<a class="reference external" href="https://github.com/nathanramoscfa/etradebot/blob/main/tests/test_etradebot.ipynb">jupyter notebook</a>.</p>
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h2>
@@ -165,11 +170,19 @@
 </section>
 <section id="contributing">
 <h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading"></a></h2>
-<p>Contributions to ETradeBot are welcome! Please see the <a class="reference external" href="https://github.com/nathanramoscfa/etradebot/blob/main/CONTRIBUTING.md">contributing guidelines</a> for more information.</p>
+<p>Contributions to ETradeBot are welcome! Please see the
+<a class="reference external" href="https://github.com/nathanramoscfa/etradebot/blob/main/CONTRIBUTING.md">contributing guidelines</a> for more information.</p>
 </section>
 <section id="id1">
 <h2>Disclaimer<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
-<p>You must fully read, understand, and agree to the full disclaimer <a class="reference internal" href="disclaimer.html#disclaimer"><span class="std std-ref">here</span></a> before using ETradeBot. Please note that while the developer has taken care to ensure the quality and functionality of ETradeBot, there is no guarantee that the software is free from errors or bugs. The developer does not assume responsibility or liability for any damages or losses incurred as a result of using ETradeBot. Users of ETradeBot should use the software at their own risk and verify the accuracy and correctness of its output before making any investment decisions. By using ETradeBot, users agree to release the developer from any and all liability related to their use of the software. Users should read and understand all documentation and instructions provided before using ETradeBot. If you do not agree with any part of this disclaimer, do not use ETradeBot.</p>
+<p>You must fully read, understand, and agree to the full disclaimer <a class="reference internal" href="disclaimer.html#disclaimer"><span class="std std-ref">here</span></a> before using ETradeBot.
+Please note that while the developer has taken care to ensure the quality and functionality of ETradeBot, there is no
+guarantee that the software is free from errors or bugs. The developer does not assume responsibility or liability for
+any damages or losses incurred as a result of using ETradeBot. Users of ETradeBot should use the software at their own
+risk and verify the accuracy and correctness of its output before making any investment decisions. By using ETradeBot,
+users agree to release the developer from any and all liability related to their use of the software. Users should read
+and understand all documentation and instructions provided before using ETradeBot. If you do not agree with any part of
+this disclaimer, do not use ETradeBot.</p>
 </section>
 <section id="license">
 <h2>License<a class="headerlink" href="#license" title="Permalink to this heading"></a></h2>
@@ -180,8 +193,8 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bloomberg.html">Bloomberg SDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bloomberg.html#configuring-the-bloomberg-sdk">Configuring the Bloomberg SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data.html#about-data-apis">About Data APIs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a><ul>
@@ -200,8 +213,8 @@
 <li class="toctree-l2"><a class="reference internal" href="strategies.html#configuring-your-strategy">Configuring your strategy</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="configure.html">Configure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configure.html#configuring-batch-file">Configuring Batch File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batch.html">Batch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="batch.html#configuring-batch-file">Configuring Batch File</a></li>
 </ul>
 </li>
 </ul>
@@ -297,7 +310,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="bloomberg.html" class="btn btn-neutral float-right" title="Bloomberg SDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="data.html" class="btn btn-neutral float-right" title="Data APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
