@@ -119,9 +119,14 @@ steps to create and use your own strategy:</p>
 <li><p>Create your strategy file:</p>
 <blockquote>
 <div><ul class="simple">
+<li><p>Open the root directory of ETradeBot in your favorite Python IDE.</p></li>
 <li><p>In the <code class="docutils literal notranslate"><span class="pre">strategies</span></code> directory, create a new Python file for your strategy.</p></li>
+<li><p>The name of the file will be the name of your strategy. For example, if you name your file <code class="docutils literal notranslate"><span class="pre">my_strategy.py</span></code>,
+then your strategy will be called <code class="docutils literal notranslate"><span class="pre">my_strategy</span></code>. The name of your strategy file must be unique from any other
+strategy files in the <code class="docutils literal notranslate"><span class="pre">strategies</span></code> directory.</p></li>
 <li><p>Write your strategy in the form of a function which returns a pd.Series where the index is the ticker symbols and
-the values are the percent decimal portfolio weightings of each ticker.</p></li>
+the values are the percent decimal portfolio weightings of each ticker. Your strategy’s logic should be written
+in the function body and return a pd.Series with the ticker symbols and percent decimal portfolio weightings.</p></li>
 <li><p>Your strategy must return a pd.Series like below:</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_strategy</span><span class="p">():</span>
