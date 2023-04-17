@@ -65,15 +65,6 @@ Using Anaconda
     * This will list all of the environments that are currently available.
     * The environment you created should be listed.
 
-7. Install dependencies:
-
-    * With the virtual environment activated, run the following command to install the dependencies from the
-      ``requirements.txt`` file:
-
-    .. code-block:: bash
-
-        pip install -r requirements.txt
-
 Using venv
 ----------
 
