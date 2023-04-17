@@ -47,6 +47,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
@@ -140,18 +141,18 @@ used as a trading strategy.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Set the strategy name in <code class="docutils literal notranslate"><span class="pre">main.py</span></code>:</p>
+<li><p>Set the strategy name in <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> when configuring the <a class="reference internal" href="batch.html#batch"><span class="std std-ref">batch</span></a> file:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file, set the <code class="docutils literal notranslate"><span class="pre">strategy_name</span></code> variable to the name of your strategy file (without the .py
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">run_main.bat</span></code> file, set the <code class="docutils literal notranslate"><span class="pre">STRATEGY_NAME</span></code> variable to the name of your strategy file (without the .py
 extension).</p></li>
 <li><p>Example code:</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">strategy_name</span> <span class="o">=</span> <span class="s1">&#39;my_strategy&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">STRATEGY_NAME</span> <span class="o">=</span> <span class="s1">&#39;my_strategy&#39;</span> <span class="c1"># Set this to the name of your strategy file (without the .py extension).</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>By default, <code class="docutils literal notranslate"><span class="pre">strategy_name</span></code> is set to <code class="docutils literal notranslate"><span class="pre">example_strategy</span></code> which is only intended as a demonstration.</p></li>
+<li><p>By default, <code class="docutils literal notranslate"><span class="pre">strategy_name</span></code> in <code class="docutils literal notranslate"><span class="pre">main.py</span></code> is set to <code class="docutils literal notranslate"><span class="pre">example_strategy</span></code> which is only intended as a demonstration.</p></li>
 </ul>
 </div></blockquote>
 </li>
