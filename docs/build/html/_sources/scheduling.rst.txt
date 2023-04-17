@@ -154,8 +154,8 @@ Run on the Cloud: Cloud Services
 Running ETradeBot on a cloud platform is a great way to run the bot 24/7 without having to worry about your computer
 being on. Methods for running ETradeBot on the cloud include:
 
-1. Create a virtual machine on a cloud platform and run ETradeBot on the virtual machine.
-2. Use a cloud platform's task scheduler to run ETradeBot as a script on a set schedule.
+a. Create a virtual machine on a cloud platform and run ETradeBot on the virtual machine.
+b. Use a cloud platform's task scheduler to run ETradeBot as a script on a set schedule.
 
 The steps for running ETradeBot using a virtual machine are the same as running ETradeBot on your local machine. The
 steps for running ETradeBot using a cloud platform's task scheduler are beyond the scope of this documentation but you
