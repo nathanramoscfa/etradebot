@@ -17,7 +17,7 @@ configure a batch file:
     * ``CONDA_PATH``: The path to your conda installation.
     * ``ETRADEBOT_PATH``: The path to your ``etradebot`` root directory.
     * ``CONDA_ENV``: The name of your conda environment.
-    * ``STRATEGY_NAME``: The name of your strategy.
+    * ``STRATEGY_NAME``: The name of your strategy which should match its Python file in the `strategies` directory.
     * ``PREVIEW``: Set to ``True`` to run in preview mode, or ``False`` to run in live trading mode.
 
     .. code-block:: bat
