@@ -90,7 +90,7 @@ Obtaining credentials
 
         .. code-block:: bash
 
-            keyring set etrade cookie
+            keyring set etrade etrade_cookie
 
 6. Verify that your credentials are stored:
 
