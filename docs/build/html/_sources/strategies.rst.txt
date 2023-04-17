@@ -32,16 +32,16 @@ steps to create and use your own strategy:
       demonstration purposes only. The example strategy included in the ``strategies`` directory is not intended to be
       used as a trading strategy.
 
-2. Set the strategy name in ``main.py``:
+2. Set the strategy name in ``run_main.bat`` when configuring the :ref:`batch <batch>` file:
 
-    * In the ``main.py`` file, set the ``strategy_name`` variable to the name of your strategy file (without the .py
+    * In the ``run_main.bat`` file, set the ``STRATEGY_NAME`` variable to the name of your strategy file (without the .py
       extension).
     *   Example code:
 
     .. code-block:: python
 
-        strategy_name = 'my_strategy'
+        STRATEGY_NAME = 'my_strategy' # Set this to the name of your strategy file (without the .py extension).
 
-    * By default, ``strategy_name`` is set to ``example_strategy`` which is only intended as a demonstration.
+    * By default, ``strategy_name`` in ``main.py`` is set to ``example_strategy`` which is only intended as a demonstration.
 
 That's it! You should now have your strategy ready to use with ETradeBot.
