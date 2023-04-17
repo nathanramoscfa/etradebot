@@ -32,7 +32,7 @@ steps to create and use your own strategy:
       demonstration purposes only. The example strategy included in the ``strategies`` directory is not intended to be
       used as a trading strategy.
 
-2. Set the strategy name in ``run_main.bat`` when configuring the :ref:`batch <batch>` file:
+2. Set the strategy name in ``run_main.bat`` when configuring the :ref:`batch <batch>` file on the next page:
 
     * In the ``run_main.bat`` file, set the ``STRATEGY_NAME`` variable to the name of your strategy file (without the .py
       extension).
@@ -40,7 +40,7 @@ steps to create and use your own strategy:
 
     .. code-block:: python
 
-        STRATEGY_NAME = 'my_strategy' # Set this to the name of your strategy file (without the .py extension).
+        STRATEGY_NAME = 'my_strategy'
 
     * By default, ``strategy_name`` in ``main.py`` is set to ``example_strategy`` which is only intended as a demonstration.
 
