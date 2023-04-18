@@ -1,3 +1,4 @@
+import inspect
 import warnings
 import importlib
 
@@ -35,4 +36,9 @@ class Strategy:
             strategy_module = importlib.import_module("strategies." + self.strategy_name)
             strategy_function = strategy_module.strategy
 
-            return strategy_function(self.prints)
+            num_parameters = len(inspect.signature(strategy_function).parameters)
+
+            if num_parameters == 1:
+                return strategy_function(self.prints)
+            else:
+                return strategy_function()
