@@ -388,9 +388,7 @@ class Model(object):
         :return: posterior covariance matrix, posterior expected returns
         :rtype: tuple
         """
-        delta = self.market_implied_risk_aversion(market_prices, risk_free_rate)
-        print('Delta:')
-        print(round(delta, 2))
+        delta = self.market_implied_risk_aversion(market_prices, risk_free_rate, prints=prints)
 
         prior_returns = black_litterman.market_implied_prior_returns(
             market_caps.loc[symbols],

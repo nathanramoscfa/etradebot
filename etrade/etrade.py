@@ -1,5 +1,6 @@
 import xmltodict
 import pandas as pd
+import numpy as np
 from authentication.authentication import Authentication
 
 
@@ -35,6 +36,7 @@ class ETrade:
     :type sleep: int, optional
     :EtradeRef: https://apisb.etrade.com/docs/api/authorization/request_token.html
     """
+
     def __init__(
             self, consumer_key, consumer_secret, web_username, web_password, account_id, etrade_cookie,
             sandbox_key=None, sandbox_secret=None, dev=True, headless=True, browser='chrome', retries=3, sleep=30
@@ -231,12 +233,89 @@ class ETrade:
                   'daysGain', 'daysGainPct', 'totalGain', 'totalGainPct', 'pctOfPortfolio']
         portfolio_data = pd.DataFrame(account_portfolio['PortfolioResponse']['AccountPortfolio']['Position'])[fields]
         portfolio_data = portfolio_data.apply(pd.to_numeric, errors='ignore')
-        numeric_cols = portfolio_data.columns[portfolio_data.dtypes != 'object']
-        numeric_cols = numeric_cols.drop('pctOfPortfolio')
-        portfolio_data[numeric_cols] = portfolio_data[numeric_cols].round(4)
-        portfolio_data[['daysGainPct', 'totalGainPct', 'pctOfPortfolio']] = portfolio_data[
-                                                                                   ['daysGainPct', 'totalGainPct',
-                                                                                    'pctOfPortfolio']] / 100
         portfolio_data = portfolio_data.sort_values(by=sort_by, ascending=ascending).set_index('symbolDescription')
 
         return portfolio_data
+
+    @staticmethod
+    def compute_portfolio_performance(portfolio_data):
+        """
+        :description: Compute portfolio performance
+
+        :param portfolio_data: Portfolio data
+        :type portfolio_data: pandas.DataFrame
+        :return: Portfolio performance
+        :rtype: pandas.Series
+        """
+        dollar_cols = ['marketValue', 'totalCost', 'daysGain', 'totalGain']
+        percent_cols = ['daysGainPct', 'totalGainPct']
+
+        # Remove dollar sign and convert to float
+        for col in dollar_cols:
+            portfolio_data[col] = portfolio_data[col].replace(r'[\$,]', '', regex=True).astype(float)
+
+        # Convert percentage strings to float numbers
+        portfolio_data[percent_cols] = portfolio_data[percent_cols].replace('%', '', regex=True).astype('float')
+
+        # Compute sum for dollar_cols
+        dollar_sum = portfolio_data[dollar_cols].sum()
+
+        # Compute the performance metrics as defined
+        portfolio_performance = dollar_sum.copy()
+        portfolio_performance['daysGainPct'] = dollar_sum['daysGain'] / (
+                    dollar_sum['totalCost'] - dollar_sum['daysGain'])
+        portfolio_performance['totalGainPct'] = dollar_sum['totalGain'] / dollar_sum['totalCost']
+
+        # Now convert to string format
+        portfolio_performance[dollar_cols] = portfolio_performance[dollar_cols].apply(lambda x: '${:,.2f}'.format(x))
+        for col in percent_cols:
+            if col in portfolio_performance:
+                portfolio_performance[col] = '{:.2f}%'.format(
+                    portfolio_performance[col] * 100)  # multiplying by 100 to convert ratio to percentage
+
+        return portfolio_performance
+
+    @staticmethod
+    def format_portfolio_data(portfolio_data):
+        """
+        :description: Format portfolio data
+
+        :param portfolio_data: Portfolio data
+        :type portfolio_data: pandas.DataFrame
+        :return: Formatted portfolio data
+        :rtype: pandas.DataFrame
+        """
+        # Copy the original dataframe to avoid altering it
+        formatted_portfolio = portfolio_data.copy()
+
+        # Define the columns to be formatted
+        dollar_cols = ['costPerShare', 'marketValue', 'totalCost', 'daysGain', 'totalGain']
+        percent_cols = ['daysGainPct', 'totalGainPct', 'pctOfPortfolio']
+
+        # Apply formatting
+        for col in dollar_cols:
+            formatted_portfolio[col] = formatted_portfolio[col].apply(
+                lambda x: '${:,.2f}'.format(x) if isinstance(x, float) else x)
+
+        for col in percent_cols:
+            formatted_portfolio[col] = formatted_portfolio[col].apply(
+                lambda x: '{:.2f}%'.format(x) if isinstance(x, float) else x)
+
+        return formatted_portfolio
+
+    @staticmethod
+    def get_current_portfolio(portfolio_data):
+        """
+        :description: Get current portfolio
+
+        :param portfolio_data: Portfolio data
+        :type portfolio_data: pandas.DataFrame
+        :return: Current portfolio
+        :rtype: pandas.DataFrame
+        """
+
+        current_portfolio = portfolio_data[[
+            'pctOfPortfolio', 'quantity', 'positionType'
+        ]]
+
+        return current_portfolio
