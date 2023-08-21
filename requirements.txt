@@ -20,3 +20,5 @@ yahooquery==2.3.0
 yfinance==0.2.12
 git+https://github.com/PaulMest/tia.git#egg=tia
 git+https://github.com/nathanramoscfa/pyetrade.git#egg=pyetrade
+requests~=2.28.2
+setuptools~=64.0.2

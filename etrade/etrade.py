@@ -1,6 +1,5 @@
 import xmltodict
 import pandas as pd
-import numpy as np
 from authentication.authentication import Authentication
 
 

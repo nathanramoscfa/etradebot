@@ -139,7 +139,7 @@ class Authentication(object):
         :rtype: tuple
         """
         oauth = self.get_oauth()
-        verifier_code = oauth.get_verification_code(self.dev, self.headless, self.browser)
+        verifier_code = oauth.get_verification_code(self.dev, self.headless)
         tokens = self.get_access_tokens(oauth, verifier_code)
 
         return (

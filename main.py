@@ -4,10 +4,13 @@ import ast
 import pytz
 import keyring
 import logging
+import pandas as pd
 import pandas_market_calendars as mcal
 
 from bot import Bot
 from datetime import datetime, time
+from requests.exceptions import HTTPError
+from exceptions import HardToBorrowException
 
 
 # Retrieve credentials from keyring
@@ -72,7 +75,21 @@ def main(preview_mode=True, strategy_name='example_strategy'):
     market_open, reason = is_market_open()
     if bot.preview or (not bot.preview and market_open):
         logging.info('Starting bot...')
-        bot.run()
+        while True:
+            try:
+                bot.run()
+                break
+            except HTTPError as e:
+                print(e.response.text)
+            except HardToBorrowException as e:
+                ticker = e.ticker
+                bounds_df = pd.read_csv('data/bounds.csv')
+                if ticker not in bounds_df['TICKER'].values:
+                    new_row = {'TICKER': ticker, 'MIN': 0.0, 'MAX': 1.0}
+                    bounds_df = bounds_df.append(new_row, ignore_index=True)
+                    bounds_df.to_csv('data/bounds.csv', index=False)
+                    # continue the while loop to try running the bot again
+                    continue
         logging.info('Bot run complete.')
         print('\nBot run complete.')
     elif not bot.preview and not market_open:

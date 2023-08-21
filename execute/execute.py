@@ -3,6 +3,8 @@ import random
 import pandas as pd
 import xml.etree.ElementTree as ET
 from pypfopt import DiscreteAllocation
+from requests.exceptions import HTTPError
+from exceptions import HardToBorrowException
 
 
 class Execute:
@@ -274,14 +276,20 @@ class Execute:
                         current_shares.loc[ticker] = current_shares.loc[ticker] + net_quantity
                     except KeyError:
                         current_shares.loc[ticker] = net_quantity
-                    if preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='SELL_SHORT', quantity=net_quantity
-                        )
-                    elif not preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='SELL_SHORT', quantity=net_quantity, preview=False
-                        )
+                    try:
+                        if preview:
+                            trade_responses[ticker] = self.generate_trades(
+                                account_id_key, ticker, order_action='SELL_SHORT', quantity=net_quantity
+                            )
+                        elif not preview:
+                            trade_responses[ticker] = self.generate_trades(
+                                account_id_key, ticker, order_action='SELL_SHORT', quantity=net_quantity, preview=False
+                            )
+                    except HTTPError as e:
+                        if 'hard to borrow' in e.response.text.lower():
+                            raise HardToBorrowException(ticker)
+                        else:
+                            raise e
                     if prints:
                         print('SELL_SHORT {} shares of {}'.format(net_quantity, ticker))
                 elif net_quantity > 0:

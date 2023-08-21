@@ -14,8 +14,8 @@ tests/test_model_demo.ipynb
 tests/test_model_tia.ipynb
 tests/test_model_yahooquery.ipynb
 tests/test_strategy.ipynb
-tests/strategy_example.ipynb
-tests/test_etradebot_cape_strategy.ipynb
+dev/strategy_example.ipynb
+dev/test_etradebot_cape_strategy.ipynb
 bot_log*.txt
 run_main.bat
 ETradeBot Marketing Plan.docx
