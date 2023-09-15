@@ -1,5 +1,6 @@
 import time
 import pyetrade
+import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
 
 
@@ -33,6 +34,7 @@ class Authentication(object):
     :type retries: int, optional
     :EtradeRef: https://apisb.etrade.com/docs/api/authorization/request_token.html
     """
+
     def __init__(
             self, consumer_key, consumer_secret, web_username, web_password, account_id, etrade_cookie,
             sandbox_key=None, sandbox_secret=None, dev=True, headless=True, browser='chrome', retries=3, sleep=30
@@ -167,3 +169,31 @@ class Authentication(object):
                     print('ConnectionError: Trying again with chrome.')
                     time.sleep(self.sleep)
         raise Exception("Failed to connect to Etrade API after multiple retries")
+
+    @staticmethod
+    def get_account_id_key(accounts):
+        """
+        :description: Get account ID key
+
+        :param accounts: Accounts API object
+        :type accounts: pyetrade.ETradeAccounts
+        :return: Account ID key
+        :rtype: str
+        """
+        json_data = accounts.list_accounts()
+        account_data = json_data['AccountListResponse']['Accounts']['Account']
+
+        # Check if it's a single account (dictionary) or multiple accounts (list)
+        if isinstance(account_data, dict):
+            account_data = [account_data]
+
+        account_ids = [str(account['accountId']) for account in account_data]
+        account_id_keys = [str(account['accountIdKey']) for account in account_data]
+
+        s = pd.Series(data=account_id_keys, index=account_ids)
+
+        # Set index name and column name
+        s.index.name = 'accountId'
+        s.name = 'accountIdKey'
+
+        return s

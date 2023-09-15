@@ -2,6 +2,7 @@ import time
 import random
 import pandas as pd
 import xml.etree.ElementTree as ET
+from dicttoxml import dicttoxml
 from pypfopt import DiscreteAllocation
 from requests.exceptions import HTTPError
 from exceptions import HardToBorrowException
@@ -106,7 +107,7 @@ class Execute:
         if preview:
             trade_response = self.etrade.orders.preview_equity_order(
                 resp_format="xml",
-                accountId=account_id_key,
+                accountIdKey=account_id_key,
                 symbol=symbol,
                 orderAction=order_action,
                 clientOrderId=random.randint(1000000000, 9999999999),
@@ -118,7 +119,7 @@ class Execute:
         elif not preview:
             trade_response = self.etrade.orders.place_equity_order(
                 resp_format="xml",
-                accountId=account_id_key,
+                accountIdKey=account_id_key,
                 symbol=symbol,
                 orderAction=order_action,
                 clientOrderId=random.randint(1000000000, 9999999999),
@@ -311,7 +312,8 @@ class Execute:
 
         trade_responses_dict = {}
         for key, value in trade_responses.items():
-            root = ET.fromstring(value)
+            xml_str = dicttoxml(value).decode()
+            root = ET.fromstring(xml_str)
             data_dict = {}
             for element in root.iter():
                 if element.tag == root.tag:
