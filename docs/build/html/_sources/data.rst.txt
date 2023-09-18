@@ -15,7 +15,7 @@ financial data with ETradeBot:
 
 EtradeBot uses the `Yahooquery <https://yahooquery.dpguthrie.com/>`_ library by default. If you have a Bloomberg
 Terminal subscription, you can follow the instructions below to setup the Bloomberg API to work with ETradeBot.
-Otherwise you can skip to the `Environment Setup <#environment-setup>`_ section.
+Otherwise you can skip to the :ref:`Environment Setup <environment>` section.
 
 Installing the Bloomberg SDK
 ----------------------------

@@ -139,7 +139,7 @@
 <dd class="field-even"><ul class="simple">
 <li><p><strong>symbols</strong> (<em>list</em>) – List of symbols</p></li>
 <li><p><strong>num_years</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of years to look back, default is 100</p></li>
-<li><p><strong>period</strong> (<em>str</em><em>, </em><em>optional</em>) – Period, default is ‘1y’. Choices include: ‘1d’, ‘5d’, ‘7d’, ‘60d’, ‘1mo’, ‘3mo’, ‘6mo’, ‘1y’, ‘2y’,
+<li><p><strong>period</strong> (<em>str</em><em>, </em><em>optional</em>) – Period, default is ‘None’. Choices include: ‘1d’, ‘5d’, ‘7d’, ‘60d’, ‘1mo’, ‘3mo’, ‘6mo’, ‘1y’, ‘2y’,
 ‘5y’, ‘10y’, ‘ytd’, ‘max’</p></li>
 <li><p><strong>api_source</strong> (<em>str</em><em>, </em><em>optional</em>) – API source, default is yahoo, other option is bloomberg</p></li>
 <li><p><strong>market_symbol</strong> (<em>str</em><em>, </em><em>optional</em>) – Market symbol, default is SPY</p></li>
@@ -220,8 +220,26 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="api.api.DataAPI.get_bloomberg_risk_free_rate">
-<span class="sig-name descname"><span class="pre">get_bloomberg_risk_free_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#api.api.DataAPI.get_bloomberg_risk_free_rate" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">get_bloomberg_risk_free_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'USGG10YR</span> <span class="pre">Index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#api.api.DataAPI.get_bloomberg_risk_free_rate" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Get risk-free rate from Bloomberg</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>symbol</strong> (<em>str</em><em>, </em><em>optional</em>) – Ticker, default is ‘USGG10YR Index’</p></li>
+<li><p><strong>percent</strong> (<em>int</em><em>, </em><em>optional</em>) – Percent, default is 100</p></li>
+<li><p><strong>decimals</strong> (<em>int</em><em>, </em><em>optional</em>) – Decimals, default is 4</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Risk free rate</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="api.api.DataAPI.get_historical_prices">
