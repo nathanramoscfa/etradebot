@@ -41,10 +41,11 @@ setup(
     extras_require={
         'bloomberg': [
             'blpapi==3.19.1',
-            'git+https://github.com/PaulMest/tia.git#egg=tia'
+            'tia'
         ]
     },
     dependency_links=[
-        'https://bcms.bloomberg.com/pip/simple/blpapi/'
+        'https://bcms.bloomberg.com/pip/simple/blpapi/',
+        'git+https://github.com/PaulMest/tia.git#egg=tia'
     ]
 )
