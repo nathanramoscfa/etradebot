@@ -31,13 +31,15 @@ will automatically use the Yahoo Finance API if the Bloomberg API is not availab
 Getting Started
 ===============
 
-1. :ref:`Install <data>` the Bloomberg SDK and C++ Build Tools.
-2. :ref:`Create <environment>` your Python environment and install ETradeBot.
-3. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
-4. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
-5. :ref:`Configure <batch>` a batch file to run ETradeBot.
-6. :ref:`Run <running>` ETradeBot in either preview or live trading mode.
-7. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
+1. :ref:`Create <environment>` your Python environment and install ETradeBot.
+2. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
+3. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
+4. :ref:`Configure <batch>` a batch file to run ETradeBot.
+5. :ref:`Run <running>` ETradeBot in either preview or live trading mode.
+6. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
+
+If you are using the Bloomberg API, you will need to :ref:`Install <data>` the Bloomberg SDK and C++ Build Tools.
+Otherwise, ETradeBot will automatically use the Yahoo Finance API.
 
 Example
 =======
