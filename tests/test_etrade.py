@@ -1,8 +1,8 @@
 import unittest
 import pandas as pd
-import tests.mock_responses as mock_responses
+import utils.mock_responses as mock_responses
 from etrade.etrade import ETrade
-from unittest.mock import patch, Mock, ANY, MagicMock
+from unittest.mock import patch, Mock
 
 
 @patch('etrade.etrade.Authentication.etrade_login')

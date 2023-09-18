@@ -12,6 +12,9 @@ based on custom trading strategies. ETradeBot is strategy-agnostic and will exec
 project is not affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the terms
 of the `disclaimer <https://etradebot.readthedocs.io/en/latest/disclaimer.html>`_.
 
+To learn more or discuss how ETradeBot can fit into your trading strategy, schedule a
+`FREE CONSULTATION <https://calendly.com/nrcapitalmanagement/30min>`_.
+
 Features
 ========
 
@@ -30,12 +33,11 @@ Getting Started
 
 1. :ref:`Install <data>` the Bloomberg SDK and C++ Build Tools.
 2. :ref:`Create <environment>` your Python environment and install ETradeBot.
-3. :ref:`Configure <selenium>` Selenium to work with your browser.
-4. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
-5. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
-6. :ref:`Configure <batch>` a batch file to run ETradeBot.
-7. :ref:`Run <running>` ETradeBot in either preview or live trading mode.
-8. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
+3. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
+4. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
+5. :ref:`Configure <batch>` a batch file to run ETradeBot.
+6. :ref:`Run <running>` ETradeBot in either preview or live trading mode.
+7. :ref:`Schedule <scheduling>` ETradeBot to run automatically.
 
 Example
 =======
@@ -46,7 +48,7 @@ The following example shows ETradeBot being run in Anaconda Prompt:
    :alt: Execute Trades
 
 Also see this example of ETradeBot being run within a
-`jupyter notebook <https://github.com/nathanramoscfa/etradebot/blob/main/tests/test_etradebot.ipynb>`_.
+`jupyter notebook <https://github.com/nathanramoscfa/etradebot/blob/main/dev/test_etradebot.ipynb>`_.
 
 Troubleshooting
 ===============
@@ -69,7 +71,6 @@ Important Links
 -   E-Trade API Documentation: https://apisb.etrade.com/docs/api/account/api-account-v1.html
 -   Keyring Documentation: https://keyring.readthedocs.io/en/latest/
 -   Anaconda Distribution: https://www.anaconda.com/products/individual
--   Selenium Documentation: https://selenium-python.readthedocs.io/
 -   Windows Task Scheduler: https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page
 
 Contributing
@@ -104,7 +105,6 @@ Contents
 
    data
    environment
-   selenium
    credentials
    strategies
    batch
@@ -126,6 +126,7 @@ Contents
    :maxdepth: 2
    :caption: Core Modules
 
+   api
    authentication
    bot
    etrade

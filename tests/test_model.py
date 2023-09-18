@@ -1,5 +1,5 @@
 import unittest
-import mock_responses
+from utils import mock_responses
 import pandas as pd
 import numpy as np
 from unittest import mock

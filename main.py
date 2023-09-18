@@ -52,7 +52,7 @@ def main(preview_mode=True, strategy_name='example_strategy'):
     logging.basicConfig(filename=log_path, level=logging.DEBUG,
                         format='%(asctime)s %(levelname)s: %(message)s')
 
-    # Create a bot object with the retrieved credentials
+    # Initialize a bot object with the retrieved credentials
     bot = Bot(
         consumer_key=consumer_key,
         consumer_secret=consumer_secret,
@@ -66,7 +66,7 @@ def main(preview_mode=True, strategy_name='example_strategy'):
         account_id_key=account_id_key,
         dev=False,  # Set to False for production, True for sandbox
         headless=True,  # Set to False to show browser window, True to hide
-        browser='chrome',  # Set to 'chrome' or 'edge'
+        browser='chrome',  # Set to 'chrome'
         preview=preview_mode,  # Set to False to execute trades, True to preview
         prints=True,  # Set to True to print information to console
     )

@@ -1,10 +1,9 @@
-.ipynb_checkpoints
-.idea
+.ipynb_checkpoints/
+.idea/
 __pycache__/
-_pycache_/
 *.pyc
-/build
-/dist
+/build/
+/dist/
 *.egg-info/
 models/investor_views.py
 strategies/cape_strategy.py
@@ -19,4 +18,4 @@ dev/test_etradebot_cape_strategy.ipynb
 bot_log*.txt
 run_main.bat
 ETradeBot Marketing Plan.docx
-/jupyter
+/jupyter/

@@ -8,23 +8,24 @@ About Data APIs
 =====================
 
 To run automated trading strategies, ETradeBot needs financial data APIs installed. There are two options for accessing
-financial data with ETradeBot: the free `Yahooquery <https://yahooquery.dpguthrie.com/>`_ library that comes bundled
-with ETradeBot and provides access to Yahoo Finance data, and the
-`Bloomberg SDK <https://www.bloomberg.com/professional/support/api-library/>`_.
+financial data with ETradeBot:
+
+* The free `Yahooquery <https://yahooquery.dpguthrie.com/>`_ library that comes bundled with ETradeBot and provides access to Yahoo Finance data.
+* The `Bloomberg API <https://www.bloomberg.com/professional/support/api-library/>`_ for those with a Bloomberg Terminal subscription (optional).
+
+EtradeBot uses the `Yahooquery <https://yahooquery.dpguthrie.com/>`_ library by default. If you have a Bloomberg
+Terminal subscription, you can follow the instructions below to setup the Bloomberg API to work with ETradeBot.
+Otherwise you can skip to the `Environment Setup <#environment-setup>`_ section.
+
+Installing the Bloomberg SDK
+----------------------------
 
 The Bloomberg SDK, also known as BLPAPI or the Bloomberg API, is a software development kit that grants developers
 programmable access to Bloomberg's extensive financial data and services. It allows developers to integrate Bloomberg
 data feeds, analytics, and other features directly into their custom applications, trading systems, or data analysis
-tools. A subscription to the Bloomberg Professional Service costing about $30,000 per year is necessary to access this
-data, however, you do not need a subscription to install the Bloomberg SDK. You can find more information about the
+tools. A subscription to the Bloomberg Professional Service is necessary to access this
+data. You can find more information about the
 Bloomberg Professional Service at the provided `link <https://www.bloomberg.com/professional/>`_.
-
-It's worth noting that regardless of whether you have a Bloomberg Professional Service subscription, ETradeBot requires
-the installation of the Bloomberg SDK. However, if you don't have the subscription, you can still obtain financial data
-for free using the Yahooquery library. Yahooquery is included as a required dependency of ETradeBot.
-
-Installing the Bloomberg SDK
-----------------------------
 
 You can install the Bloomberg SDK using the following steps:
 
@@ -52,6 +53,8 @@ You can install the Bloomberg SDK using the following steps:
                 * Variable value: ``C:\blpapi\lib`` (or the 'lib' directory within the extracted SDK)
 
     * Click 'OK' to save the environment variables, and then click 'OK' again to close the 'System Properties' window.
+
+Next, you will need to install the C++ build tools. Follow the instructions below to install the C++ build tools.
 
 Installing C++ Build Tools
 --------------------------

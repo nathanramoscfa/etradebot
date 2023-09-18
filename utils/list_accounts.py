@@ -25,4 +25,4 @@ def get_account_list():
     :rtype: pd.DataFrame
     """
     # Get the account list
-    return etrade.get_account_list()
+    return etrade.get_account_list()[['accountIdKey', 'accountDesc', 'accountMode', 'accountType']]

@@ -2,7 +2,7 @@ import random
 import unittest
 import xmltodict
 import pandas as pd
-import tests.mock_responses as mock_responses
+import utils.mock_responses as mock_responses
 from etrade.etrade import ETrade
 from execute.execute import Execute
 from unittest.mock import MagicMock, Mock, ANY, patch

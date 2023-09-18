@@ -38,7 +38,7 @@ class ETrade:
 
     def __init__(
             self, consumer_key, consumer_secret, web_username, web_password, account_id, etrade_cookie,
-            sandbox_key=None, sandbox_secret=None, dev=True, headless=True, browser='chrome', retries=3, sleep=30
+            sandbox_key=None, sandbox_secret=None, dev=False, headless=True, browser='chrome', retries=3, sleep=30
     ):
         self.auth = Authentication(
             consumer_key, consumer_secret, web_username, web_password, account_id, etrade_cookie,

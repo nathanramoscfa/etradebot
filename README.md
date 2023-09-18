@@ -17,12 +17,11 @@ Refer to the [ETradeBot documentation](https://etradebot.readthedocs.io/en/lates
 
 1. [Install](https://etradebot.readthedocs.io/en/latest/data.html) the Bloomberg SDK and C++ Build Tools.
 2. [Create](https://etradebot.readthedocs.io/en/latest/environment.html) your Python environment and install ETradeBot.
-3. [Configure](https://etradebot.readthedocs.io/en/latest/selenium.html) Selenium to work with your browser.
-4. [Obtain](https://etradebot.readthedocs.io/en/latest/credentials.html) and securely store your E-Trade credentials.
-5. [Insert](https://etradebot.readthedocs.io/en/latest/strategies.html) your strategy into the strategies directory as a .py file.
-6. [Configure](https://etradebot.readthedocs.io/en/latest/batch.html) a batch file to run ETradeBot.
-7. [Run](https://etradebot.readthedocs.io/en/latest/running.html) ETradeBot in either preview or live trading mode.
-8. [Schedule](https://etradebot.readthedocs.io/en/latest/scheduling.html) ETradeBot to run automatically.
+3. [Obtain](https://etradebot.readthedocs.io/en/latest/credentials.html) and securely store your E-Trade credentials.
+4. [Insert](https://etradebot.readthedocs.io/en/latest/strategies.html) your strategy into the strategies directory as a .py file.
+5. [Configure](https://etradebot.readthedocs.io/en/latest/batch.html) a batch file to run ETradeBot.
+6. [Run](https://etradebot.readthedocs.io/en/latest/running.html) ETradeBot in either preview or live trading mode.
+7. [Schedule](https://etradebot.readthedocs.io/en/latest/scheduling.html) ETradeBot to run automatically.
 
 ## Example
 
@@ -49,7 +48,6 @@ Future releases will include the following features:
 -   [E-Trade Developer Website](https://developer.etrade.com/home)
 -   [Keyring Documentation](https://keyring.readthedocs.io/en/latest/)
 -   [Anaconda Distribution](https://www.anaconda.com/products/individual)
--   [Selenium Documentation](https://selenium-python.readthedocs.io/)
 -   [Windows Task Scheduler](https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page)
 
 ## Contributing

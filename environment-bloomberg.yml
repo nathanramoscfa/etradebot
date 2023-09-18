@@ -1,0 +1,11 @@
+name: etradebot-bloomberg
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.11
+  - pip
+  - pip:
+      - --extra-index-url https://bcms.bloomberg.com/pip/simple
+      - blpapi==3.19.1
+      - git+https://github.com/PaulMest/tia.git#egg=tia

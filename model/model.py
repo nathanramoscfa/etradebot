@@ -2,23 +2,18 @@ import warnings
 import pandas as pd
 import numpy as np
 import cvxpy as cp
-import yahooquery as yq
-import tia.bbg.datamgr as dm
 from matplotlib import pyplot as plt
 from tqdm import tqdm
-from datetime import datetime, timedelta
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from pypfopt import risk_models, black_litterman, efficient_frontier, objective_functions
 
 
 class Model(object):
     """
-    :description: Model class
+    :description: Class for the portfolio modeling.
 
     :param symbols: List of symbols
-    :type symbols: list
-    :param num_years: Number of years to look back, default is 100
-    :type num_years: int, optional
+    :type symbols: list, required
     :param bounds: Bounds for long and short weights, default is (0.0, 1.0)
     :type bounds: tuple, optional
     :param gamma: Risk aversion, default is 0.0
@@ -33,38 +28,19 @@ class Model(object):
     :type short_weight: float, optional
     :param frequency: Frequency, default is 252
     :type frequency: int, optional
-    :param period: Period, default is '1y'. Choices include: '1d', '5d', '7d', '60d', '1mo', '3mo', '6mo', '1y', '2y',
-                                                             '5y', '10y', 'ytd', 'max'
-    :type period: str, optional
-    :param api_source: API source, default is yahoo, other option is bloomberg
-    :type api_source: str, optional
-    :param market_symbol: Market symbol, default is SPY
-    :type market_symbol: str, optional
-    :param start_date: Start date, default is None
-    :type start_date: str, optional
-    :param end_date: End date, default is None
-    :type end_date: str, optional
     """
     def __init__(
             self,
             symbols,
-            num_years=100,
             bounds=(0.0, 1.0),
             gamma=0.0,
             min_weight=0.0,
             margin_rate=0.0,
             long_weight=1.0,
             short_weight=0.0,
-            frequency=252,
-            period=None,
-            api_source='yahoo',
-            market_symbol='SPY',
-            start_date=None,
-            end_date=None
+            frequency=252
     ):
         self.symbols = symbols
-        self.mgr = dm.BbgDataManager()
-        self.num_years = num_years
         self.bounds = bounds
         self.gamma = gamma
         self.min_weight = min_weight
@@ -72,167 +48,6 @@ class Model(object):
         self.long_weight = long_weight
         self.short_weight = short_weight
         self.frequency = frequency
-        self.period = period
-        self.api_source = api_source
-        self.market_symbol = market_symbol
-        self.start_date = start_date
-        self.end_date = end_date
-
-        if self.api_source not in ['yahoo', 'bloomberg']:
-            raise ValueError(f"Invalid API source: {self.api_source}")
-
-        self.symbols = self.process_symbols(self.symbols, self.api_source)
-        self.market_symbol = self.process_symbols([self.market_symbol], self.api_source)[0]
-
-        if self.start_date is None:
-            self.start_date = (datetime.today() - timedelta(days=int(365.25 * self.num_years))).strftime('%m-%d-%Y')
-        if self.end_date is None:
-            self.end_date = datetime.today().strftime('%m-%d-%Y')
-
-    @staticmethod
-    def process_symbols(symbols, api_source):
-        """
-        :description: Process symbols
-
-        :param symbols: List of symbols
-        :type symbols: list
-        :param api_source: API source
-        :type api_source: str
-        :return: Processed symbols
-        """
-        symbols = [
-            symbol + (' US Equity' if api_source == 'bloomberg' and not symbol.endswith(' US Equity') else '')
-            for symbol in symbols
-        ]
-        symbols = [
-            symbol[:-len(' US Equity')] if api_source == 'yahoo' and symbol.endswith(' US Equity') else symbol
-            for symbol in symbols
-        ]
-
-        return symbols
-
-    def get_historical_prices(self):
-        """
-        :description: Get historical prices
-
-        :return: Historical prices
-        :rtype: pandas.DataFrame
-        """
-        if self.api_source == 'yahoo':
-            if self.period is None:
-                start_date_obj = datetime.strptime(self.start_date, '%m-%d-%Y')
-                end_date_obj = datetime.strptime(self.end_date, '%m-%d-%Y')
-                start_date_formatted = datetime.strftime(start_date_obj, '%Y-%m-%d')
-                end_date_formatted = datetime.strftime(end_date_obj, '%Y-%m-%d')
-                try:
-                    prices = yq.Ticker(self.symbols).history(
-                        start=start_date_formatted, end=end_date_formatted
-                    )['adjclose']
-                except OverflowError:
-                    prices = yq.Ticker(self.symbols).history(period='max')['adjclose']
-            else:
-                prices = yq.Ticker(self.symbols).history(self.period)['adjclose']
-            prices = prices.unstack(level='symbol').dropna()
-            prices.index = pd.to_datetime(prices.index).date
-        elif self.api_source == 'bloomberg':
-            prices = self.mgr[self.symbols].get_historical('PX_LAST', start=self.start_date, end=self.end_date).dropna()
-            prices.columns = [col.replace(' US Equity', '') for col in prices.columns]
-        else:
-            raise ValueError(f"Invalid API source: {self.api_source}")
-
-        return prices
-
-    def get_risk_free_rate(self, prints=False, symbol=None):
-        """
-        :description: Calculate risk-free rate
-
-        :param prints: Prints, default is False
-        :type prints: bool, optional
-        :param symbol: Ticker, default is None
-        :type symbol: str, optional
-        :return: Risk free rate
-        :rtype: float
-        """
-        # Constants
-        percent = 100
-        decimals = 4
-
-        if self.api_source == 'yahoo':
-            if symbol is None:
-                risk_free_rate = round(
-                    yq.Ticker('^TNX').price['^TNX']['regularMarketPrice'] / percent, decimals)
-            else:
-                ticker = yq.Ticker(symbol)
-                risk_free_rate = round(ticker.price[symbol]['regularMarketPrice'] / percent, decimals)
-        elif self.api_source == 'bloomberg':
-            if symbol is None:
-                risk_free_rate = round(self.mgr['USGG10YR Index'].PX_LAST / percent, decimals)
-            else:
-                risk_free_rate = round(self.mgr[symbol].PX_LAST / percent, decimals)
-        else:
-            raise ValueError(f"Invalid API source: {self.api_source}")
-
-        if prints:
-            print('------------------------------------')
-            print(f"Risk Free Rate: {round(risk_free_rate * percent, decimals)}%")
-
-        return risk_free_rate
-
-    def get_market_caps(self, prints=False):
-        """
-        :description: Calculate fund total assets
-
-        :param prints: Prints, default is False
-        :type prints: bool, optional
-        :return: Fund total assets
-        :rtype: pandas.core.series.Series
-        """
-        market_cap_dict = {}
-        symbol = None
-        if self.api_source == 'yahoo':
-            yq_symbols = self.process_symbols(self.symbols, self.api_source)
-            yq_tickers = [yq.Ticker(symbol) for symbol in yq_symbols]
-            for yq_symbol in tqdm(yq_tickers):
-                try:
-                    summary_detail = yq_symbol.summary_detail
-                    symbol = list(summary_detail.keys())[0]
-                    if summary_detail is not None:
-                        market_cap_dict[symbol] = summary_detail[symbol]['totalAssets']
-                    else:
-                        raise ValueError(f"No summary detail found for symbol: {symbol}")
-                except (KeyError, ValueError):
-                    price = yq_symbol.price
-                    if price is not None:
-                        market_cap_dict[symbol] = price[symbol]['marketCap']
-                    else:
-                        raise ValueError(f"No market cap found for symbol: {symbol}")
-        elif self.api_source == 'bloomberg':
-            yq_symbols = self.process_symbols(self.symbols, self.api_source)
-            market_caps = self.mgr[yq_symbols].CUR_MKT_CAP
-            market_caps.index = [s.replace(' US Equity', '') for s in market_caps.index]
-            market_cap_dict = market_caps.to_dict()
-        else:
-            raise ValueError(f"Invalid API source: {self.api_source}")
-
-        try:
-            market_caps = pd.DataFrame.from_dict(
-                market_cap_dict, orient='columns'
-            ).squeeze() / 1_000_000
-        except ValueError:
-            market_caps = pd.Series(market_cap_dict) / 1_000_000
-
-        # Always return a pandas.Series object
-        if not isinstance(market_caps, pd.Series):
-            market_caps = pd.Series([market_caps], index=[self.symbols[0]])
-
-        # Remove " US Equity" from index, if it's there
-        market_caps.index = [s.replace(' US Equity', '') if isinstance(s, str) else s for s in market_caps.index]
-
-        if prints:
-            print('\nMarket Cap ($Millions):')
-            print(market_caps.sort_values(ascending=False).apply(lambda x: f'${x:,.2f}'))
-
-        return market_caps.squeeze()
 
     @staticmethod
     def vif_filter(prices, market_cap, threshold=50, prints=False):
@@ -294,48 +109,6 @@ class Model(object):
             print(round(covariance_matrix, 4))
 
         return covariance_matrix
-
-    def get_market_prices(self, prices, symbols, prints=False):
-        """
-        :description: Calculate market values
-
-        :param prices: Prices
-        :type prices: pandas.core.frame.DataFrame, required
-        :param symbols: Symbols
-        :type symbols: list, required
-        :param prints: Prints, default is False
-        :type prints: bool, optional
-        :return: Market symbol, market name, market values
-        :rtype: tuple
-        """
-        market_name = None
-        market_prices = None
-        if self.api_source == 'yahoo':
-            market_name = yq.Ticker(self.market_symbol).price[self.market_symbol]['longName']
-            market_prices = yq.Ticker(self.market_symbol).history(
-                start=prices[symbols].index[0].strftime('%Y-%m-%d'),
-                end=prices[symbols].index[-1].strftime('%Y-%m-%d')
-            )['adjclose']
-            market_prices = market_prices.unstack(level='symbol').dropna().squeeze().round(2)
-            market_prices.index = pd.to_datetime(market_prices.index).date
-            market_prices.name = market_name
-
-        elif self.api_source == 'bloomberg':
-            market_name = self.mgr[self.market_symbol].LONG_COMP_NAME
-            market_prices = self.mgr[self.market_symbol].get_historical(
-                'PX_LAST',
-                start=prices[symbols].index[0],
-                end=prices[symbols].index[-1]
-            ).squeeze().round(2)
-            market_prices.name = market_name
-
-        if prints:
-            print('\nMarket Symbol:', self.market_symbol)
-            print('Market Name:', market_name)
-            print('Market Prices:')
-            print(market_prices.apply(lambda x: '${:,.2f}'.format(round(x, 2))))
-
-        return self.market_symbol, market_name, market_prices
 
     def market_implied_risk_aversion(self, market_prices, risk_free_rate, prints=False):
         """
