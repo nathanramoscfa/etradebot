@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; etradebot 1.0.2 documentation</title>
+  <title>Index &mdash; etradebot 2.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -32,7 +32,7 @@
             etradebot
           </a>
               <div class="version">
-                1.0.2
+                2.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -46,7 +46,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="batch.html">Batch</a></li>
@@ -62,6 +61,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">api</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bot.html">bot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="etrade.html">etrade</a></li>
@@ -109,6 +109,7 @@
  <a href="#A"><strong>A</strong></a>
  | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
@@ -125,10 +126,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="authentication.html#authentication.authentication.Authentication.access_api">access_api() (authentication.authentication.Authentication method)</a>
 </li>
-      <li><a href="authentication.html#authentication.authentication.Authentication">Authentication (class in authentication.authentication)</a>
+      <li>
+    api.api
+
+      <ul>
+        <li><a href="api.html#module-api.api">module</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="authentication.html#authentication.authentication.Authentication">Authentication (class in authentication.authentication)</a>
+</li>
       <li>
     authentication.authentication
 
@@ -167,15 +175,27 @@
 </li>
       <li><a href="portfolio.html#utils.portfolio.calculate_groupby_portfolio">calculate_groupby_portfolio() (in module utils.portfolio)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="execute.html#execute.execute.Execute.calculate_shares">calculate_shares() (execute.execute.Execute method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="model.html#model.model.Model.calculate_symbol_vols">calculate_symbol_vols() (model.model.Model static method)</a>
+</li>
+      <li><a href="api.html#api.api.DataAPI.check_valid_api_source">check_valid_api_source() (api.api.DataAPI method)</a>
+</li>
+      <li><a href="etrade.html#etrade.etrade.ETrade.compute_portfolio_performance">compute_portfolio_performance() (etrade.etrade.ETrade static method)</a>
 </li>
       <li><a href="fake_data.html#utils.fake_data.create_fake_balances">create_fake_balances() (in module utils.fake_data)</a>
 </li>
       <li><a href="fake_data.html#utils.fake_data.create_fake_portfolio">create_fake_portfolio() (in module utils.fake_data)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#api.api.DataAPI">DataAPI (class in api.api)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -215,8 +235,12 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="portfolio.html#utils.portfolio.format_portfolio_data">format_portfolio_data() (in module utils.portfolio)</a>
+      <li><a href="etrade.html#etrade.etrade.ETrade.format_portfolio_data">format_portfolio_data() (etrade.etrade.ETrade static method)</a>
+
+      <ul>
+        <li><a href="portfolio.html#utils.portfolio.format_portfolio_data">(in module utils.portfolio)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -229,21 +253,33 @@
 </li>
       <li><a href="etrade.html#etrade.etrade.ETrade.get_account_balance">get_account_balance() (etrade.etrade.ETrade method)</a>
 </li>
+      <li><a href="authentication.html#authentication.authentication.Authentication.get_account_id_key">get_account_id_key() (authentication.authentication.Authentication static method)</a>
+</li>
       <li><a href="etrade.html#etrade.etrade.ETrade.get_account_list">get_account_list() (etrade.etrade.ETrade method)</a>
 </li>
       <li><a href="authentication.html#authentication.authentication.Authentication.get_accounts_api">get_accounts_api() (authentication.authentication.Authentication method)</a>
 </li>
+      <li><a href="api.html#api.api.DataAPI.get_bloomberg_market_caps">get_bloomberg_market_caps() (api.api.DataAPI method)</a>
+</li>
+      <li><a href="api.html#api.api.DataAPI.get_bloomberg_market_prices">get_bloomberg_market_prices() (api.api.DataAPI method)</a>
+</li>
+      <li><a href="api.html#api.api.DataAPI.get_bloomberg_prices">get_bloomberg_prices() (api.api.DataAPI method)</a>
+</li>
+      <li><a href="api.html#api.api.DataAPI.get_bloomberg_risk_free_rate">get_bloomberg_risk_free_rate() (api.api.DataAPI method)</a>
+</li>
       <li><a href="etrade.html#etrade.etrade.ETrade.get_buying_power">get_buying_power() (etrade.etrade.ETrade method)</a>
 </li>
-      <li><a href="model.html#model.model.Model.get_historical_prices">get_historical_prices() (model.model.Model method)</a>
+      <li><a href="etrade.html#etrade.etrade.ETrade.get_current_portfolio">get_current_portfolio() (etrade.etrade.ETrade static method)</a>
 </li>
-      <li><a href="authentication.html#authentication.authentication.Authentication.get_market_api">get_market_api() (authentication.authentication.Authentication method)</a>
+      <li><a href="api.html#api.api.DataAPI.get_historical_prices">get_historical_prices() (api.api.DataAPI method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="model.html#model.model.Model.get_market_caps">get_market_caps() (model.model.Model method)</a>
+      <li><a href="authentication.html#authentication.authentication.Authentication.get_market_api">get_market_api() (authentication.authentication.Authentication method)</a>
 </li>
-      <li><a href="model.html#model.model.Model.get_market_prices">get_market_prices() (model.model.Model method)</a>
+      <li><a href="api.html#api.api.DataAPI.get_market_caps">get_market_caps() (api.api.DataAPI method)</a>
+</li>
+      <li><a href="api.html#api.api.DataAPI.get_market_prices">get_market_prices() (api.api.DataAPI method)</a>
 </li>
       <li><a href="etrade.html#etrade.etrade.ETrade.get_market_quote">get_market_quote() (etrade.etrade.ETrade method)</a>
 </li>
@@ -255,7 +291,15 @@
 </li>
       <li><a href="etrade.html#etrade.etrade.ETrade.get_portfolio_data">get_portfolio_data() (etrade.etrade.ETrade method)</a>
 </li>
-      <li><a href="model.html#model.model.Model.get_risk_free_rate">get_risk_free_rate() (model.model.Model method)</a>
+      <li><a href="api.html#api.api.DataAPI.get_risk_free_rate">get_risk_free_rate() (api.api.DataAPI method)</a>
+</li>
+      <li><a href="api.html#api.api.DataAPI.get_yahoo_market_caps">get_yahoo_market_caps() (api.api.DataAPI static method)</a>
+</li>
+      <li><a href="api.html#api.api.DataAPI.get_yahoo_market_prices">get_yahoo_market_prices() (api.api.DataAPI method)</a>
+</li>
+      <li><a href="api.html#api.api.DataAPI.get_yahoo_prices">get_yahoo_prices() (api.api.DataAPI method)</a>
+</li>
+      <li><a href="api.html#api.api.DataAPI.get_yahoo_risk_free_rate">get_yahoo_risk_free_rate() (api.api.DataAPI static method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -284,6 +328,8 @@
     module
 
       <ul>
+        <li><a href="api.html#module-api.api">api.api</a>
+</li>
         <li><a href="authentication.html#module-authentication.authentication">authentication.authentication</a>
 </li>
         <li><a href="bot.html#module-bot">bot</a>
@@ -315,7 +361,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="model.html#model.model.Model.process_ef_output">process_ef_output() (model.model.Model method)</a>
 </li>
-      <li><a href="model.html#model.model.Model.process_symbols">process_symbols() (model.model.Model static method)</a>
+      <li><a href="api.html#api.api.DataAPI.process_symbols">process_symbols() (api.api.DataAPI static method)</a>
 </li>
   </ul></td>
 </tr></table>

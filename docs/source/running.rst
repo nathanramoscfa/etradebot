@@ -11,10 +11,9 @@ Ensure you have completed the following steps before running your strategy:
 
     1. :ref:`Install <data>` the Bloomberg SDK and C++ Build Tools.
     2. :ref:`Create <environment>` your Python environment and install ETradeBot.
-    3. :ref:`Configure <selenium>` Selenium to work with your browser.
-    4. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
-    5. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
-    6. :ref:`Configure <batch>` a batch file to run ETradeBot.
+    3. :ref:`Obtain <credentials>` and securely store your E-Trade credentials.
+    4. :ref:`Insert <strategies>` your strategy into the strategies directory as a .py file.
+    5. :ref:`Configure <batch>` a batch file to run ETradeBot.
 
 ETradeBot can run in one of two modes:
 

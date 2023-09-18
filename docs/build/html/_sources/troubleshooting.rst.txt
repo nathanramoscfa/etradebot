@@ -13,11 +13,9 @@ If you encounter an error, please check the following:
    section, you should be in the ``etrade`` environment.
 2. Did you navigate to the correct directory? This should be the directory where you cloned the repository. If you
    followed the instructions in the :ref:`environment <environment>` section, you should be in the ``etrade`` directory.
-3. Did you configure Selenium correctly? Your webdriver must be configured to work with the browser version you are
-   using. See :ref:`selenium <selenium>` for more information.
-4. Did you configure your :ref:`credentials <credentials>` correctly and do they match what you see on the E-Trade
+3. Did you configure your :ref:`credentials <credentials>` correctly and do they match what you see on the E-Trade
    developer site?
-5. Did you configure your strategy correctly? The ``strategy`` function within your ``custom_strategy.py`` file must
+4. Did you configure your strategy correctly? The ``strategy`` function within your ``custom_strategy.py`` file must
    return a ``pd.Series``. See :ref:`strategies <strategies>` for more information.
 
 You may still encounter errors even if you configured ETradeBot correctly and previously successfully ran it usually

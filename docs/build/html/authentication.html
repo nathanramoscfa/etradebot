@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>authentication &mdash; etradebot 1.0.2 documentation</title>
+  <title>authentication &mdash; etradebot 2.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="bot" href="bot.html" />
-    <link rel="prev" title="Troubleshooting" href="troubleshooting.html" /> 
+    <link rel="prev" title="api" href="api.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,7 +35,7 @@
             etradebot
           </a>
               <div class="version">
-                1.0.2
+                2.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -47,12 +47,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bloomberg.html">Bloomberg SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configure.html">Configure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batch.html">Batch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul>
@@ -65,11 +64,13 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api.html">api</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#authentication.authentication.Authentication"><code class="docutils literal notranslate"><span class="pre">Authentication</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#authentication.authentication.Authentication.access_api"><code class="docutils literal notranslate"><span class="pre">Authentication.access_api()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authentication.authentication.Authentication.etrade_login"><code class="docutils literal notranslate"><span class="pre">Authentication.etrade_login()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authentication.authentication.Authentication.get_access_tokens"><code class="docutils literal notranslate"><span class="pre">Authentication.get_access_tokens()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authentication.authentication.Authentication.get_account_id_key"><code class="docutils literal notranslate"><span class="pre">Authentication.get_account_id_key()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authentication.authentication.Authentication.get_accounts_api"><code class="docutils literal notranslate"><span class="pre">Authentication.get_accounts_api()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authentication.authentication.Authentication.get_market_api"><code class="docutils literal notranslate"><span class="pre">Authentication.get_market_api()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authentication.authentication.Authentication.get_oauth"><code class="docutils literal notranslate"><span class="pre">Authentication.get_oauth()</span></code></a></li>
@@ -203,6 +204,25 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="authentication.authentication.Authentication.get_account_id_key">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_account_id_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">accounts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#authentication.authentication.Authentication.get_account_id_key" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Get account ID key</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>accounts</strong> (<em>pyetrade.ETradeAccounts</em>) – Accounts API object</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Account ID key</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="authentication.authentication.Authentication.get_accounts_api">
 <span class="sig-name descname"><span class="pre">get_accounts_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#authentication.authentication.Authentication.get_accounts_api" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
@@ -283,7 +303,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="troubleshooting.html" class="btn btn-neutral float-left" title="Troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-left" title="api" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="bot.html" class="btn btn-neutral float-right" title="bot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

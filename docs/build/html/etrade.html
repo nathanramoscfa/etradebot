@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>etrade &mdash; etradebot 1.0.2 documentation</title>
+  <title>etrade &mdash; etradebot 2.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
             etradebot
           </a>
               <div class="version">
-                1.0.2
+                2.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -47,12 +47,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bloomberg.html">Bloomberg SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="selenium.html">Selenium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credentials.html">Credentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strategies.html">Strategies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configure.html">Configure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batch.html">Batch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul>
@@ -65,13 +64,17 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api.html">api</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bot.html">bot</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">etrade</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#etrade.etrade.ETrade"><code class="docutils literal notranslate"><span class="pre">ETrade</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#etrade.etrade.ETrade.compute_portfolio_performance"><code class="docutils literal notranslate"><span class="pre">ETrade.compute_portfolio_performance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#etrade.etrade.ETrade.format_portfolio_data"><code class="docutils literal notranslate"><span class="pre">ETrade.format_portfolio_data()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#etrade.etrade.ETrade.get_account_balance"><code class="docutils literal notranslate"><span class="pre">ETrade.get_account_balance()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#etrade.etrade.ETrade.get_account_list"><code class="docutils literal notranslate"><span class="pre">ETrade.get_account_list()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#etrade.etrade.ETrade.get_buying_power"><code class="docutils literal notranslate"><span class="pre">ETrade.get_buying_power()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#etrade.etrade.ETrade.get_current_portfolio"><code class="docutils literal notranslate"><span class="pre">ETrade.get_current_portfolio()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#etrade.etrade.ETrade.get_market_quote"><code class="docutils literal notranslate"><span class="pre">ETrade.get_market_quote()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#etrade.etrade.ETrade.get_orders_list"><code class="docutils literal notranslate"><span class="pre">ETrade.get_orders_list()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#etrade.etrade.ETrade.get_portfolio_data"><code class="docutils literal notranslate"><span class="pre">ETrade.get_portfolio_data()</span></code></a></li>
@@ -121,7 +124,7 @@
 <span id="etrade"></span><h1>etrade<a class="headerlink" href="#module-etrade.etrade" title="Permalink to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="etrade.etrade.ETrade">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etrade.etrade.</span></span><span class="sig-name descname"><span class="pre">ETrade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">consumer_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consumer_secret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">etrade_cookie</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sandbox_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sandbox_secret</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headless</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">browser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'chrome'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#etrade.etrade.ETrade" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etrade.etrade.</span></span><span class="sig-name descname"><span class="pre">ETrade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">consumer_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consumer_secret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">etrade_cookie</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sandbox_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sandbox_secret</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headless</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">browser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'chrome'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#etrade.etrade.ETrade" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Description<span class="colon">:</span></dt>
@@ -148,6 +151,44 @@
 <dd class="field-odd"><p><a class="reference external" href="https://apisb.etrade.com/docs/api/authorization/request_token.html">https://apisb.etrade.com/docs/api/authorization/request_token.html</a></p>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="etrade.etrade.ETrade.compute_portfolio_performance">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_portfolio_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">portfolio_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#etrade.etrade.ETrade.compute_portfolio_performance" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Compute portfolio performance</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>portfolio_data</strong> (<em>pandas.DataFrame</em>) – Portfolio data</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Portfolio performance</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etrade.etrade.ETrade.format_portfolio_data">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format_portfolio_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">portfolio_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#etrade.etrade.ETrade.format_portfolio_data" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Format portfolio data</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>portfolio_data</strong> (<em>pandas.DataFrame</em>) – Portfolio data</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Formatted portfolio data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="etrade.etrade.ETrade.get_account_balance">
 <span class="sig-name descname"><span class="pre">get_account_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account_id_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#etrade.etrade.ETrade.get_account_balance" title="Permalink to this definition"></a></dt>
@@ -208,6 +249,25 @@
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etrade.etrade.ETrade.get_current_portfolio">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_current_portfolio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">portfolio_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#etrade.etrade.ETrade.get_current_portfolio" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Get current portfolio</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>portfolio_data</strong> (<em>pandas.DataFrame</em>) – Portfolio data</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current portfolio</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>

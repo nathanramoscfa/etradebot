@@ -5,7 +5,7 @@
 
 import os
 import sys
-import sphinx_rtd_theme
+# import sphinx_rtd_theme
 sys.path.insert(0, os.path.abspath('../..'))
 
 # -- Project information -----------------------------------------------------
@@ -14,8 +14,8 @@ sys.path.insert(0, os.path.abspath('../..'))
 project = 'etradebot'
 copyright = '2023, Nathan Ramos, CFA®'
 author = 'Nathan Ramos, CFA®'
-version = '1.0.2'
-release = '1.0.2'
+version = '2.0.0'
+release = '2.0.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
