@@ -12,8 +12,8 @@ class DataAPI(object):
     :type symbols: list
     :param num_years: Number of years to look back, default is 100
     :type num_years: int, optional
-    :param period: Period, default is '1y'. Choices include: '1d', '5d', '7d', '60d', '1mo', '3mo', '6mo', '1y', '2y',
-                                                             '5y', '10y', 'ytd', 'max'
+    :param period: Period, default is 'None'. Choices include: '1d', '5d', '7d', '60d', '1mo', '3mo', '6mo', '1y', '2y',
+                                                               '5y', '10y', 'ytd', 'max'
     :type period: str, optional
     :param api_source: API source, default is yahoo, other option is bloomberg
     :type api_source: str, optional
@@ -170,7 +170,19 @@ class DataAPI(object):
             risk_free_rate = round(ticker.price[symbol]['regularMarketPrice'] / percent, decimals)
         return risk_free_rate
 
-    def get_bloomberg_risk_free_rate(self, symbol, percent, decimals):
+    def get_bloomberg_risk_free_rate(self, symbol='USGG10YR Index', percent=100, decimals=4):
+        """
+        :description: Get risk-free rate from Bloomberg
+
+        :param symbol: Ticker, default is 'USGG10YR Index'
+        :type symbol: str, optional
+        :param percent: Percent, default is 100
+        :type percent: int, optional
+        :param decimals: Decimals, default is 4
+        :type decimals: int, optional
+        :return: Risk free rate
+        :rtype: float
+        """
         if symbol is None:
             risk_free_rate = round(self.mgr['USGG10YR Index'].PX_LAST / percent, decimals)
         else:
@@ -212,7 +224,6 @@ class DataAPI(object):
 
         :param symbols: Symbols
         :type symbols: list
-
         :return: Market caps
         :rtype: dict
         """
