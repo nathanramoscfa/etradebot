@@ -1,5 +1,10 @@
 # ETradeBot
 
+<span style="color:red">***E-Trade has recently implemented a new two-factor authentication method when logging in which requires the use
+of a security code sent to your phone. This new method is not currently supported by ETradeBot, and therefore, 
+ETradeBot currently will not work. I am currently working on a solution, which will have to involve communicating with
+the E-Trade API Desk to find a workaround solution. Will keep you posted.***</span>
+
 ETradeBot is an automated trading software written in Python for E-Trade accounts that allows users to execute trades 
 based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. This 
 project is not affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the 

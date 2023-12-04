@@ -159,15 +159,19 @@ class Authentication(object):
         """
         for i in range(self.retries):
             try:
+                print(f"Retry attempt: {i + 1}")
                 accounts, orders, market = self.access_api()
                 return accounts, orders, market
-            except NoSuchElementException:
-                if self.browser != 'edge':
-                    print('ConnectionError: Trying again with edge.')
-                    self.browser = 'edge'
-                else:
-                    print('ConnectionError: Trying again with chrome.')
-                    time.sleep(self.sleep)
+            except NoSuchElementException as e:
+                print(f"Exception details: {e}")
+                print('ConnectionError: Trying again with chrome.')
+                time.sleep(self.sleep)
+                self.sleep *= 2  # Exponential backoff
+            except Exception as e:
+                print(f"An unexpected error occurred: {e}")
+                time.sleep(self.sleep)
+                self.sleep *= 2  # Exponential backoff
+
         raise Exception("Failed to connect to Etrade API after multiple retries")
 
     @staticmethod
