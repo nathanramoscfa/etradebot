@@ -27,17 +27,34 @@ account_id_key = keyring.get_password("etrade", "account_id_key")
 
 def is_market_open():
     now = datetime.now(pytz.timezone('US/Eastern'))
-    market_open = time(hour=9, minute=30)
-    market_close = time(hour=16, minute=0)
+    market_open_time = time(hour=9, minute=30)
+    market_close_time = time(hour=16, minute=0)
     nyse = mcal.get_calendar('NYSE')
 
-    if market_open <= now.time() <= market_close and now.weekday() < 5:
+    # Check if current time is within market hours and a weekday
+    if market_open_time <= now.time() <= market_close_time and now.weekday() < 5:
         current_date = now.date()
-        schedule = nyse.schedule(start_date=current_date, end_date=current_date)
-        if schedule.empty:
+
+        # Convert current_date to string format
+        current_date_str = current_date.strftime('%Y-%m-%d')
+
+        # Check if the current date is a holiday
+        holidays = nyse.holidays().holidays
+        if current_date in holidays:
             return False, "The market is closed today due to a holiday."
-        else:
-            return True, None
+
+        try:
+            # Get the market schedule for the current date
+            schedule = nyse.schedule(start_date=current_date_str, end_date=current_date_str)
+
+            # Check if the schedule is empty (market closed) or not
+            if schedule.empty:
+                return False, "The market is closed today for an unknown reason."
+            else:
+                return True, None
+        except Exception as e:
+            return False, f"An error occurred: {e}"
+
     else:
         return False, "The market is closed now. It's outside trading hours or it's a weekend."
 

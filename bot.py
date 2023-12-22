@@ -98,11 +98,22 @@ class Bot:
         # Execute trades
         print('')
         if self.preview:
-            print('Previewing trades...')
+            print('Previewing Trades...')
+            place_order = self.execute.execute_trades(
+                current_portfolio, new_portfolio_shares, self.account_id_key, self.preview, self.prints
+            )
         else:
-            print('Executing trades...')
-        place_order = self.execute.execute_trades(
-            current_portfolio, new_portfolio_shares, self.account_id_key, self.preview, self.prints
-        )
+            # Preview trades first
+            print('Previewing Trades...')
+            self.preview = True
+            place_order = self.execute.execute_trades(
+                current_portfolio, new_portfolio_shares, self.account_id_key, self.preview, self.prints
+            )
+            # Execute trades
+            print('Executing Trades...')
+            self.preview = False
+            place_order = self.execute.execute_trades(
+                current_portfolio, new_portfolio_shares, self.account_id_key, self.preview, self.prints
+            )
 
         return place_order

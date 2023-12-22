@@ -1,11 +1,9 @@
-import warnings
 import pandas as pd
 import numpy as np
 import cvxpy as cp
 from matplotlib import pyplot as plt
 from tqdm import tqdm
-from statsmodels.stats.outliers_influence import variance_inflation_factor
-from pypfopt import risk_models, black_litterman, efficient_frontier, objective_functions
+from pypfopt import risk_models, black_litterman, efficient_frontier
 
 
 class Model(object):
@@ -16,8 +14,6 @@ class Model(object):
     :type symbols: list, required
     :param bounds: Bounds for long and short weights, default is (0.0, 1.0)
     :type bounds: tuple, optional
-    :param gamma: Risk aversion, default is 0.0
-    :type gamma: float, optional
     :param min_weight: Minimum weight, default is 0.0
     :type min_weight: float, optional
     :param margin_rate: Margin rate, default is 0.0
@@ -28,68 +24,51 @@ class Model(object):
     :type short_weight: float, optional
     :param frequency: Frequency, default is 252
     :type frequency: int, optional
+    :param optimization_method: Method, default is 'mean_variance'. Options are 'mean_variance', 'semivariance',
+        'cvar', 'cdar'
+    :type optimization_method: str, optional
+    :param risk_method: Risk model, default is 'sample_cov'. Options are 'sample_cov', 'semicovariance', 'exp_cov',
+        'ledoit_wolf', 'ledoit_wolf_constant_variance', ledoit_wolf_single_factor, ledoit_wolf_constant_correlation,
+        'oracle_approximating'
+    :type risk_method: str, optional
+    :param semivariance_benchmark: The return threshold to distinguish "downside" and "upside". Default is 0
+    :type semivariance_benchmark: int, optional
+    :param historical_prices: Historical prices, default is None
+    :type historical_prices: pandas.core.frame.DataFrame, optional
+    :param beta: Confidence level (e.g., expected loss on the worst (1-beta) days). Default is 0.95
+    :type beta: float, optional
     """
     def __init__(
             self,
             symbols,
             bounds=(0.0, 1.0),
-            gamma=0.0,
             min_weight=0.0,
             margin_rate=0.0,
             long_weight=1.0,
             short_weight=0.0,
-            frequency=252
+            frequency=252,
+            optimization_method='mean_variance',
+            risk_method='sample_cov',
+            semivariance_benchmark=0,
+            historical_prices=None,
+            beta=0.95
     ):
         self.symbols = symbols
         self.bounds = bounds
-        self.gamma = gamma
         self.min_weight = min_weight
         self.margin_rate = margin_rate
         self.long_weight = long_weight
         self.short_weight = short_weight
         self.frequency = frequency
+        self.optimization_method = optimization_method
+        self.risk_method = risk_method
+        self.semivariance_benchmark = semivariance_benchmark
+        self.historical_prices = historical_prices
+        self.returns = historical_prices.pct_change().dropna()
+        self.beta = beta
 
     @staticmethod
-    def vif_filter(prices, market_cap, threshold=50, prints=False):
-        """
-        :description: Variance inflation factor filter to reduce multicollinearity
-
-        :param prices: Prices
-        :type prices: pandas.core.frame.DataFrame, required
-        :param market_cap: Fund total assets
-        :type market_cap: pandas.core.series.Series, required
-        :param threshold: Threshold, default is 50
-        :type threshold: int, optional
-        :param prints: Prints, default is False
-        :type prints: bool, optional
-        :return: VIF symbols
-        :rtype: list
-        """
-        returns = prices[market_cap.index].pct_change().dropna()
-        warnings.filterwarnings('ignore', category=RuntimeWarning)
-        df = pd.DataFrame(columns=["VIF Factor"])
-        for _ in range(returns.shape[1]):
-            try:
-                df = pd.DataFrame(
-                    {"VIF Factor": [variance_inflation_factor(returns.values, i) for i in range(returns.shape[1])]}
-                )
-                df.index = returns.columns
-                if df.max()[0] > threshold:
-                    omit = df.idxmax()
-                    returns = returns.drop(omit, axis=1)
-            except ValueError:
-                continue
-        df.index.name = 'TICKER'
-        vif = df.squeeze()
-        vif_symbols = list(vif.index)
-        if prints:
-            print('\nVIF Tickers:')
-            print(round(vif, 2).sort_values())
-
-        return vif_symbols
-
-    @staticmethod
-    def calculate_covariance_matrix(prices, symbols, prints=False):
+    def calculate_covariance_matrix(prices, symbols, risk_method='sample_cov', prints=False):
         """
         :description: Calculate covariance matrix
 
@@ -97,12 +76,14 @@ class Model(object):
         :type prices: pandas.core.frame.DataFrame, required
         :param symbols: Symbols
         :type symbols: list, required
+        :param risk_method: Risk method
+        :type risk_method: str, required
         :param prints: Prints, default is False
         :type prints: bool, optional
         :return: Covariance matrix
         :rtype: pandas.core.frame.DataFrame
         """
-        covariance_matrix = risk_models.risk_matrix(prices[symbols], method='oracle_approximating')
+        covariance_matrix = risk_models.risk_matrix(prices[symbols], risk_method)
         covariance_matrix = risk_models.fix_nonpositive_semidefinite(covariance_matrix)
         if prints:
             print('\nCovariance Matrix:')
@@ -224,8 +205,12 @@ class Model(object):
             index={0: 'Expected_Return', 1: 'Expected Volatility', 2: 'Sharpe_Ratio'}
         ).squeeze()
         results.name = 'Results'
+
+        # Separate DataFrame for formatted results
         print_results = results.copy()
-        print_results.iloc[:2] = print_results.iloc[:2].apply(lambda x: '{:.2%}'.format(x))
+        formatted_performance = print_results.iloc[:2].apply(lambda x: '{:.2%}'.format(x))
+        print_results = pd.concat([formatted_performance, print_results.iloc[2:]])
+
         volatility = results.loc['Expected Volatility'].squeeze()
 
         return volatility, weights, results, print_results
@@ -267,13 +252,50 @@ class Model(object):
         :return: Minimum risk portfolio volatility, asset weights, and portfolio results
         :rtype: tuple
         """
-        ef = efficient_frontier.EfficientFrontier(posterior_expected_returns, posterior_covariance_matrix, self.bounds)
-        ef.add_objective(objective_functions.L2_reg, gamma=self.gamma)
-        ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
-        ef.min_volatility()
+        if self.optimization_method == 'mean_variance':
+            ef = efficient_frontier.EfficientFrontier(
+                posterior_expected_returns,
+                posterior_covariance_matrix,
+                self.bounds
+            )
+            ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
+            ef.min_volatility()
+        elif self.optimization_method == 'semivariance':
+            ef = efficient_frontier.EfficientSemivariance(
+                posterior_expected_returns,
+                self.frequency,
+                self.semivariance_benchmark,
+                self.bounds
+            )
+            ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
+            ef.min_semivariance()
+        elif self.optimization_method == 'cvar':
+            ef = efficient_frontier.EfficientCVaR(
+                posterior_expected_returns,
+                self.returns,
+                self.beta,
+                self.bounds
+            )
+            ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
+            ef.min_cvar()
+        elif self.optimization_method == 'cdar':
+            ef = efficient_frontier.EfficientCDaR(
+                posterior_expected_returns,
+                self.returns,
+                self.beta,
+                self.bounds
+            )
+            ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
+            ef.min_cdar()
+        else:
+            raise ValueError(
+                "Please select a valid optimization method: 'mean_variance', 'semivariance', 'cvar', or 'cdar'"
+            )
+
         volatility, weights, results, print_results = self.process_ef_output(
             ef, risk_free_rate, 'Minimum Risk Portfolio'
         )
+
         if prints:
             print('Minimum Risk Portfolio:')
             print('Minimum Volatility: {}%'.format(round(volatility * 100, 2)))
@@ -295,16 +317,55 @@ class Model(object):
         :type risk_free_rate: float, required
         :param prints: Prints, default is False
         :type prints: bool, optional
+
         :return: Maximum risk portfolio volatility, asset weights, and portfolio results
         :rtype: tuple
         """
-        ef = efficient_frontier.EfficientFrontier(posterior_expected_returns, posterior_covariance_matrix, self.bounds)
-        ef.add_objective(objective_functions.L2_reg, gamma=self.gamma)
-        ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
-        ef.efficient_risk(1.0)
+        if self.optimization_method == 'mean_variance':
+            ef = efficient_frontier.EfficientFrontier(
+                posterior_expected_returns,
+                posterior_covariance_matrix,
+                self.bounds
+            )
+            ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
+            ef.efficient_risk(1.0)
+        elif self.optimization_method == 'semivariance':
+            ef = efficient_frontier.EfficientSemivariance(
+                posterior_expected_returns,
+                self.returns,
+                self.frequency,
+                self.semivariance_benchmark,
+                self.bounds
+            )
+            ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
+            ef.efficient_risk(1.0)
+        elif self.optimization_method == 'cvar':
+            ef = efficient_frontier.EfficientCVaR(
+                posterior_expected_returns,
+                self.returns,
+                self.beta,
+                self.bounds
+            )
+            ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
+            ef.efficient_risk(1.0)
+        elif self.optimization_method == 'cdar':
+            ef = efficient_frontier.EfficientCDaR(
+                posterior_expected_returns,
+                self.returns,
+                self.beta,
+                self.bounds
+            )
+            ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
+            ef.efficient_risk(1.0)
+        else:
+            raise ValueError(
+                "Please select a valid optimization method: 'mean_variance', 'semivariance', 'cvar', or 'cdar'"
+            )
+
         volatility, weights, results, print_results = self.process_ef_output(
             ef, risk_free_rate, 'Maximum Risk Portfolio'
         )
+
         if prints:
             print('Maximum Risk Portfolio:')
             print('Maximum Volatility: {}%'.format(round(volatility * 100, 2)))
@@ -329,13 +390,18 @@ class Model(object):
         :return: Maximum Sharpe portfolio asset weights, and portfolio results
         :rtype: tuple
         """
-        ef = efficient_frontier.EfficientFrontier(posterior_expected_returns, posterior_covariance_matrix, self.bounds)
-        ef.add_objective(objective_functions.L2_reg, gamma=self.gamma)
+        ef = efficient_frontier.EfficientFrontier(
+            posterior_expected_returns,
+            posterior_covariance_matrix,
+            self.bounds
+        )
         ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
         ef.max_sharpe(risk_free_rate=risk_free_rate)
+
         volatility, weights, results, print_results = self.process_ef_output(
             ef, risk_free_rate, 'Maximum Sharpe Portfolio'
         )
+
         if prints:
             print('')
             print('Maximum Sharpe Portfolio:')
@@ -362,28 +428,58 @@ class Model(object):
         :rtype: tuple
         """
         min_risk = self.minimum_risk_portfolio(
-            posterior_expected_returns, posterior_covariance_matrix, risk_free_rate)[0]
+            posterior_expected_returns, posterior_covariance_matrix, risk_free_rate, self.optimization_method)[0]
         max_risk = self.maximum_risk_portfolio(
-            posterior_expected_returns, posterior_covariance_matrix, risk_free_rate)[0]
+            posterior_expected_returns, posterior_covariance_matrix, risk_free_rate, self.optimization_method)[0]
+
         portfolios = pd.DataFrame()
         results = pd.DataFrame()
         counter = 1
         for risk in tqdm(np.linspace(min_risk + .001, max_risk - .001, 20).round(4)):
-            ef = efficient_frontier.EfficientFrontier(
-                posterior_expected_returns, posterior_covariance_matrix, self.bounds
-            )
-            ef.add_objective(objective_functions.L2_reg, gamma=self.gamma)
+            if self.optimization_method == 'mean_variance':
+                ef = efficient_frontier.EfficientFrontier(
+                    posterior_expected_returns, posterior_covariance_matrix, self.bounds, self.optimization_method
+                )
+            elif self.optimization_method == 'semivariance':
+                ef = efficient_frontier.EfficientSemivariance(
+                    posterior_expected_returns,
+                    self.returns,
+                    self.frequency,
+                    self.semivariance_benchmark,
+                    self.bounds
+                )
+            elif self.optimization_method == 'cvar':
+                ef = efficient_frontier.EfficientCVaR(
+                    posterior_expected_returns,
+                    self.returns,
+                    self.beta,
+                    self.bounds
+                )
+            elif self.optimization_method == 'cdar':
+                ef = efficient_frontier.EfficientCDaR(
+                    posterior_expected_returns,
+                    self.returns,
+                    self.beta,
+                    self.bounds
+                )
+            else:
+                raise ValueError(
+                    "Please select a valid optimization method: 'mean_variance', 'semivariance', 'cvar', or 'cdar'"
+                )
             ef.add_constraint(lambda w: cp.norm(w, 1) <= self.long_weight + self.short_weight)
             ef.efficient_risk(risk)
+
             weights = ef.clean_weights(self.min_weight)
             weights = pd.DataFrame.from_dict(weights, orient='index', columns=[counter]).round(4)
             weights.index.name = 'TICKER'
             weights = weights.fillna(0)
+
             performance = pd.DataFrame(
                 ef.portfolio_performance(risk_free_rate=risk_free_rate),
                 columns=[counter],
                 index=['Expected_Return', 'Expected Volatility', 'Sharpe_Ratio']
             ).round(4)
+
             margin_weight = -weights[weights < 0].sum().squeeze()
             exp_return = performance.loc['Expected_Return'].squeeze()
             performance.loc['Expected_Return'] = round(
@@ -393,6 +489,7 @@ class Model(object):
             results = pd.concat([results, performance], axis=1)
             results.name = 'Results'
             counter += 1
+
         if prints:
             print('Portfolios:')
             print(portfolios.applymap('{:,.2%}'.format))
@@ -414,20 +511,11 @@ class Model(object):
         :return: Ticker volatilities
         :rtype: pandas.core.series.Series
         """
-        symbols = list(covariance_matrix.index)
-        count = 0
-        symbol_stds = []
-        weight_vector = [1] + [0] * (len(symbols) - 1)
-        while count < len(symbols):
-            symbol_stds.append(np.dot(weight_vector, np.dot(covariance_matrix, weight_vector)).round(4))
-            try:
-                weight_vector[count], weight_vector[count + 1] = 0, 1
-            except IndexError:
-                break
-            count += 1
-        symbol_stds = pd.Series(symbol_stds, symbols)
-
-        return symbol_stds
+        # The diagonal elements of the covariance matrix represent the variance of each ticker
+        # Standard deviation is the square root of the variance
+        variances = covariance_matrix.values.diagonal()
+        std_dev = pd.Series(variances ** 0.5, index=covariance_matrix.columns)
+        return std_dev.round(4)
 
     @staticmethod
     def plot_efficient_frontier(expected_returns, results, covariance_matrix, figsize=(12, 6)):

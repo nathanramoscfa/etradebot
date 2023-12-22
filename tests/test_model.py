@@ -10,7 +10,7 @@ class TestModel(unittest.TestCase):
 
     def setUp(self):
         self.symbols = ['AAPL', 'GOOG', 'AMZN']
-        self.model = Model(self.symbols, api_source='yahoo')
+        self.model = Model(self.symbols)
 
     def test_process_symbols_yahoo(self):
         processed_symbols = self.model.process_symbols(self.symbols, api_source='yahoo')
@@ -24,7 +24,7 @@ class TestModel(unittest.TestCase):
 
     def test_invalid_api_source(self):
         with self.assertRaises(ValueError):
-            Model(self.symbols, api_source='invalid')
+            Model(self.symbols)
 
     def test_get_historical_prices_yahoo(self):
         with mock.patch('model.model.Model.get_historical_prices') as mock_history:
@@ -59,7 +59,7 @@ class TestModel(unittest.TestCase):
             mock_history.return_value = prices
 
             # Create a Model object and call get_historical_prices
-            model = Model(['AAPL', 'GOOG'], api_source='bloomberg')
+            model = Model(['AAPL', 'GOOG'])
             result = model.get_historical_prices()
 
             # Convert the index of the result dataframe to a DatetimeIndex with the same frequency as the
@@ -79,7 +79,7 @@ class TestModel(unittest.TestCase):
             mock_ticker().price.__getitem__.return_value = {'regularMarketPrice': 1.23}
 
             # Create a Model object and call get_risk_free_rate
-            model = Model(['AAPL'], api_source='yahoo')
+            model = Model(['AAPL'])
             result = model.get_risk_free_rate()
 
             # Check that the result is equal to the expected value
@@ -90,14 +90,14 @@ class TestModel(unittest.TestCase):
         mock_mgr = mock_bbg.return_value
         mock_mgr['USGG10YR Index'].PX_LAST = 4.0
 
-        model = Model(symbols=['AAPL'], api_source='bloomberg')
+        model = Model(symbols=['AAPL'])
         result = model.get_risk_free_rate()
 
         self.assertEqual(result, 0.04)
 
     @mock.patch('model.model.yq.Ticker')
     def test_get_market_caps_yahoo(self, mock_ticker):
-        model = Model(['QQQ', 'VIOG', 'PSCD', 'SPSM', 'FYX'], api_source='yahoo')
+        model = Model(['QQQ', 'VIOG', 'PSCD', 'SPSM', 'FYX'])
         for symbol, summary_detail in mock_responses.mock_summary_detail.items():
             mock_yq_symbol = mock.MagicMock()
             mock_yq_symbol.summary_detail = {symbol: summary_detail}
@@ -116,7 +116,7 @@ class TestModel(unittest.TestCase):
 
             MockDataManager.return_value.__getitem__.return_value = mock.MagicMock(CUR_MKT_CAP=MockCUR_MKT_CAP)
 
-            m = Model(symbols=['AAPL US Equity', 'MSFT US Equity'], api_source='bloomberg')
+            m = Model(symbols=['AAPL US Equity', 'MSFT US Equity'])
             market_cap = m.get_market_caps()
             expected = pd.Series({'AAPL': 1000.0, 'MSFT': 2000.0})
             pd.testing.assert_series_equal(market_cap, expected)

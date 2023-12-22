@@ -243,8 +243,8 @@ class ETrade:
 
         :param portfolio_data: Portfolio data
         :type portfolio_data: pandas.DataFrame
-        :return: Portfolio performance
-        :rtype: pandas.Series
+        :return: Tuple of two pandas.Series (unformatted and formatted portfolio performance)
+        :rtype: tuple
         """
         dollar_cols = ['marketValue', 'totalCost', 'daysGain', 'totalGain']
         percent_cols = ['daysGainPct', 'totalGainPct']
@@ -259,20 +259,34 @@ class ETrade:
         # Compute sum for dollar_cols
         dollar_sum = portfolio_data[dollar_cols].sum()
 
+        # Ensure portfolio_performance is a DataFrame
+        portfolio_performance = pd.DataFrame(dollar_sum).transpose()
+
         # Compute the performance metrics as defined
-        portfolio_performance = dollar_sum.copy()
-        portfolio_performance['daysGainPct'] = dollar_sum['daysGain'] / (
-                    dollar_sum['totalCost'] - dollar_sum['daysGain'])
-        portfolio_performance['totalGainPct'] = dollar_sum['totalGain'] / dollar_sum['totalCost']
+        portfolio_performance['daysGainPct'] = portfolio_performance['daysGain'] / (
+                portfolio_performance['totalCost'] - portfolio_performance['daysGain'])
+        portfolio_performance['totalGainPct'] = portfolio_performance['totalGain'] / portfolio_performance['totalCost']
 
-        # Now convert to string format
-        portfolio_performance[dollar_cols] = portfolio_performance[dollar_cols].apply(lambda x: '${:,.2f}'.format(x))
-        for col in percent_cols:
-            if col in portfolio_performance:
-                portfolio_performance[col] = '{:.2f}%'.format(
-                    portfolio_performance[col] * 100)  # multiplying by 100 to convert ratio to percentage
+        # Function to format a number as currency
+        def format_currency(x):
+            return '${:,.2f}'.format(x) if pd.notnull(x) else x
 
-        return portfolio_performance
+        # Function to format percentage
+        def format_percentage(x):
+            return '{:.2f}%'.format(x * 100)  # multiplying by 100 to convert ratio to percentage
+
+        # Separate formatted and unformatted Series
+        formatted_performance = pd.Series()
+        for col in dollar_cols + percent_cols:
+            formatted_col_name = col
+            if col in dollar_cols:
+                formatted_performance[formatted_col_name] = format_currency(portfolio_performance[col].iloc[0])
+            else:
+                formatted_performance[formatted_col_name] = format_percentage(portfolio_performance[col].iloc[0])
+
+        unformatted_performance = portfolio_performance.iloc[0][dollar_cols + percent_cols]
+
+        return unformatted_performance, formatted_performance
 
     @staticmethod
     def format_portfolio_data(portfolio_data):

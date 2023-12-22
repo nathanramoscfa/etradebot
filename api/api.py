@@ -151,7 +151,7 @@ class DataAPI(object):
             return self.get_bloomberg_prices()
 
     @staticmethod
-    def get_yahoo_risk_free_rate(symbol, percent=100, decimals=4):
+    def get_yahoo_risk_free_rate(symbol=None, percent=100, decimals=4):
         """
         :description: Get risk-free rate from Yahoo Finance
 
@@ -163,8 +163,7 @@ class DataAPI(object):
         :rtype: float
         """
         if symbol is None:
-            risk_free_rate = round(
-                yq.Ticker('^TNX').price['^TNX']['regularMarketPrice'] / percent, decimals)
+            risk_free_rate = round(yq.Ticker('^TNX').price['^TNX']['regularMarketPrice'] / percent, decimals)
         else:
             ticker = yq.Ticker(symbol)
             risk_free_rate = round(ticker.price[symbol]['regularMarketPrice'] / percent, decimals)
@@ -355,6 +354,8 @@ class DataAPI(object):
             market_name, market_prices = self.get_yahoo_market_prices(prices, symbols)
         elif self.api_source == 'bloomberg':
             market_name, market_prices = self.get_bloomberg_market_prices(prices, symbols)
+        else:
+            raise ValueError(f"Invalid API source: {self.api_source}")
 
         if prints:
             print('\nMarket Symbol:', self.market_symbol)

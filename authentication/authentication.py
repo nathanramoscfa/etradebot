@@ -159,7 +159,6 @@ class Authentication(object):
         """
         for i in range(self.retries):
             try:
-                print(f"Retry attempt: {i + 1}")
                 accounts, orders, market = self.access_api()
                 return accounts, orders, market
             except NoSuchElementException as e:

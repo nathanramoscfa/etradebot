@@ -4,8 +4,6 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 from dicttoxml import dicttoxml
 from pypfopt import DiscreteAllocation
-from requests.exceptions import HTTPError
-from exceptions import HardToBorrowException
 
 
 class Execute:
@@ -133,6 +131,29 @@ class Execute:
 
         return trade_response
 
+    def execute_trade(self, account_id_key, ticker, order_action, quantity, preview, prints=False):
+        """
+        :description: Helper function to execute trades
+
+        :param account_id_key: Account ID key
+        :type account_id_key: str, required
+        :param ticker: Ticker
+        :type ticker: str, required
+        :param order_action: Order action
+        :type order_action: str, required
+        :param quantity: Quantity
+        :type quantity: int, required
+        :param preview: Preview trades, default is True. If False, trades will be executed.
+        :type preview: bool, optional
+        :param prints: Prints, default is False
+        :type prints: bool, optional
+        :return: Trade response
+        :rtype: dict
+        """
+        return self.generate_trades(
+            account_id_key, ticker, order_action, quantity, preview=preview, prints=prints
+        )
+
     def execute_trades(self, current_portfolio, new_allocation, account_id_key, preview=True, prints=False):
         """
         :description: Execute trades
@@ -150,187 +171,154 @@ class Execute:
         :return: Trade responses
         :rtype: dict
         """
-        # Filter out any empty accounts
+        # Setup and validation
         accounts = self.etrade.get_account_list(prints=False)
         accounts = [a for a in accounts.accountIdKey if a == account_id_key]
         if not accounts:
             raise ValueError(f"Account with account_id_key '{account_id_key}' not found.")
 
-        # Get current shares
-        current_shares = current_portfolio.copy().quantity
+        # Initialize trade order lists
+        sell_orders = []
+        short_sell_orders = []
+        buy_orders = []
+        buy_cover_orders = []
 
-        # Keep track of trade responses
+        # Process portfolio and new allocation to categorize trades
+        for ticker in set(current_portfolio.index).union(new_allocation.index):
+            try:
+                current_qty = current_portfolio.quantity[ticker]
+            except KeyError:
+                current_portfolio = current_portfolio.copy()
+                current_portfolio.loc[ticker] = [0, 0, 'NONE']  # Adding new row for the missing ticker
+                current_qty = 0
+            try:
+                new_qty = new_allocation.loc[ticker]
+            except KeyError:
+                new_allocation = new_allocation.copy()
+                new_allocation.loc[ticker] = 0
+                new_qty = 0
+            net_qty = new_qty - current_qty
+
+            # CONDITION 1: If net_qty is less than 0, and current position is LONG, SELL and/or SELL_SHORT
+            if net_qty < 0 and current_portfolio.positionType.loc[ticker] == 'LONG':
+                if abs(net_qty) > current_qty:  # Sell all shares
+                    sell_orders.append((ticker, -current_qty))
+                    short_sell_orders.append((ticker, net_qty))
+                else:
+                    sell_orders.append((ticker, net_qty))
+
+            # CONDITION 2: If net_qty is less than 0, and current position is SHORT, SHORT SELL
+            elif net_qty < 0 and current_portfolio.positionType.loc[ticker] == 'SHORT':
+                short_sell_orders.append((ticker, net_qty))
+
+            # CONDITION 3: If net_qty is greater than 0, and current position is SHORT, BUY_TO_COVER and/or BUY
+            elif net_qty > 0 and current_portfolio.positionType.loc[ticker] == 'SHORT':
+                if net_qty > current_qty:
+                    buy_cover_orders.append((ticker, current_qty))
+                    buy_orders.append((ticker, net_qty))
+                else:
+                    buy_cover_orders.append((ticker, net_qty))
+
+            # CONDITION 4: If net_qty is greater than 0, and current position is LONG, BUY
+            elif net_qty > 0 and current_portfolio.positionType.loc[ticker] == 'LONG':
+                buy_orders.append((ticker, net_qty))
+
+            # CONDITION 5: If current position is NONE, BUY or SHORT SELL
+            elif current_portfolio.positionType.loc[ticker] == 'NONE':
+                if net_qty < 0:
+                    short_sell_orders.append((ticker, net_qty))
+                elif net_qty > 0:
+                    buy_orders.append((ticker, net_qty))
+
+            # CONDITION 6: If net_qty is 0, do nothing
+            elif net_qty == 0:
+                continue
+
+            else:
+                raise ValueError(f'INVALID TRADE LOGIC for {ticker}.')
+
+        if prints:
+            # Proposed Trades
+            print('Proposed Trades...')
+            print('---------------------')
+            if sell_orders:
+                for ticker, qty in sell_orders:
+                    print(f'SELL {abs(qty)} shares of {ticker}')
+            if short_sell_orders:
+                for ticker, qty in short_sell_orders:
+                    print(f'SELL_SHORT {abs(qty)} shares of {ticker}')
+            if buy_orders:
+                for ticker, qty in buy_orders:
+                    print(f'BUY {abs(qty)} shares of {ticker}')
+            if buy_cover_orders:
+                for ticker, qty in buy_cover_orders:
+                    print(f'BUY_TO_COVER {abs(qty)} shares of {ticker}')
+            if not sell_orders and not short_sell_orders and not buy_orders and not buy_cover_orders:
+                print('No trades to execute.')
+
+            # Execute trades in the specified order
+            print('\n')
+            if preview:
+                print('Previewing Trades...')
+            else:
+                print('Executing Trades...')
+            print('---------------------')
+
+        # Execute trades in the specified order
         trade_responses = {}
+        qty = None
+        ticker = None
+        try:
+            for ticker, qty in sell_orders:
+                trade_responses[ticker] = self.execute_trade(
+                    account_id_key, ticker, 'SELL', abs(qty), preview)
+                if prints:
+                    print('SELL {} shares of {}'.format(abs(qty), ticker))
+            for ticker, qty in short_sell_orders:
+                trade_responses[ticker] = self.execute_trade(
+                    account_id_key, ticker, 'SELL_SHORT', abs(qty), preview)
+                if prints:
+                    print('SELL_SHORT {} shares of {}'.format(abs(qty), ticker))
+            for ticker, qty in buy_orders:
+                trade_responses[ticker] = self.execute_trade(
+                    account_id_key, ticker, 'BUY', abs(qty), preview)
+                if prints:
+                    print('BUY {} shares of {}'.format(abs(qty), ticker))
+            for ticker, qty in buy_cover_orders:
+                trade_responses[ticker] = self.execute_trade(
+                    account_id_key, ticker, 'BUY_TO_COVER', abs(qty), preview)
+                if prints:
+                    print('BUY_TO_COVER {} shares of {}'.format(abs(qty), ticker))
+        except Exception as e:
+            print('ERROR executing {} shares of {}.'.format(qty, ticker))
+            print('\n')
+            print(e)
 
-        # Loop over current portfolio
-        for ticker in current_portfolio.index:
-            # Liquidates current positions that are not included in the new portfolio
-            if ticker not in new_allocation.index:
-                if current_portfolio.loc[ticker, 'positionType'] == 'LONG':
-                    current_shares.loc[ticker] = 0
-                    if preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='SELL',
-                            quantity=current_portfolio.loc[ticker, 'quantity']
-                        )
-                    elif not preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='SELL',
-                            quantity=current_portfolio.loc[ticker, 'quantity'], preview=False
-                        )
-                    if prints:
-                        print('SELL {} shares of {}'.format(current_portfolio.loc[ticker, 'quantity'], ticker))
-                elif current_portfolio.loc[ticker, 'positionType'] == 'SHORT':
-                    current_shares.loc[ticker] = 0
-                    if preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='BUY_TO_COVER',
-                            quantity=current_portfolio.loc[ticker, 'quantity']
-                        )
-                    elif not preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='BUY_TO_COVER',
-                            quantity=current_portfolio.loc[ticker, 'quantity'], preview=False
-                        )
-                    if prints:
-                        print('BUY_TO_COVER {} shares of {}'.format(current_portfolio.loc[ticker, 'quantity'], ticker))
-
-            # Handles instances if current position flips from long to short and vice-versa
-            if ticker in new_allocation.index:
-                if (current_portfolio.loc[ticker, 'positionType'] == 'LONG') & (new_allocation.loc[ticker] < 0):
-                    current_shares.loc[ticker] = current_shares.loc[ticker] - current_portfolio.loc[ticker, 'quantity']
-                    current_shares.loc[ticker] = current_shares.loc[ticker] - new_allocation.loc[ticker]
-                    if preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='SELL',
-                            quantity=current_portfolio.loc[ticker, 'quantity']
-                        )
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='SELL_SHORT',
-                            quantity=current_portfolio.loc[ticker, 'quantity']
-                        )
-                    elif not preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='SELL',
-                            quantity=new_allocation.loc[ticker], preview=False
-                        )
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='SELL_SHORT',
-                            quantity=new_allocation.loc[ticker], preview=False
-                        )
-                    if prints:
-                        print('SELL {} shares of {}'.format(current_portfolio.loc[ticker, 'quantity'], ticker))
-                        print('SELL_SHORT {} shares of {}'.format(new_allocation.loc[ticker], ticker))
-                elif (current_portfolio.loc[ticker, 'positionType'] == 'SHORT') & (new_allocation.loc[ticker] > 0):
-                    current_shares.loc[ticker] = current_shares.loc[ticker] + current_portfolio.loc[ticker, 'quantity']
-                    current_shares.loc[ticker] = current_shares.loc[ticker] + new_allocation.loc[ticker]
-                    if prints:
-                        print('BUY_TO_COVER {} shares of {}'.format(current_portfolio.loc[ticker, 'quantity'], ticker))
-                        print('BUY {} shares of {}'.format(new_allocation.loc[ticker], ticker))
-        time.sleep(5)
-
-        # Logic for new portfolio
-        for ticker in new_allocation.index:
-            if new_allocation.loc[ticker] > 0:
-                try:
-                    net_quantity = new_allocation.loc[ticker] - current_shares.loc[ticker]
-                except KeyError:
-                    net_quantity = new_allocation.loc[ticker]
-                if net_quantity > 0:
-                    try:
-                        current_shares.loc[ticker] = current_shares.loc[ticker] + net_quantity
-                    except KeyError:
-                        current_shares[ticker] = net_quantity
-                    if preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='BUY', quantity=net_quantity
-                        )
-                    elif not preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='BUY', quantity=net_quantity, preview=False
-                        )
-                    if prints:
-                        print('BUY {} shares of {}'.format(net_quantity, ticker))
-                elif net_quantity < 0:
-                    try:
-                        current_shares.loc[ticker] = current_shares.loc[ticker] - net_quantity
-                    except KeyError:
-                        current_shares.loc[ticker] = net_quantity
-                    if preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='SELL', quantity=net_quantity
-                        )
-                    elif not preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='SELL', quantity=net_quantity, preview=False
-                        )
-                    if prints:
-                        print('SELL {} shares of {}'.format(net_quantity, ticker))
-
-            elif new_allocation.loc[ticker] < 0:
-                try:
-                    net_quantity = new_allocation.loc[ticker] - current_shares.loc[ticker]
-                except KeyError:
-                    net_quantity = new_allocation.loc[ticker]
-                if net_quantity < 0:
-                    try:
-                        current_shares.loc[ticker] = current_shares.loc[ticker] + net_quantity
-                    except KeyError:
-                        current_shares.loc[ticker] = net_quantity
-                    try:
-                        if preview:
-                            trade_responses[ticker] = self.generate_trades(
-                                account_id_key, ticker, order_action='SELL_SHORT', quantity=net_quantity
-                            )
-                        elif not preview:
-                            trade_responses[ticker] = self.generate_trades(
-                                account_id_key, ticker, order_action='SELL_SHORT', quantity=net_quantity, preview=False
-                            )
-                    except HTTPError as e:
-                        if 'hard to borrow' in e.response.text.lower():
-                            raise HardToBorrowException(ticker)
-                        else:
-                            raise e
-                    if prints:
-                        print('SELL_SHORT {} shares of {}'.format(net_quantity, ticker))
-                elif net_quantity > 0:
-                    try:
-                        current_shares.loc[ticker] = current_shares.loc[ticker] - net_quantity
-                    except KeyError:
-                        current_shares.loc[ticker] = net_quantity
-                    if preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='BUY_TO_COVER', quantity=net_quantity
-                        )
-                    elif not preview:
-                        trade_responses[ticker] = self.generate_trades(
-                            account_id_key, ticker, order_action='BUY_TO_COVER', quantity=net_quantity, preview=False
-                        )
-                    if prints:
-                        print('BUY_TO_COVER {} shares of {}'.format(net_quantity, ticker))
-        time.sleep(5)
-
+        # Handling responses and finalizing
         trade_responses_dict = {}
         for key, value in trade_responses.items():
-            xml_str = dicttoxml(value).decode()
-            root = ET.fromstring(xml_str)
-            data_dict = {}
-            for element in root.iter():
-                if element.tag == root.tag:
-                    continue
-                if len(list(element)) == 0:
-                    data_dict[element.tag] = element.text
-                else:
-                    sub_dict = {}
-                    for sub_element in element:
-                        sub_dict[sub_element.tag] = sub_element.text
-                    data_dict[element.tag] = sub_dict
-            trade_responses_dict[key] = data_dict
+            if value:  # Check if there is a response to process
+                xml_str = dicttoxml(value).decode()
+                root = ET.fromstring(xml_str)
+                data_dict = {}
+                for element in root.iter():
+                    if element.tag == root.tag:
+                        continue
+                    if len(list(element)) == 0:
+                        data_dict[element.tag] = element.text
+                    else:
+                        sub_dict = {}
+                        for sub_element in element:
+                            sub_dict[sub_element.tag] = sub_element.text
+                        data_dict[element.tag] = sub_dict
+                trade_responses_dict[key] = data_dict
 
-        df = pd.DataFrame.from_dict(trade_responses_dict, orient='index')
-        df = df[['orderAction', 'priceType', 'quantity', 'orderTerm', 'marketSession']].apply(
-            pd.to_numeric, errors='ignore'
-        )
-        df.index.name = 'symbol'
-
-        return df
+        try:
+            df = pd.DataFrame.from_dict(trade_responses_dict, orient='index')
+            df = df[['orderAction', 'priceType', 'quantity', 'orderTerm', 'marketSession']].apply(
+                pd.to_numeric, errors='ignore'
+            )
+            df.index.name = 'symbol'
+            return df
+        except KeyError:
+            print('No trades to execute.')

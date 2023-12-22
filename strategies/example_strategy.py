@@ -45,16 +45,8 @@ def strategy(prints=False):
     )
 
     # Instantiate the model
-    model = Model(
-        symbols=symbols,
-        bounds=(0.0, 0.3),  # percent, bounds for each asset, negative for shorting
-        gamma=0.0,  # decimal, diversification parameter (0.0 <= gamma <= 2.0), 0.0 is no diversification
-        min_weight=0.05,  # percent, minimum weight for each asset that has non-zero weight
-        margin_rate=0.132,  # percent, interest rate of margin debt
-        long_weight=1.0,  # percent, must be positive
-        short_weight=0.0,  # percent, must be positive
-        frequency=252  # periods per year, 252 for daily, 12 for monthly, 4 for quarterly
-    )
+    model = Model(symbols=symbols, bounds=(0.0, 0.3), min_weight=0.05, margin_rate=0.132, long_weight=1.0,
+                  short_weight=0.0, frequency=252)
 
     # Get historical prices
     historical_prices = api.get_historical_prices()
