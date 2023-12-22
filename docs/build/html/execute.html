@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>execute &mdash; etradebot 2.0.0 documentation</title>
+  <title>execute &mdash; etradebot 3.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
             etradebot
           </a>
               <div class="version">
-                2.0.0
+                3.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -71,6 +71,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">execute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#execute.execute.Execute"><code class="docutils literal notranslate"><span class="pre">Execute</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#execute.execute.Execute.calculate_shares"><code class="docutils literal notranslate"><span class="pre">Execute.calculate_shares()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#execute.execute.Execute.execute_trade"><code class="docutils literal notranslate"><span class="pre">Execute.execute_trade()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#execute.execute.Execute.execute_trades"><code class="docutils literal notranslate"><span class="pre">Execute.execute_trades()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#execute.execute.Execute.generate_trades"><code class="docutils literal notranslate"><span class="pre">Execute.generate_trades()</span></code></a></li>
 </ul>
@@ -145,6 +146,32 @@
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Shares to buy or sell</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="execute.execute.Execute.execute_trade">
+<span class="sig-name descname"><span class="pre">execute_trade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account_id_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_action</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preview</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#execute.execute.Execute.execute_trade" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Helper function to execute trades</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>account_id_key</strong> (<em>str</em><em>, </em><em>required</em>) – Account ID key</p></li>
+<li><p><strong>ticker</strong> (<em>str</em><em>, </em><em>required</em>) – Ticker</p></li>
+<li><p><strong>order_action</strong> (<em>str</em><em>, </em><em>required</em>) – Order action</p></li>
+<li><p><strong>quantity</strong> (<em>int</em><em>, </em><em>required</em>) – Quantity</p></li>
+<li><p><strong>preview</strong> (<em>bool</em><em>, </em><em>optional</em>) – Preview trades, default is True. If False, trades will be executed.</p></li>
+<li><p><strong>prints</strong> (<em>bool</em><em>, </em><em>optional</em>) – Prints, default is False</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Trade response</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>dict</p>

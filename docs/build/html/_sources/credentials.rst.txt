@@ -108,17 +108,18 @@ Obtaining credentials
             python
 
         * Import the ``list_accounts`` module. This line of code will log in to your E\-Trade account assuming you saved
-          your credentials correctly in step 4.
+          your credentials correctly in step 4. If this is your first time logging into your account with the API, you
+          will be prompted to enter a two-factor authentication code sent to your mobile phone by E-Trade.
 
         .. code-block:: python
 
             >>> from utils.list_accounts import get_account_list
 
-        * Run the ``list_accounts`` function.
+        * Run the ``get_account_list`` function.
 
         .. code-block:: python
 
-            >>> list_accounts()
+            >>> get_account_list()
 
         * This will output a ``pd.DataFrame`` of your accounts (``accountId`` is the account number) and their account ID
           keys, for example:

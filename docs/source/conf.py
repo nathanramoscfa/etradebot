@@ -14,8 +14,8 @@ sys.path.insert(0, os.path.abspath('../..'))
 project = 'etradebot'
 copyright = '2023, Nathan Ramos, CFA®'
 author = 'Nathan Ramos, CFA®'
-version = '2.0.0'
-release = '2.0.0'
+version = '3.0.0'
+release = '3.0.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
