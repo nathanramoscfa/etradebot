@@ -12,7 +12,7 @@ based on custom trading strategies. ETradeBot is strategy-agnostic and will exec
 project is not affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the terms
 of the `disclaimer <https://etradebot.readthedocs.io/en/latest/disclaimer.html>`_.
 
-Schedule a `FREE CONSULTATION <https://calendly.com/nrcapitalmanagement/30min>`_ to learn more or discuss how ETradeBot
+Schedule a `FREE consultation <https://calendly.com/nrcapitalmanagement/etradebot>`_ to learn more or discuss how ETradeBot
 can fit into your trading strategy.
 
 Features
