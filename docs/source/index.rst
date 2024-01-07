@@ -3,17 +3,22 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. role:: red
+
 #########
 ETradeBot
 #########
 
 ETradeBot is an automated trading software written in Python for E-Trade accounts that allows users to execute trades
-based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. This
-project is not affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the terms
-of the `disclaimer <https://etradebot.readthedocs.io/en/latest/disclaimer.html>`_.
+based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. Schedule
+a `FREE consultation <https://calendly.com/nrcapitalmanagement/etradebot>`_ to learn more or discuss how ETradeBot can
+fit into your trading strategy.
 
-Schedule a `FREE consultation <https://calendly.com/nrcapitalmanagement/etradebot>`_ to learn more or discuss how ETradeBot
-can fit into your trading strategy.
+.. warning:: ETradeBot is experimental software. Test on small dollar accounts only. This project is not
+   affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the
+   `disclaimer <https://etradebot.readthedocs.io/en/latest/disclaimer.html>`_. The developer is not responsible for any
+   losses incurred from the use of ETradeBot. Use at your own risk.
+
 
 Features
 ========
