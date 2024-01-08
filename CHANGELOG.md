@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - No pending changes. 
 
-## [3.0.2] - 2024-01-08
+## [3.0.3] - 2024-01-08
 ### Added
 - Traceback functionality to `is_market_open()` function for better error diagnosis.
 
@@ -17,12 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Resolved an error related to 'Timestamp' object handling in `is_market_open()`.
-
-### Deprecated
-- [List any features that were marked as deprecated.]
-
-### Removed
-- [List any features that were removed in this release.]
 
 ### Security
 - Addressed security vulnerability in `setuptools` by downgrading to a safer version (67.6.0).
