@@ -4,6 +4,7 @@ import ast
 import pytz
 import keyring
 import logging
+import traceback
 import pandas as pd
 import pandas_market_calendars as mcal
 
@@ -53,6 +54,7 @@ def is_market_open():
             else:
                 return True, None
         except Exception as e:
+            traceback.print_exc()  # Print detailed traceback
             return False, f"An error occurred: {e}"
 
     else:
