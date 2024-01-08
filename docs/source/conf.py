@@ -12,10 +12,10 @@ sys.path.insert(0, os.path.abspath('../..'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'etradebot'
-copyright = '2023, Nathan Ramos, CFA®'
+copyright = '2024, Nathan Ramos, CFA®'
 author = 'Nathan Ramos, CFA®'
-version = '3.0.0'
-release = '3.0.0'
+version = '3.0.2'
+release = '3.0.2'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
