@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for trading option spreads.
 - Support for macOS compatibility.
 
+## [3.0.5] - 2024-01-17
+### Fixed
+- Updated `README.md` to fix typo in keyring parameters example from "cookie" to "etrade_cookie".
+- Edited `bot.py` to fix console output print statements' formatting.
+
+## Updated
+- Updated `authentication.py` Exception handling to remove unnecessary print statements.
+
 ## [3.0.4] - 2024-01-15
 ### Updated
 - Updated driver management to `webdriver_manager` library to handle webdriver management.
