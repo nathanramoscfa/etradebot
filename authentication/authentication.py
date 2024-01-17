@@ -166,11 +166,6 @@ class Authentication(object):
                 print('ConnectionError: Trying again with chrome.')
                 time.sleep(self.sleep)
                 self.sleep *= 2  # Exponential backoff
-            except Exception as e:
-                print(f"An unexpected error occurred: {e}")
-                time.sleep(self.sleep)
-                self.sleep *= 2  # Exponential backoff
-
         raise Exception("Failed to connect to Etrade API after multiple retries")
 
     @staticmethod
