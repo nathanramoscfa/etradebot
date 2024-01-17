@@ -4,8 +4,7 @@ jupyterlab==3.6.1
 keyring==23.13.1
 matplotlib==3.7.1
 numpy==1.24.2
-pandas~=2.0.3
-pandas-market-calendars~=4.3.3
+pandas>=2.0.3
 pyportfolioopt==1.5.5
 pytz==2022.7.1
 recommonmark
@@ -22,3 +21,4 @@ xmltodict==0.13.0
 yahooquery==2.3.6
 yfinance==0.2.12
 git+https://github.com/nathanramoscfa/pyetrade.git#egg=pyetrade
+git+https://github.com/rsheftel/pandas_market_calendars.git#egg=pandas-market-calendars
