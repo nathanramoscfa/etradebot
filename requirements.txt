@@ -21,4 +21,4 @@ xmltodict==0.13.0
 yahooquery==2.3.6
 yfinance==0.2.12
 git+https://github.com/nathanramoscfa/pyetrade.git#egg=pyetrade
-git+https://github.com/rsheftel/pandas_market_calendars.git#egg=pandas-market-calendars
+git+https://github.com/nathanramoscfa/pandas_market_calendars.git#egg=pandas-market-calendars
