@@ -1,11 +1,26 @@
+import os
+import re
 from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+
+# Function to extract the version from __version__.py
+def get_version():
+    here = os.path.abspath(os.path.dirname(__file__))
+    with open(os.path.join(here, '__version__.py'), encoding='utf-8') as f:
+        version_file_contents = f.read()
+    # Use regular expression to extract version string
+    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", version_file_contents, re.M)
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError("Unable to find version string.")
+
+
 setup(
     name='etradebot',
-    version='3.0.3',
+    version=get_version(),
     url='https://github.com/nathanramoscfa/etradebot',
     license='MIT',
     author='Nathan Ramos, CFA®',

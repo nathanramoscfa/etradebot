@@ -18,6 +18,7 @@ class Strategy:
 
         :return: None
         :rtype: None
+
         """
         self.prints = prints
         self.strategy_name = strategy_name

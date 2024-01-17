@@ -22,7 +22,7 @@ sandbox_secret = keyring.get_password("etrade", "sandbox_secret")
 web_username = keyring.get_password("etrade", "web_username")
 web_password = keyring.get_password("etrade", "web_password")
 account_id = keyring.get_password("etrade", "account_id")
-etrade_cookie = ast.literal_eval(keyring.get_password("etrade", "cookie"))
+etrade_cookie = ast.literal_eval(keyring.get_password("etrade", "etrade_cookie"))
 account_id_key = keyring.get_password("etrade", "account_id_key")
 
 

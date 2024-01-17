@@ -317,7 +317,6 @@ class Model(object):
         :type risk_free_rate: float, required
         :param prints: Prints, default is False
         :type prints: bool, optional
-
         :return: Maximum risk portfolio volatility, asset weights, and portfolio results
         :rtype: tuple
         """

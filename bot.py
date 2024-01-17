@@ -48,6 +48,7 @@ class Bot:
 
         :return: None
         :rtype: None
+
         """
         print('Starting bot...')
         # Initialize objects
@@ -106,7 +107,7 @@ class Bot:
             # Preview trades first
             print('Previewing Trades...')
             self.preview = True
-            place_order = self.execute.execute_trades(
+            self.execute.execute_trades(
                 current_portfolio, new_portfolio_shares, self.account_id_key, self.preview, self.prints
             )
             # Execute trades

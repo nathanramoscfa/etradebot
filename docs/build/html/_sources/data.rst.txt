@@ -5,7 +5,7 @@ Data APIs
 #########
 
 About Data APIs
-=====================
+===============
 
 To run automated trading strategies, ETradeBot needs financial data APIs installed. There are two options for accessing
 financial data with ETradeBot:

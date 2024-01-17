@@ -35,7 +35,6 @@ class ETrade:
     :type sleep: int, optional
     :EtradeRef: https://apisb.etrade.com/docs/api/authorization/request_token.html
     """
-
     def __init__(
             self, consumer_key, consumer_secret, web_username, web_password, account_id, etrade_cookie,
             sandbox_key=None, sandbox_secret=None, dev=False, headless=True, browser='chrome', retries=3, sleep=30
@@ -276,7 +275,7 @@ class ETrade:
             return '{:.2f}%'.format(x * 100)  # multiplying by 100 to convert ratio to percentage
 
         # Separate formatted and unformatted Series
-        formatted_performance = pd.Series()
+        formatted_performance = pd.Series(dtype='object')
         for col in dollar_cols + percent_cols:
             formatted_col_name = col
             if col in dollar_cols:
@@ -326,7 +325,6 @@ class ETrade:
         :return: Current portfolio
         :rtype: pandas.DataFrame
         """
-
         current_portfolio = portfolio_data[[
             'pctOfPortfolio', 'quantity', 'positionType'
         ]]

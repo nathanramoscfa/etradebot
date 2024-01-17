@@ -10,7 +10,7 @@ consumer_secret = keyring.get_password("etrade", "consumer_secret")
 web_username = keyring.get_password("etrade", "web_username")
 web_password = keyring.get_password("etrade", "web_password")
 account_id = keyring.get_password("etrade", "account_id")
-etrade_cookie = ast.literal_eval(keyring.get_password("etrade", "cookie"))
+etrade_cookie = ast.literal_eval(keyring.get_password("etrade", "etrade_cookie"))
 
 # Initialize the E-Trade object
 etrade = ETrade(consumer_key, consumer_secret, web_username, web_password, account_id, etrade_cookie)

@@ -6,7 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- No pending changes. 
+- Option trading functionality.
+- Limit and stop order functionality.
+- Support for trading option spreads.
+- Support for macOS compatibility.
+
+## [3.0.4] - 2024-01-15
+### Updated
+- Updated driver management to `webdriver_manager` library to handle webdriver management.
 
 ## [3.0.3] - 2024-01-08
 ### Added
