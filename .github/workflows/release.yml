@@ -22,7 +22,7 @@ jobs:
 
       - name: Update version number
         run: |
-          echo "__version__ = '${{ env.VERSION }}'" > etradebot/__version__.py
+          echo "__version__ = '${{ env.VERSION }}'" > __version__.py
 
       - name: Install build dependencies
         run: pip install setuptools wheel
