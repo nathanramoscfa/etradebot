@@ -28,6 +28,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    # Install flake8 for linting
+    - name: Install flake8
+      run: pip install flake8
+
     # Set PYTHONPATH
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
