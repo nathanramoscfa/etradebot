@@ -44,6 +44,11 @@ jobs:
     - name: Lint with flake8
       run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --max-line-length=120
 
+    # Install test dependencies
+    - name: Install test dependencies
+      run: |
+        pip install pytest pytest-cov
+
     # Run tests with coverage
     - name: Run tests with coverage
       run: pytest --cov=./etradebot --cov-report=xml
