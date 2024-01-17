@@ -35,7 +35,7 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.11",
     ],
-    python_requires="==3.11",
+    python_requires=">=3.11, <3.12",
     install_requires=[
         'cvxpy==1.3.0',
         'jupyterlab==3.6.1',
