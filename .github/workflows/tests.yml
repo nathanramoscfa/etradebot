@@ -28,6 +28,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    # Install blpapi
+    - name: Install blpapi
+      run: |
+        pip install --index-url=https://bcms.bloomberg.com/pip/simple/ blpapi
+
+    # Install tia from GitHub
+    - name: Install tia from GitHub
+      run: |
+        pip install git+https://github.com/PaulMest/tia.git#egg=tia
+
     # Install flake8 for linting
     - name: Install flake8
       run: pip install flake8
@@ -39,11 +49,6 @@ jobs:
     # Install the package in editable mode
     - name: Install Package
       run: pip install -e .
-
-    # Install additional dependencies from GitHub
-    - name: Install additional GitHub dependencies
-      run: |
-        pip install git+https://github.com/PaulMest/tia.git#egg=tia
 
     # Lint with flake8
     - name: Lint with flake8
