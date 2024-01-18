@@ -141,7 +141,7 @@ class Authentication(object):
         :rtype: tuple
         """
         oauth = self.get_oauth()
-        verifier_code = oauth.get_verification_code(self.dev, self.headless)
+        verifier_code = oauth.get_verification_code(self.headless)
         tokens = self.get_access_tokens(oauth, verifier_code)
 
         return (
@@ -166,6 +166,9 @@ class Authentication(object):
                 print('ConnectionError: Trying again with chrome.')
                 time.sleep(self.sleep)
                 self.sleep *= 2  # Exponential backoff
+            # except AttributeError:
+            #     time.sleep(self.sleep)
+            #     self.sleep *= 2  # Exponential backoff
         raise Exception("Failed to connect to Etrade API after multiple retries")
 
     @staticmethod
