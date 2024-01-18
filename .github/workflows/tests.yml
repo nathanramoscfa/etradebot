@@ -61,7 +61,7 @@ jobs:
 
     # Run tests with coverage
     - name: Run tests with coverage
-      run: pytest --cov=./etradebot --cov-report=xml
+      run: pytest --cov=. --cov-report=term --cov-report=xml
 
     # Upload coverage reports to Codecov
     - name: Upload coverage reports to Codecov
