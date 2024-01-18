@@ -12,9 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for macOS compatibility.
 
 ## [3.0.5] - 2024-01-17
+
 ### Fixed
 - Updated `README.md` to fix typo in keyring parameters example from "cookie" to "etrade_cookie".
 - Edited `bot.py` to fix console output print statements' formatting.
+- Fixed issues with the `pyetrade` forked repository's `setup.py` file.
 
 ## Updated
 - Updated `authentication.py` Exception handling to remove unnecessary print statements.
