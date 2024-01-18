@@ -90,7 +90,8 @@ class TestETrade(unittest.TestCase):
         mock_orders.place_equity_order = mock_place_order
 
         etrade = ETrade(
-            'consumer_key', 'consumer_secret', 'web_username', 'web_password', 'account_id', {'cookie': 'value'}
+            'consumer_key', 'consumer_secret', 'web_username',
+            'web_password', 'account_id', {'cookie': 'value'}
         )
         execute = Execute(etrade)
 
@@ -107,14 +108,14 @@ class TestETrade(unittest.TestCase):
             with patch.object(random, 'randint', return_value=int(mock_client_order_id)):
                 mock_place_order.return_value = None
                 trade_response = execute.generate_trades(
-                    'account_id_key', symbol, order_action, quantity, price_type, order_term, market_session, preview,
-                    prints
+                    'account_id_key', symbol, order_action, quantity, price_type, order_term,
+                    market_session, preview, prints
                 )
 
                 # check that the place_equity_order method was called with the expected parameters
                 mock_place_order.assert_called_with(
                     resp_format='xml',
-                    accountId='account_id_key',
+                    accountIdKey='account_id_key',
                     symbol='GOOG',
                     orderAction='BUY',
                     clientOrderId=int(mock_client_order_id),

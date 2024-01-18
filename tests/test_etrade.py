@@ -14,7 +14,8 @@ class TestETrade(unittest.TestCase):
 
         # Create instance of ETrade class and call method
         etrade = ETrade(
-            'consumer_key', 'consumer_secret', 'web_username', 'web_password', 'account_id', {'cookie': 'value'}
+            'consumer_key', 'consumer_secret', 'web_username',
+            'web_password', 'account_id', {'cookie': 'value'}
         )
         accounts = etrade.get_account_list()
 
@@ -32,7 +33,8 @@ class TestETrade(unittest.TestCase):
 
         # Create instance of ETrade class and call method
         etrade = ETrade(
-            'consumer_key', 'consumer_secret', 'web_username', 'web_password', 'account_id', {'cookie': 'value'}
+            'consumer_key', 'consumer_secret', 'web_username',
+            'web_password', 'account_id', {'cookie': 'value'}
         )
         balance = etrade.get_account_balance('58315636')
 
@@ -61,7 +63,8 @@ class TestETrade(unittest.TestCase):
         mock_login.return_value = (mock_accounts, mock_orders, mock_market)
 
         etrade = ETrade(
-            'consumer_key', 'consumer_secret', 'web_username', 'web_password', 'account_id', {'cookie': 'value'}
+            'consumer_key', 'consumer_secret', 'web_username',
+            'web_password', 'account_id', {'cookie': 'value'}
         )
 
         with patch.object(etrade, 'orders', mock_orders):
@@ -77,7 +80,8 @@ class TestETrade(unittest.TestCase):
 
         # Create instance of ETrade class and call method
         etrade = ETrade(
-            'consumer_key', 'consumer_secret', 'web_username', 'web_password', 'account_id', {'cookie': 'value'}
+            'consumer_key', 'consumer_secret', 'web_username',
+            'web_password', 'account_id', {'cookie': 'value'}
         )
         market = etrade.get_market_quote(symbols=['AAPL', 'GOOG'])
 
@@ -95,7 +99,8 @@ class TestETrade(unittest.TestCase):
 
         # Create instance of ETrade class and call method
         etrade = ETrade(
-            'consumer_key', 'consumer_secret', 'web_username', 'web_password', 'account_id', {'cookie': 'value'}
+            'consumer_key', 'consumer_secret', 'web_username',
+            'web_password', 'account_id', {'cookie': 'value'}
         )
         buying_power = etrade.get_buying_power(account_id_key='12345', prints=False)
 
@@ -111,7 +116,8 @@ class TestETrade(unittest.TestCase):
 
         # Create ETrade object and call method
         etrade = ETrade(
-            'consumer_key', 'consumer_secret', 'web_username', 'web_password', 'account_id', 'etrade_cookie'
+            'consumer_key', 'consumer_secret', 'web_username',
+            'web_password', 'account_id', 'etrade_cookie'
         )
         portfolio_data = etrade.get_portfolio_data('account_id')
 
@@ -125,19 +131,19 @@ class TestETrade(unittest.TestCase):
         self.assertAlmostEqual(portfolio_data.loc['FYX', 'marketValue'], 947.8171)
         self.assertAlmostEqual(portfolio_data.loc['FYX', 'totalCost'], 955.8999)
         self.assertAlmostEqual(portfolio_data.loc['FYX', 'daysGain'], 11.3871)
-        self.assertAlmostEqual(portfolio_data.loc['FYX', 'daysGainPct'], 0.01216)
+        self.assertAlmostEqual(portfolio_data.loc['FYX', 'daysGainPct'], 1.216)
         self.assertAlmostEqual(portfolio_data.loc['FYX', 'totalGain'], -8.0828)
-        self.assertAlmostEqual(portfolio_data.loc['FYX', 'totalGainPct'], -0.008455)
-        self.assertAlmostEqual(portfolio_data.loc['FYX', 'pctOfPortfolio'], 0.094585)
+        self.assertAlmostEqual(portfolio_data.loc['FYX', 'totalGainPct'], -0.8455)
+        self.assertAlmostEqual(portfolio_data.loc['FYX', 'pctOfPortfolio'], 9.4585)
         self.assertEqual(portfolio_data.loc['VIOG', 'quantity'], 16)
         self.assertAlmostEqual(portfolio_data.loc['VIOG', 'costPerShare'], 200.4115)
         self.assertAlmostEqual(portfolio_data.loc['VIOG', 'marketValue'], 3176.5599)
         self.assertAlmostEqual(portfolio_data.loc['VIOG', 'totalCost'], 3206.5849)
         self.assertAlmostEqual(portfolio_data.loc['VIOG', 'daysGain'], 19.4704)
-        self.assertAlmostEqual(portfolio_data.loc['VIOG', 'daysGainPct'], 0.006167)
+        self.assertAlmostEqual(portfolio_data.loc['VIOG', 'daysGainPct'], 0.6167)
         self.assertAlmostEqual(portfolio_data.loc['VIOG', 'totalGain'], -30.0249)
-        self.assertAlmostEqual(portfolio_data.loc['VIOG', 'totalGainPct'], -0.009363)
-        self.assertAlmostEqual(portfolio_data.loc['VIOG', 'pctOfPortfolio'], 0.316997)
+        self.assertAlmostEqual(portfolio_data.loc['VIOG', 'totalGainPct'], -0.9363)
+        self.assertAlmostEqual(portfolio_data.loc['VIOG', 'pctOfPortfolio'], 31.6997)
 
 
 if __name__ == '__main__':
