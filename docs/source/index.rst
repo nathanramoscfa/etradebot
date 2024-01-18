@@ -14,11 +14,10 @@ based on custom trading strategies. ETradeBot is strategy-agnostic and will exec
 a `FREE consultation <https://calendly.com/nrcapitalmanagement/etradebot>`_ to learn more or discuss how ETradeBot can
 fit into your trading strategy.
 
-.. warning:: ETradeBot is experimental software. Test on small dollar accounts only. This project is not
-   affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the
+.. warning:: ETradeBot is experimental software and is in early development. Test on small dollar accounts only. This
+   project is not affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the
    `disclaimer <https://etradebot.readthedocs.io/en/latest/disclaimer.html>`_. The developer is not responsible for any
    losses incurred from the use of ETradeBot. Use at your own risk.
-
 
 Features
 ========
