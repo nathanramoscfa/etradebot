@@ -44,25 +44,33 @@ def strategy(prints=False):
         symbols=symbols
     )
 
-    # Instantiate the model
-    model = Model(symbols=symbols, bounds=(0.0, 0.3), min_weight=0.05, margin_rate=0.132, long_weight=1.0,
-                  short_weight=0.0, frequency=252)
-
     # Get historical prices
     historical_prices = api.get_historical_prices()
 
+    # Instantiate the model
+    model = Model(
+        symbols=symbols,
+        bounds=(0.0, 0.3),
+        min_weight=0.05,
+        margin_rate=0.132,
+        long_weight=1.0,
+        short_weight=0.0,
+        frequency=252,
+        historical_prices=historical_prices
+    )
+
     # Calculate expected returns using the mean historical returns
-    mu = expected_returns.mean_historical_return(historical_prices)
+    historical_returns = expected_returns.mean_historical_return(historical_prices)
 
     # Calculate the sample covariance matrix
-    sigma = model.calculate_covariance_matrix(historical_prices, symbols)
+    covariance_matrix = model.calculate_covariance_matrix(historical_prices, symbols)
 
     # Get the risk-free rate
     risk_free_rate = api.get_risk_free_rate(prints=prints)
 
     # Calculate the maximum Sharpe ratio portfolio
     max_sharpe_weights, max_sharpe_results = model.maximum_sharpe_portfolio(
-        mu, sigma, risk_free_rate, prints
+        historical_returns, covariance_matrix, risk_free_rate, prints
     )
 
     return max_sharpe_weights

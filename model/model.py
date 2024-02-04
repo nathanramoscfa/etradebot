@@ -12,6 +12,8 @@ class Model(object):
 
     :param symbols: List of symbols
     :type symbols: list, required
+    :param historical_prices: Historical prices
+    :type historical_prices: pandas.core.frame.DataFrame, required
     :param bounds: Bounds for long and short weights, default is (0.0, 1.0)
     :type bounds: tuple, optional
     :param min_weight: Minimum weight, default is 0.0
@@ -33,14 +35,13 @@ class Model(object):
     :type risk_method: str, optional
     :param semivariance_benchmark: The return threshold to distinguish "downside" and "upside". Default is 0
     :type semivariance_benchmark: int, optional
-    :param historical_prices: Historical prices, default is None
-    :type historical_prices: pandas.core.frame.DataFrame, optional
     :param beta: Confidence level (e.g., expected loss on the worst (1-beta) days). Default is 0.95
     :type beta: float, optional
     """
     def __init__(
             self,
             symbols,
+            historical_prices,
             bounds=(0.0, 1.0),
             min_weight=0.0,
             margin_rate=0.0,
@@ -50,7 +51,6 @@ class Model(object):
             optimization_method='mean_variance',
             risk_method='sample_cov',
             semivariance_benchmark=0,
-            historical_prices=None,
             beta=0.95
     ):
         self.symbols = symbols
