@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ETradeBot &mdash; etradebot 3.0.4 documentation</title>
+  <title>ETradeBot &mdash; etradebot 3.0.5 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -34,7 +34,7 @@
             etradebot
           </a>
               <div class="version">
-                3.0.4
+                3.0.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -105,7 +105,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="etradebot">
+  <div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>As of February 22, 2024, ETradeBot has been officially deprecated. This decision comes after careful consideration of
+the limitations imposed by E-Trade, particularly regarding automated authentication. The current requirement for
+manual login with each execution significantly hinders the effectiveness of automated trading strategies, making it
+impractical for users seeking fully automated solutions. As a result, the developer has decided to discontinue the
+project and shift our development focus to more automation-friendly platforms, specifically Alpaca. Alpaca offers a
+more accommodating environment for automated trading, including more flexible authentication mechanisms that align
+with our goals for fully automated trading systems. Feel free to use ETradeBot as a reference for building your own
+trading bot, and we encourage you to explore Alpaca as an alternative platform for your automated trading needs. We
+appreciate your understanding and support, and look forward to providing you with more advanced and user-friendly
+trading solutions in the future.</p>
+</div>
+<section id="etradebot">
 <h1>ETradeBot<a class="headerlink" href="#etradebot" title="Permalink to this heading"></a></h1>
 <p>ETradeBot is an automated trading software written in Python for E-Trade accounts that allows users to execute trades
 based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. Schedule
@@ -113,8 +126,8 @@ a <a class="reference external" href="https://calendly.com/nrcapitalmanagement/e
 fit into your trading strategy.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>ETradeBot is experimental software. Test on small dollar accounts only. This project is not
-affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the
+<p>ETradeBot is experimental software and is in early development. Test on small dollar accounts only. This
+project is not affiliated with E-Trade or any other financial institution. By using ETradeBot, you agree to the
 <a class="reference external" href="https://etradebot.readthedocs.io/en/latest/disclaimer.html">disclaimer</a>. The developer is not responsible for any
 losses incurred from the use of ETradeBot. Use at your own risk.</p>
 </div>

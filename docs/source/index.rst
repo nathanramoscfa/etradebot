@@ -5,6 +5,18 @@
 
 .. role:: red
 
+.. important::
+   As of February 22, 2024, ETradeBot has been officially deprecated. This decision comes after careful consideration of
+   the limitations imposed by E-Trade, particularly regarding automated authentication. The current requirement for
+   manual login with each execution significantly hinders the effectiveness of automated trading strategies, making it
+   impractical for users seeking fully automated solutions. As a result, the developer has decided to discontinue the
+   project and shift our development focus to more automation-friendly platforms, specifically Alpaca. Alpaca offers a
+   more accommodating environment for automated trading, including more flexible authentication mechanisms that align
+   with our goals for fully automated trading systems. Feel free to use ETradeBot as a reference for building your own
+   trading bot, and we encourage you to explore Alpaca as an alternative platform for your automated trading needs. We
+   appreciate your understanding and support, and look forward to providing you with more advanced and user-friendly
+   trading solutions in the future.
+
 #########
 ETradeBot
 #########

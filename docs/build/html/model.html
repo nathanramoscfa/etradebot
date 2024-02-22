@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>model &mdash; etradebot 3.0.4 documentation</title>
+  <title>model &mdash; etradebot 3.0.5 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
             etradebot
           </a>
               <div class="version">
-                3.0.4
+                3.0.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -126,7 +126,7 @@
 <span id="model"></span><h1>model<a class="headerlink" href="#module-model.model" title="Permalink to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="model.model.Model">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">252</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimization_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean_variance'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">risk_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sample_cov'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semivariance_benchmark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">historical_prices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.model.Model" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">historical_prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">252</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimization_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean_variance'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">risk_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sample_cov'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semivariance_benchmark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.model.Model" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Description<span class="colon">:</span></dt>
@@ -135,6 +135,7 @@
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>symbols</strong> (<em>list</em><em>, </em><em>required</em>) – List of symbols</p></li>
+<li><p><strong>historical_prices</strong> (<em>pandas.core.frame.DataFrame</em><em>, </em><em>required</em>) – Historical prices</p></li>
 <li><p><strong>bounds</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Bounds for long and short weights, default is (0.0, 1.0)</p></li>
 <li><p><strong>min_weight</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum weight, default is 0.0</p></li>
 <li><p><strong>margin_rate</strong> (<em>float</em><em>, </em><em>optional</em>) – Margin rate, default is 0.0</p></li>
@@ -147,7 +148,6 @@
 ‘ledoit_wolf’, ‘ledoit_wolf_constant_variance’, ledoit_wolf_single_factor, ledoit_wolf_constant_correlation,
 ‘oracle_approximating’</p></li>
 <li><p><strong>semivariance_benchmark</strong> (<em>int</em><em>, </em><em>optional</em>) – The return threshold to distinguish “downside” and “upside”. Default is 0</p></li>
-<li><p><strong>historical_prices</strong> (<em>pandas.core.frame.DataFrame</em><em>, </em><em>optional</em>) – Historical prices, default is None</p></li>
 <li><p><strong>beta</strong> (<em>float</em><em>, </em><em>optional</em>) – Confidence level (e.g., expected loss on the worst (1-beta) days). Default is 0.95</p></li>
 </ul>
 </dd>

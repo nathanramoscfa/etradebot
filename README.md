@@ -1,11 +1,26 @@
-# ETradeBot
+# ETradeBot - Project Deprecated
+
+## Important Announcement: Deprecation of ETradeBot
+
+<b><span style="color:red">As of February 22, 2024, ETradeBot has been officially deprecated. This decision comes after 
+careful consideration of the limitations imposed by E-Trade, particularly regarding automated authentication. The 
+current requirement for manual login with each execution significantly hinders the effectiveness of automated trading 
+strategies, making it impractical for users seeking fully automated solutions. As a result, the developer has decided 
+to discontinue the project and focus our development focus to more automation-friendly platforms, specifically 
+[Alpaca](https://alpaca.markets/). Alpaca offers a more accommodating environment for automated trading, including more 
+flexible authentication mechanisms that align with our goals for fully automated trading systems. Feel free to use 
+ETradeBot as a reference for building your own trading bot, and I encourage you to explore  Alpaca as an alternative 
+platform for your automated trading needs. We appreciate your understanding and support, and I look forward to providing 
+you with more advanced and user-friendly trading solutions in the future. </span></b>
+
+## Overview (Deprecated)
 
 ETradeBot is an automated trading software written in Python for E-Trade accounts that allows users to execute trades 
 based on custom trading strategies. ETradeBot is strategy-agnostic and will execute any strategy given to it. Schedule 
 a [FREE Consultation](https://calendly.com/nrcapitalmanagement/etradebot) to learn more about how ETradeBot can fit into 
 your trading strategy. 
 
-<b><span style="color:red">Warning: ETradeBot is experimental software and is in early development. Test on small dollar 
+<b><span style="color:red">Warning: ETradeBot is experimental software. Test on small dollar 
 accounts only. This project is not affiliated with E-Trade or any other financial institution. By using ETradeBot, you 
 agree to the [disclaimer](https://etradebot.readthedocs.io/en/latest/disclaimer.html). The developer is not responsible for any 
 losses incurred from the use of ETradeBot. Use at your own risk. </span></b>
